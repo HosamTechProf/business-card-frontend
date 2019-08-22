@@ -1,0 +1,90 @@
+<ion-header  no-shadow no-border>
+
+  <div class="myDiv animated pulse">
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="logout()">
+              <ion-icon name="custom-logout"></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-navbar>
+    <div padding>
+      <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="بحث"></ion-searchbar>
+    </div>
+</div>
+</ion-header>
+
+<ion-content>
+  <div [hidden]="!name" padding>
+    <ion-card *ngFor="let user of searchData">
+
+      <ion-card-header color="danger" (click)="openUserCard(user.id)">
+        {{user.name}}
+      </ion-card-header>
+
+      <ion-card-content>
+        {{user.desc}}
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+<div [hidden]="name">
+  <ion-grid padding>
+    <ion-row>
+      <ion-col>
+        <ion-card class="myCard animated flipInX" color="danger">
+          <ion-card-content (click)="openMyCards()">
+            <ion-icon name="custom-card" style="font-size: 30px"></ion-icon>
+            <ion-icon name="custom-card" style="font-size: 30px"></ion-icon><br>
+            بطاقاتي
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="myCard animated flipInX" color="secondary" (click)="addFriend()">
+          <ion-card-content>
+            <ion-icon name="qr-scanner" style="font-size: 30px"></ion-icon><br>
+            الكاميرا
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="myCard animated flipInX" color="dark" (click)="openModal()">
+          <ion-card-content>
+            <ion-icon name="custom-qr-code" style="font-size: 30px"></ion-icon><br>
+            My QR
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <h6 align="center" (click)="openFavourites()"><!-- <ion-icon name="custom-like" style="font-size: 30px"></ion-icon> -->
+  <img src="assets/icons/like.svg" width="8%">
+   <br>المفضلة
+  </h6>
+  <ion-scroll (click)="openFavourites()" scrollX="true" direction="x" style="width: 100%;height: 40%" class="animated flipInX">
+
+  <ion-card class="scrollCard" *ngFor="let friend of favourites" (click)="openFriendCard(friend.id)">
+    <ion-card-content color="dark">
+      <ion-grid>
+      <ion-row>
+      <ion-col>
+      <img src="{{userImage}}/{{friend.image}}" class="favImage">
+      <span style="text-align: right;">{{friend.name}}</span>
+      </ion-col>
+      </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  </ion-scroll>
+</div>
+</ion-content>
+<ion-footer [hidden]="adsStatus">
+  <a href="{{adLink}}">
+    <img src="{{adImage}}{{adPhoto}}" alt="{{adName}}">
+  </a>
+</ion-footer>

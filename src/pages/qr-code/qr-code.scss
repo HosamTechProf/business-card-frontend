@@ -1,0 +1,17 @@
+page-qr-code {
+	ion-content{
+		background-color: rgba(0, 0, 0, 0.9) !important;
+	}
+	.button{
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.test{
+		border: 15px solid white;
+		border-radius: 15px !important;
+	}
+	h3{
+		color: white;
+		text-align: center;
+	}
+}

@@ -1,0 +1,15 @@
+<ion-content padding>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+      <h3>اجعل صديقك يمسح كودك لمتابعة بعضكم</h3>
+      <div class="test">
+        <qrcode [qrdata]="id" [size]="256" [level]="'H'"></qrcode>
+     </div>
+    </ion-row>
+    <ion-row justify-content-center align-items-center style=" flex-direction: column">
+		<button ion-button icon-only color="dark" padding (click)="closeModal()">
+		  <ion-icon name="custom-arrow-down"></ion-icon>
+		</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

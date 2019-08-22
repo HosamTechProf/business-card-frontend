@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="danger" text-center>
+    <ion-title text-center><ion-icon name="custom-card"></ion-icon> بطاقتي</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<!-- <ul>
+	<li *ngFor="let user of userData">{{user.name}}</li>
+</ul> -->
+<div *ngFor="let user of userData">
+<div align="center">
+  <img [src]="userImage" (click)="uploadImage()" class="ion-align-self-center">
+</div>
+<ion-card (click)="showPrompt(user.name, 'name', 'Name', 'Name')">
+  <ion-card-header color="danger">
+    الإسم
+  </ion-card-header>
+  <ion-card-content>
+	{{name}}
+  </ion-card-content>
+</ion-card>
+<ion-card (click)="showPrompt(user.email, 'email', 'Email', 'Email')">
+  <ion-card-header color="danger">
+    البريد الالكتروني
+  </ion-card-header>
+  <ion-card-content>
+	{{email}}
+  </ion-card-content>
+</ion-card>
+<ion-card (click)="showPrompt(user.phone, 'phone', 'Phone', 'Phone')">
+  <ion-card-header color="danger">
+    رقم الهاتف
+  </ion-card-header>
+  <ion-card-content>
+	{{phone}}
+  </ion-card-content>
+</ion-card>
+<ion-card (click)="showPrompt(user.mobile, 'mobile', 'Mobile', 'Mobile')">
+  <ion-card-header color="danger">
+    رقم الجوال
+  </ion-card-header>
+  <ion-card-content>
+	{{mobile}}
+  </ion-card-content>
+</ion-card>
+<ion-card (click)="showPrompt(user.company, 'company', 'Company', 'Company')">
+  <ion-card-header color="danger">
+    المنشأة او الشركة
+  </ion-card-header>
+  <ion-card-content>
+	{{company}}
+  </ion-card-content>
+</ion-card>
+<ion-card (click)="showPrompt(user.desc, 'desc', 'Desc', 'Desc')">
+  <ion-card-header color="danger">
+    نبذة تعريفية
+  </ion-card-header>
+  <ion-card-content>
+	{{desc}}
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-header color="danger">
+    حالة البطاقة
+  </ion-card-header>
+  <ion-card-content>
+  <ion-item>
+  <input class="toggle toggle__light" type="checkbox" (change)="changePrivacy()" [checked]="user.isPublic">
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<!-- <ion-card (click)="showPrompt(user.password, 'password', 'Password', 'Password')">
+  <ion-card-header color="danger">
+    Password
+  </ion-card-header>
+  <ion-card-content>
+	{{password}}
+  </ion-card-content>
+</ion-card> -->
+</div>
+</ion-content>

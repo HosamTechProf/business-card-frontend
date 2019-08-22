@@ -1,0 +1,129 @@
+page-home {
+
+.sideBarButton{
+    margin-left: 9px;
+}
+
+
+.toolbar-background {
+    background: transparent;
+}
+
+ ion-searchbar{
+    .searchbar-input-container{
+        .searchbar-input{
+            border-radius: 30px;
+        }
+    }
+ }
+.searchbar .searchbar-search-icon {
+    background-image: url("../../assets/icons/search.svg");
+}
+
+// .item {
+//     border-radius: 13px;
+//     border: solid 1px #70707040;
+//     padding-left: 16px;
+//     padding-right: 0;
+//     position: relative;
+//     font-size: 1.6rem;
+//     font-weight: normal;
+//     text-transform: none;
+//     color: #000;
+//     background-color: #fff;
+//     -webkit-box-shadow: none;
+//     box-shadow: #a6bad33d 2px 3px 13px;
+//     -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+//     transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+
+.bar-button-default, .bar-button-clear-default, .bar-button-default {
+    color: #cc0000;
+    background-color: transparent;
+}
+
+.myDiv{
+    background-image: url('../../assets/imgs/bg3.jpg');
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    height: 150px
+}
+
+
+    .toolbar-title, p, input, button {
+        font-family: Staatliches;
+    }
+    p {
+        font-size: 18px !important;
+        letter-spacing: .5px;
+        line-height: 18px !important;
+    }
+
+    .col, .row {
+        margin: 0;
+        padding: 0;
+    }
+        ion-toolbar {
+            .toolbar-background {
+                background: transparent;
+            }
+        }
+
+        .toolbar-title {
+            margin-top: 4px;
+            color: #fff;
+        }
+
+    .myCard {
+        -webkit-box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.03);
+        box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.03);
+    }
+    .card{
+        border-radius: 6px;
+        font-weight: bold;
+        text-align: center
+    }
+    .gray {
+        color: #6b7376;
+    }
+.scroll-content, ion-header{
+    background-color: #E6E6E6;
+}
+// ::-webkit-input-placeholder {
+//      background-image: url('../../assets/icons/search.svg');
+//      background-repeat: no-repeat;
+//      background-position: left;
+//      background-size: 21px;
+//      direction: rtl;
+//  }
+.scroll-zoom-wrapper {
+        white-space: nowrap;
+    }
+
+    .scrollCard {
+        width: 200px !important;
+        display: inline-block;
+        -webkit-box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.03);
+        box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.03);
+    }
+
+    ion-scroll {
+        min-height: 65px;
+        height: auto;
+
+            .scroll-content {
+            padding: 0px !important;
+        }
+    }
+    .favImage{
+        width: 25px;
+        display: inline-block;
+        float:right;
+        border-radius: 100px
+    }
+    ion-footer{
+        max-height: 60px
+    }
+}

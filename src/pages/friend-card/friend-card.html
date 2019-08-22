@@ -1,0 +1,93 @@
+<!--
+  Generated template for the FriendCardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="danger">
+  	<div style="float: left">
+		<button *ngIf="!faved" class="favButton" ion-button icon-only color="light" (click)="favourite()">
+		  <ion-icon name="heart-outline"></ion-icon>
+		</button>
+		<button *ngIf="faved" class="favButton" ion-button icon-only color="light" (click)="unfavourite()">
+		  <ion-icon name="heart"></ion-icon>
+		</button>
+  	</div>
+	<div style="float: right">
+		<button ion-button icon-end *ngIf="followed" ion-button round outline color="light" style="font-weight: bold" (click)="unfollow()">إلغاء المتابعة<ion-icon name="trash"></ion-icon></button>
+		<button ion-button icon-end *ngIf="!followed" ion-button round color="light" style="font-weight: bold" (click)="follow()">تابع<ion-icon name="add"></ion-icon></button>
+	</div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    الاسم
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{name}}
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    الايميل
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{email}}
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    رقم الجوال
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{mobile}}<br>
+		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
+		<button class="socialButton" ion-button icon-only color="danger">
+		  <ion-icon name="logo-whatsapp"></ion-icon>
+		</button>
+		</a>
+		<a href="sms:{{mobile}}">
+		<button class="socialButton" ion-button icon-only color="danger">
+		  <ion-icon name="chatboxes"></ion-icon>
+		</button>
+		</a>
+		<a href="tel:{{mobile}}">
+		<button class="socialButton" ion-button icon-only color="danger">
+		  <ion-icon name="call"></ion-icon>
+		</button>
+	</a>
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    رقم الهاتف
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{phone}}
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    المنشأة
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{company}}
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-header color="danger">
+	    نبذة تعريفية
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{desc}}
+	  </ion-card-content>
+	</ion-card>
+    <ion-row justify-content-center align-items-center style=" flex-direction: column">
+		<button class="arrow" ion-button icon-only color="dark" padding (click)="closeModal()">
+		  <ion-icon name="custom-arrow-down"></ion-icon>
+		</button>
+    </ion-row>
+</ion-content>

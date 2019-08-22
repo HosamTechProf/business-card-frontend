@@ -1,0 +1,34 @@
+page-friend-card {
+	ion-content{
+		background-color: rgba(0, 0, 0, 0.9) !important;
+	}
+	.toolbar-background{
+		background-color: rgba(228, 62, 58, 0.86) !important;
+	}
+	.socialButton{
+		// background-color: transparent;
+		// box-shadow: none;
+		border-radius: 100px
+	}
+	.card{
+		border-radius: 7px;
+		box-shadow: none;
+	}
+	a{
+		color: white
+	}
+	.arrow{
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 100px
+	}
+	.button{
+		box-shadow: none;
+	}
+	.favButton{
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 100px;
+		color: white
+	}
+}

@@ -1,0 +1,66 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+ion-icon {
+  &[class*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+
+  &[class*="custom-user"] {
+    mask-image: url(../assets/icons/user.svg);
+  }
+  &[class*="custom-arrow-down"] {
+    mask-image: url(../assets/icons/arrow-down.svg);
+  }
+  &[class*="custom-information"] {
+    mask-image: url(../assets/icons/information.svg);
+  }
+  &[class*="custom-qr-code"] {
+    mask-image: url(../assets/icons/qr-code.svg);
+  }
+  &[class*="custom-logout"] {
+    mask-image: url(../assets/icons/logout.svg);
+  }
+  &[class*="custom-notification"] {
+    mask-image: url(../assets/icons/notification.svg);
+  }
+  &[class*="custom-card"] {
+    mask-image: url(../assets/icons/card.svg);
+  }
+  &[class*="custom-clock"] {
+    mask-image: url(../assets/icons/clock.svg);
+  }
+  &[class*="custom-support"] {
+    mask-image: url(../assets/icons/support.svg);
+  }
+  &[class*="custom-workout"] {
+    mask-image: url(../assets/icons/workout.svg);
+  }
+  &[class*="custom-premium"] {
+    mask-image: url(../assets/icons/premium.svg);
+  }
+  &[class*="custom-home"] {
+    mask-image: url(../assets/icons/home.svg);
+  }
+  &[class*="custom-like"] {
+    mask-image: url(../assets/icons/heart.svg);
+  }
+}

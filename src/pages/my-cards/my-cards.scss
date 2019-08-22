@@ -1,0 +1,29 @@
+page-my-cards {
+	.scroll-content, ion-header{
+		background-color: #E6E6E6;
+	}
+	.toolbar-md{
+		min-height:60px;
+	}
+	.card{
+		border-radius: 15px;
+		box-shadow: none;
+		font-weight: bold;
+	}
+	.favImage{
+	    width: 30px;
+	    display: inline-block;
+	    float:right;
+	}
+	a{
+		color: white;
+		text-decoration: none;
+	}
+	ion-item{
+		padding: 10px !important
+	}
+	ion-item-sliding{
+		margin-top: 10px;
+		border-radius: 3px
+	}
+}

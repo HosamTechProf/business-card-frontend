@@ -1,0 +1,83 @@
+page-my-card {
+.scroll-content, ion-header{
+	background-color: #E6E6E6;
+}
+.toolbar-md{
+	min-height:60px;
+}
+.card{
+	border-radius: 8px;
+	box-shadow: none;
+}
+input.toggle {
+  position: relative;
+  width: 90px;
+  height: 42px;
+  -webkit-appearance: initial;
+  -moz-appearance: initial;
+  -ms-appearance: initial;
+  appearance: initial;
+  border-radius: 21px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline:none;
+  cursor:pointer;
+  transition: all .3s ease;
+  &:before, &:after {
+    transition: all .3s ease;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: calc(0% + 8px);
+    transform: translate3d(0,-50%,0);
+    border-radius: 50%;
+  }
+  &:after {
+    content: "خاصة";
+    position: absolute;
+    top: 50%;
+    left: calc(0% + 24px + 16px);
+    transform: translate3d(0,-50%,0);
+    font-size: 20px;
+  }
+  &:checked {
+    border-bottom-color: #0facf3;
+    &:before {
+      left: calc(100% - 24px - 8px);
+      transform: translate3d(0,-50%,0);
+      border-radius: 50%;
+    }
+    &:after {
+      content: "عامة";
+      left: calc(0% + 16px);
+    }
+  }
+  &__light {
+    background: #f0f1f2;
+    border-bottom: 2px solid #dddddd;
+    font-weight: 500;
+    &:before {
+      background: #3c4859;
+    }
+    &:after {
+      color: #3c4859;
+    }
+    &:checked {
+      border-color: #c40e0e;
+      &:before {
+        background: #c40e0e;
+      }
+      &:after {
+        color: #c40e0e;
+      }
+    }
+  }
+  }
+  img{
+    width: 120px;
+    border-radius: 100px;
+  }
+}
