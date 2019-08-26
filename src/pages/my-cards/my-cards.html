@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="danger">
-    <ion-title>بطاقاتي</ion-title>
+    <!-- <ion-title>بطاقاتي</ion-title> -->
+    <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="بحث في بطاقاتي"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
@@ -8,7 +9,7 @@
 
 <ion-list>
   <ion-item-sliding *ngFor="let friend of friends">
-    <ion-item (click)="openModal(friend.id)">
+    <ion-item (click)="openModal(friend.id)" no-lines>
       <ion-avatar item-start>
         <img src="{{friendImage}}/{{friend.image}}">
       </ion-avatar>
@@ -21,7 +22,7 @@
         اتصال
       </button>
       </a>
-      <a href="sms:{{friend.mobile}}">
+      <a (click)="sendSMS(friend.mobile)">
       <button ion-button color="danger">
         <ion-icon name="chatboxes"></ion-icon>
         رسالة

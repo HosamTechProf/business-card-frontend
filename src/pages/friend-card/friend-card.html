@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="danger">
-  	<div style="float: left">
+  	<div style="float: left" *ngIf="followed">
 		<button *ngIf="!faved" class="favButton" ion-button icon-only color="light" (click)="favourite()">
 		  <ion-icon name="heart-outline"></ion-icon>
 		</button>
@@ -49,7 +49,7 @@
 		  <ion-icon name="logo-whatsapp"></ion-icon>
 		</button>
 		</a>
-		<a href="sms:{{mobile}}">
+		<a (click)="sendSMS()">
 		<button class="socialButton" ion-button icon-only color="danger">
 		  <ion-icon name="chatboxes"></ion-icon>
 		</button>

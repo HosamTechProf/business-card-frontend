@@ -12,7 +12,7 @@
 <div align="center">
   <img [src]="userImage" (click)="uploadImage()" class="ion-align-self-center">
 </div>
-<ion-card (click)="showPrompt(user.name, 'name', 'Name', 'Name')">
+<ion-card (click)="showPrompt(user.name, 'name', 'الاسم', 'الاسم')">
   <ion-card-header color="danger">
     الإسم
   </ion-card-header>
@@ -20,7 +20,7 @@
 	{{name}}
   </ion-card-content>
 </ion-card>
-<ion-card (click)="showPrompt(user.email, 'email', 'Email', 'Email')">
+<ion-card (click)="showPrompt(user.email, 'email', 'البريد الالكتروني', 'البريد الالكتروني')">
   <ion-card-header color="danger">
     البريد الالكتروني
   </ion-card-header>
@@ -28,7 +28,7 @@
 	{{email}}
   </ion-card-content>
 </ion-card>
-<ion-card (click)="showPrompt(user.phone, 'phone', 'Phone', 'Phone')">
+<ion-card (click)="showPrompt(user.phone, 'phone', 'رقم الهاتف', 'رقم الهاتف')">
   <ion-card-header color="danger">
     رقم الهاتف
   </ion-card-header>
@@ -36,7 +36,7 @@
 	{{phone}}
   </ion-card-content>
 </ion-card>
-<ion-card (click)="showPrompt(user.mobile, 'mobile', 'Mobile', 'Mobile')">
+<ion-card (click)="showPrompt(user.mobile, 'mobile', 'رقم الجوال', 'رقم الجوال')">
   <ion-card-header color="danger">
     رقم الجوال
   </ion-card-header>
@@ -44,7 +44,7 @@
 	{{mobile}}
   </ion-card-content>
 </ion-card>
-<ion-card (click)="showPrompt(user.company, 'company', 'Company', 'Company')">
+<ion-card (click)="showPrompt(user.company, 'company', 'الشركة او المنشأة', 'الشركة او المنشأة')">
   <ion-card-header color="danger">
     المنشأة او الشركة
   </ion-card-header>
@@ -52,7 +52,7 @@
 	{{company}}
   </ion-card-content>
 </ion-card>
-<ion-card (click)="showPrompt(user.desc, 'desc', 'Desc', 'Desc')">
+<ion-card (click)="showPrompt(user.desc, 'desc', 'النبذة تعريفية', 'النبذة تعريفية')">
   <ion-card-header color="danger">
     نبذة تعريفية
   </ion-card-header>

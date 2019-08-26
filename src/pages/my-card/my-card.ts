@@ -69,23 +69,20 @@ export class MyCardPage {
       }
   showPrompt(value, name, placeholder, title) {
     const prompt = this.alertCtrl.create({
-      title: "Update " + title,
+      title: "تعديل " + title,
       inputs: [
         {
           name: name,
-          placeholder: "Write Your " + placeholder,
+          placeholder: "اكتب " + placeholder,
           value: this.userDataArray[name]
         },
       ],
       buttons: [
         {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
+          text: 'الغاء',
         },
         {
-          text: 'Update',
+          text: 'تعديل',
           handler: data => {
             this.updateData(data)
           }

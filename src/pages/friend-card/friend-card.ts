@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FriendsProvider } from '../../providers/friendsProvider';
 import { FavouritesProvider } from '../../providers/favouritesProvider';
+import { SMS } from '@ionic-native/sms';
+
 /**
  * Generated class for the FriendCardPage page.
  *
@@ -26,7 +28,7 @@ export class FriendCardPage {
   faved;
   friends;
   favourites;
-  constructor(public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private sms: SMS, public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.id = this.navParams.get('id');
     let info = {
     	id: this.id
@@ -39,11 +41,8 @@ export class FriendCardPage {
     	this.desc = data['desc']
     	this.company = data['company']
     })
-    let users_id = {
-      user1_id: localStorage['user_id'],
-      user2_id: this.id
-    }
-    this.favouritesProvider.isFavorited(users_id, 'api/auth/isFavorited').subscribe((data)=>{
+
+    this.favouritesProvider.isFavorited('api/auth/isfavorited/' + localStorage['user_id'] + '/' + this.id).subscribe((data)=>{
         if(data == 0){
           this.faved = false;
         }
@@ -51,7 +50,7 @@ export class FriendCardPage {
           this.faved = true;
         }
     })
-    this.friendsProvider.isFriend(users_id, 'api/auth/isFriend').subscribe((data)=>{
+    this.friendsProvider.isFriend('api/auth/isfriend/' + localStorage['user_id'] + '/' + this.id).subscribe((data)=>{
       if (data != 0) {
         this.followed = true;
       }
@@ -95,10 +94,15 @@ export class FriendCardPage {
   }
   unfavourite(){
     this.faved = false;
-    let info = {
-      user1_id: localStorage['user_id'],
-      user2_id: this.id
-    }
-    this.favouritesProvider.removeFavourite(info, 'api/auth/removeFavourite').subscribe()
+    this.favouritesProvider.removeFavourite('api/auth/removefavourite/' + localStorage['user_id'] + '/' + this.id).subscribe()
   }
+sendSMS(){
+          var options = {
+            replaceLineBreaks: false,
+            android: {
+              intent: 'INTENT'
+            }
+        }
+        this.sms.send(this.mobile, '', options);
+      }
 }

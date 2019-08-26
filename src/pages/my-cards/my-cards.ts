@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FriendsProvider } from '../../providers/friendsProvider';
 import { SERVER_URL } from '../../providers/serverUrl';
+import { SMS } from '@ionic-native/sms';
 
 /**
  * Generated class for the MyCardsPage page.
@@ -18,10 +19,10 @@ import { SERVER_URL } from '../../providers/serverUrl';
 export class MyCardsPage {
 	friends:any;
   friendImage;
-  constructor(public modalCtrl: ModalController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
+  name;
+  constructor(private sms: SMS, public modalCtrl: ModalController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
   	this.friendsProvider.getFriends('api/auth/getFriends').subscribe((res)=>{
   		this.friends = res;
-      console.log(this.friends.image)
       this.friendImage = SERVER_URL + 'img/users/';
   	})
   }
@@ -31,5 +32,19 @@ export class MyCardsPage {
      this.friends = data.friends;
    });
     profileModal.present();
+  }
+  search(){
+    this.friendsProvider.search('api/auth/user/followings/'+localStorage['user_id'] + '/' + this.name).subscribe((res)=>{
+      this.friends = res;
+    })
+  }
+  sendSMS(mobile){
+  var options = {
+    replaceLineBreaks: false,
+    android: {
+      intent: 'INTENT'
+    }
+  }
+  this.sms.send(mobile, '', options);
   }
 }

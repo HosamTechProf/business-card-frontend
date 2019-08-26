@@ -20,6 +20,8 @@ import { InterceptorProvider } from '../providers/interceptor/interceptor';
 import { CacheModule } from "ionic-cache";
 import { Camera } from '@ionic-native/camera';
 import { AdvertisementProvider } from '../providers/advertisementProvider';
+import { SMS } from '@ionic-native/sms';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AdvertisementProvider } from '../providers/advertisementProvider';
     InterceptorProvider,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorProvider, multi: true },
     Camera,
-    AdvertisementProvider
+    AdvertisementProvider,
+    SMS,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

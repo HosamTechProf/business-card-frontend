@@ -55,7 +55,6 @@ export class HomePage {
         this.adPhoto = this.randAd['photo'];
         this.adLink = this.randAd['link'];
         this.adName = this.randAd['name'];
-        console.log(this.randAd)
       })
       this.favouritesProvider.getFavourites('api/auth/getFavourites').subscribe((data)=>{
         this.favourites = data;
@@ -72,19 +71,18 @@ export class HomePage {
   openFriendCard(id) {
     let profileModal = this.modalCtrl.create('FriendCardPage', {id : id});
     profileModal.onDidDismiss(data => {
-     this.favourites = data.favourites;
+     this.favourites = data['favourites'];
    });
     profileModal.present();
   }
 
   addFriend(){
     this.barcodeScanner.scan().then(barcodeData => {
-     console.log('Barcode data', barcodeData.text);
      let info = {
        'user1_id' : this.myId,
        'user2_id' : barcodeData.text
      }
-     this.friendsProvider.addFriend(info, 'api/auth/addFriend').subscribe((data)=>{
+     this.friendsProvider.addFriend(info, 'api/auth/addFriendQr').subscribe((data)=>{
         if (data['status']) {
           let friendCard = this.modalCtrl.create('FriendCardPage', {id : barcodeData.text});
           friendCard.present();
@@ -117,7 +115,7 @@ export class HomePage {
   openUserCard(id) {
     let profileModal = this.modalCtrl.create('FriendCardPage', {id : id});
     profileModal.onDidDismiss(data => {
-     this.favourites = data.favourites;
+     this.favourites = data['favourites'];
       setTimeout(() => {
         this.searchbar.setFocus();
    });

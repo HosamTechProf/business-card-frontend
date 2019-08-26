@@ -12,11 +12,11 @@ export class AdvertisementProvider {
   constructor(public http: HttpClient) {}
 
     getAdvertisements(file){
-        return this.http.post(this.server + file, null).map(res => res);
+        return this.http.get(this.server + file).map(res => res);
     }
 
     getAdvertisementsCount(file){
-        return this.http.post(this.server + file, null).map(res => res);
+        return this.http.get(this.server + file).map(res => res);
     }
 
 }

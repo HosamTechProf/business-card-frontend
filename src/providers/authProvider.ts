@@ -17,7 +17,7 @@ export class AuthProvider{
     }
 
     getUserData(file){
-        return this.http.post(this.server + file, null).map(res =>res);
+        return this.http.get(this.server + file).map(res =>res);
         // return this.cache.loadFromDelayedObservable(this.server + file, user)
     }
 

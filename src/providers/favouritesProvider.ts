@@ -15,17 +15,17 @@ export class FavouritesProvider{
         .map(res =>res);
     }
 
-    removeFavourite(info, file){
-        return this.http.post(this.server + file, info).map(res =>res);
+    removeFavourite(file){
+        return this.http.get(this.server + file).map(res =>res);
     }
 
-    isFavorited(info, file){
-        return this.http.post(this.server + file, info).map(res =>res)
+    isFavorited(file){
+        return this.http.get(this.server + file).map(res =>res)
         // return this.cache.loadFromDelayedObservable(this.server + file, isFavorited)
     }
 
     getFavourites(file){
-        return this.http.post(this.server + file, null).map(res =>res);
+        return this.http.get(this.server + file).map(res =>res);
         // return this.cache.loadFromDelayedObservable(this.server + file, favourites)
 
     }

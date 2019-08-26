@@ -9,7 +9,6 @@
     </config-file>
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
-    <allow-intent href="sms:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -130,5 +129,6 @@
     <plugin name="cordova-plugin-admob-free" spec="^0.27.0">
         <variable name="ADMOB_APP_ID" value="&lt;YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB&gt;" />
     </plugin>
+    <plugin name="cordova-sms-plugin" spec="^1.0.0" />
     <engine name="android" spec="7.1.4" />
 </widget>
