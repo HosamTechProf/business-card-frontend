@@ -24,16 +24,16 @@ page-login {
     =========================================*/
     $settings-text-color-header: #CCCCCC;
     $settings-text-color-button: #FFFFFF;
-    $settings-text-input-color: #ffffff;
-    $settings-text-input-placeholder: #CCCCCC;
-    $settings-text-color-description: #ffffff;
+    $settings-text-input-color: black;
+    $settings-text-input-placeholder: #555753;
+    $settings-text-color-description: black;
     $settings-text-color-description-links: #970000;
     $settings-text-label-color: #FF0000;
 
     /* Content
     ===============================*/
     ion-content {
-      background-image: url('../../assets/imgs/bg.svg');
+      background-image: url('../../assets/imgs/bg2.jpg');
       background-size: cover;
       background-attachment: fixed; /*-- here should be fixed --*/
       font-family: 'Montserrat', sans-serif;

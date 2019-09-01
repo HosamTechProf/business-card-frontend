@@ -1,4 +1,3 @@
-import { AlertController } from 'ionic-angular';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,7 +8,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class InterceptorProvider implements HttpInterceptor {
 
-    constructor(private storage: Storage, private alertCtrl: AlertController) { }
+    constructor(private storage: Storage) { }
 
     // Intercepts all HTTP requests!
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,12 +21,12 @@ export class InterceptorProvider implements HttpInterceptor {
                 return next.handle(clonedReq).pipe(
                     catchError(error => {
                         let msg = error.message;
-                        let alert = this.alertCtrl.create({
-                            title: error.name,
-                            message: msg,
-                            buttons: ['OK']
-                        });
-                        alert.present();
+                        // let alert = this.alertCtrl.create({
+                        //     title: error.name,
+                        //     message: msg,
+                        //     buttons: ['OK']
+                        // });
+                        // // alert.present();
                         return _throw(error);
                     })
                 );

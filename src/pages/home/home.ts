@@ -30,31 +30,34 @@ export class HomePage {
   adLink;
   adName;
   adsCount;
-  adsStatus;
+  public adsStatus;
   constructor(private advertisementProvider: AdvertisementProvider, private storage: Storage, private app:App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
       this.authProvider.getUserData('api/auth/user').subscribe((res:Observable<any>)=>{
         this.myId = res['id'];
         localStorage['user_id'] = res['id'];
       });
       this.ionViewDidEnter();
+  }
+  ionViewDidEnter(){
       this.advertisementProvider.getAdvertisementsCount('api/auth/getadscount').subscribe((data)=>{
         this.adsCount = data;
-      })
       if (this.adsCount > 0) {
         this.adsStatus = true;
       }
       else{
         this.adsStatus = false;
       }
-  }
-  ionViewDidEnter(){
-      this.advertisementProvider.getAdvertisements('api/auth/getads').subscribe((data:Array<object>)=>{
-        this.ads = data;
-        this.randAd = this.ads[Math.floor(Math.random()*this.ads.length)]
-        this.adImage = SERVER_URL.substring(0, SERVER_URL.length - 1);
-        this.adPhoto = this.randAd['photo'];
-        this.adLink = this.randAd['link'];
-        this.adName = this.randAd['name'];
+      if (this.adsStatus == true) {
+        this.advertisementProvider.getAdvertisements('api/auth/getads').subscribe((data:Array<object>)=>{
+          this.ads = data;
+          this.randAd = this.ads[Math.floor(Math.random()*this.ads.length)]
+          this.adImage = SERVER_URL.substring(0, SERVER_URL.length - 1);
+          console.log(this.randAd)
+          this.adPhoto = this.randAd['photo'];
+          this.adLink = this.randAd['link'];
+          this.adName = this.randAd['name'];
+        })
+      }
       })
       this.favouritesProvider.getFavourites('api/auth/getFavourites').subscribe((data)=>{
         this.favourites = data;

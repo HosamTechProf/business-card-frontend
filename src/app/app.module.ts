@@ -21,7 +21,7 @@ import { CacheModule } from "ionic-cache";
 import { Camera } from '@ionic-native/camera';
 import { AdvertisementProvider } from '../providers/advertisementProvider';
 import { SMS } from '@ionic-native/sms';
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
     Camera,
     AdvertisementProvider,
     SMS,
-    AndroidPermissions
+    Deeplinks
   ]
 })
 export class AppModule {}

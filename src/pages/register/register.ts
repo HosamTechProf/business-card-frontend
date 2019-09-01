@@ -78,7 +78,8 @@ export class RegisterPage {
           this.presentToast(data['msg']);
         }
       },(err)=>{
-        this.presentToast(Object.keys(JSON.parse(err._body).error).map(key => JSON.parse(err._body).error[key])['0']);
+        console.log(err['error']['error'])
+        this.presentToast(Object.keys(err['error'].error).map(key => err['error'].error[key])['0']);
       })
     }
 

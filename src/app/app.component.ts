@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { CacheService } from "ionic-cache";
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,7 +12,7 @@ import { CacheService } from "ionic-cache";
 export class MyApp {
   rootPage:any;
 
-  constructor(private cache: CacheService, private storage : Storage,public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
+  constructor(private deeplinks: Deeplinks, private cache: CacheService, private storage : Storage,public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
     this.initializeApp();
   }
     initializeApp(){
@@ -20,6 +21,17 @@ export class MyApp {
       this.cache.setOfflineInvalidate(false);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.deeplinks.route({
+
+   }).subscribe(match => {
+     // match.$route - the route we matched, which is the matched entry from the arguments to route()
+     // match.$args - the args passed in the link
+     // match.$link - the full link data
+     console.log('Successfully matched route', match);
+   }, nomatch => {
+     // nomatch.$link - the full link data
+     console.error('Got a deeplink that didn\'t match', nomatch);
+   });
     });
 
   this.storage.get('my_token').then((val)=>{

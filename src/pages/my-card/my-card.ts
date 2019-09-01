@@ -124,13 +124,16 @@ export class MyCardPage {
       })
   }
   uploadImage(){
-  const options: CameraOptions = {
-  quality: 100,
-  destinationType: this.camera.DestinationType.DATA_URL,
-  encodingType: this.camera.EncodingType.JPEG,
-  mediaType: this.camera.MediaType.PICTURE,
-  sourceType:this.camera.PictureSourceType.PHOTOLIBRARY
-}
+    const options: CameraOptions = {
+    quality: 90,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    sourceType:this.camera.PictureSourceType.PHOTOLIBRARY,
+    allowEdit: true,
+    targetHeight: 500,
+    targetWidth: 500
+    }
 
 this.camera.getPicture(options).then((imageData) => {
  // imageData is either a base64 encoded string or a file URI

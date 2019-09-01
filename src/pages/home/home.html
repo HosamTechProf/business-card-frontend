@@ -83,7 +83,7 @@
   </ion-scroll>
 </div>
 </ion-content>
-<ion-footer [hidden]="adsStatus">
+<ion-footer [hidden]="!adsStatus">
   <ion-toolbar>
   <a href="{{adLink}}">
     <img src="{{adImage}}{{adPhoto}}" alt="{{adName}}">
