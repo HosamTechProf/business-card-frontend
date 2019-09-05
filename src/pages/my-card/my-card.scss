@@ -80,4 +80,14 @@ input.toggle {
     width: 120px;
     border-radius: 100px;
   }
+.profilebutton {
+    z-index: 2;
+    position: absolute;
+    left: 44%;
+    top: 9%;
+    margin: auto;
+    color: white;
+    font-size: 50px
+}
+
 }

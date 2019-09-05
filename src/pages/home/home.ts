@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ModalController, App } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, App, Platform } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FriendsProvider } from '../../providers/friendsProvider';
@@ -31,12 +31,15 @@ export class HomePage {
   adName;
   adsCount;
   public adsStatus;
-  constructor(private advertisementProvider: AdvertisementProvider, private storage: Storage, private app:App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public platform : Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app:App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
       this.authProvider.getUserData('api/auth/user').subscribe((res:Observable<any>)=>{
         this.myId = res['id'];
         localStorage['user_id'] = res['id'];
       });
       this.ionViewDidEnter();
+    this.platform.registerBackButtonAction(() => {
+
+    });
   }
   ionViewDidEnter(){
       this.advertisementProvider.getAdvertisementsCount('api/auth/getadscount').subscribe((data)=>{
@@ -52,7 +55,6 @@ export class HomePage {
           this.ads = data;
           this.randAd = this.ads[Math.floor(Math.random()*this.ads.length)]
           this.adImage = SERVER_URL.substring(0, SERVER_URL.length - 1);
-          console.log(this.randAd)
           this.adPhoto = this.randAd['photo'];
           this.adLink = this.randAd['link'];
           this.adName = this.randAd['name'];

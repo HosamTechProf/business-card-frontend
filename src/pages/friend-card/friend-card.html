@@ -23,26 +23,20 @@
 
 <ion-content padding>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    الاسم
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">الاسم : </span>
 	    {{name}}
 	  </ion-card-content>
 	</ion-card>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    الايميل
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">البريد الالكتروني : </span>
 	    {{email}}
 	  </ion-card-content>
 	</ion-card>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    رقم الجوال
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">رقم الجوال : </span>
 	    {{mobile}}<br>
 		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
 		<button class="socialButton" ion-button icon-only color="danger">
@@ -62,26 +56,26 @@
 	  </ion-card-content>
 	</ion-card>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    رقم الهاتف
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">رقم الهاتف : </span>
 	    {{phone}}
 	  </ion-card-content>
 	</ion-card>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    المنشأة
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">المنشأة : </span>
 	    {{company}}
 	  </ion-card-content>
 	</ion-card>
 	<ion-card>
-	  <ion-card-header color="danger">
-	    نبذة تعريفية
-	  </ion-card-header>
 	  <ion-card-content>
+	  	<span class="title">لينك تواصل اجتماعي : </span>
+	    <a class="socialLink" target="_blank" href="{{socialLink}}">{{socialLink}}</a>
+	  </ion-card-content>
+	</ion-card>
+	<ion-card>
+	  <ion-card-content>
+	  	<span class="title">نبذة تعريفية : </span>
 	    {{desc}}
 	  </ion-card-content>
 	</ion-card>

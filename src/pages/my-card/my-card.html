@@ -1,72 +1,162 @@
 <ion-header>
   <ion-navbar color="danger" text-center>
+        <ion-buttons start [hidden]="edittable">
+            <button ion-button icon-only style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="edit()">
+              <ion-icon name="create"></ion-icon>
+            </button>
+          </ion-buttons>
+        <ion-buttons start [hidden]="!edittable">
+            <button ion-button icon-only style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="update()">
+              <ion-icon name="checkmark"></ion-icon>
+            </button>
+          </ion-buttons>
     <ion-title text-center><ion-icon name="custom-card"></ion-icon> بطاقتي</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-<!-- <ul>
-	<li *ngFor="let user of userData">{{user.name}}</li>
-</ul> -->
-<div *ngFor="let user of userData">
+<div [hidden]="!edittable">
 <div align="center">
-  <img [src]="userImage" (click)="uploadImage()" class="ion-align-self-center">
+  <div class="test" (click)="uploadImage()">
+    <img [src]="userImage" class="ion-align-self-center">
+    <ion-icon name="camera" class="profilebutton"></ion-icon>
+  </div>
 </div>
-<ion-card (click)="showPrompt(user.name, 'name', 'الاسم', 'الاسم')">
-  <ion-card-header color="danger">
-    الإسم
-  </ion-card-header>
+<ion-card>
   <ion-card-content>
-	{{name}}
-  </ion-card-content>
-</ion-card>
-<ion-card (click)="showPrompt(user.email, 'email', 'البريد الالكتروني', 'البريد الالكتروني')">
-  <ion-card-header color="danger">
-    البريد الالكتروني
-  </ion-card-header>
-  <ion-card-content>
-	{{email}}
-  </ion-card-content>
-</ion-card>
-<ion-card (click)="showPrompt(user.phone, 'phone', 'رقم الهاتف', 'رقم الهاتف')">
-  <ion-card-header color="danger">
-    رقم الهاتف
-  </ion-card-header>
-  <ion-card-content>
-	{{phone}}
-  </ion-card-content>
-</ion-card>
-<ion-card (click)="showPrompt(user.mobile, 'mobile', 'رقم الجوال', 'رقم الجوال')">
-  <ion-card-header color="danger">
-    رقم الجوال
-  </ion-card-header>
-  <ion-card-content>
-	{{mobile}}
-  </ion-card-content>
-</ion-card>
-<ion-card (click)="showPrompt(user.company, 'company', 'الشركة او المنشأة', 'الشركة او المنشأة')">
-  <ion-card-header color="danger">
-    المنشأة او الشركة
-  </ion-card-header>
-  <ion-card-content>
-	{{company}}
-  </ion-card-content>
-</ion-card>
-<ion-card (click)="showPrompt(user.desc, 'desc', 'النبذة تعريفية', 'النبذة تعريفية')">
-  <ion-card-header color="danger">
-    نبذة تعريفية
-  </ion-card-header>
-  <ion-card-content>
-	{{desc}}
+  <ion-item>
+    <ion-label color="danger" stacked>الاسم</ion-label>
+    <ion-input type="text" placeholder="الاسم" value="{{name}}" [(ngModel)]="name"></ion-input>
+  </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
-  <ion-card-header color="danger">
-    حالة البطاقة
-  </ion-card-header>
   <ion-card-content>
   <ion-item>
-  <input class="toggle toggle__light" type="checkbox" (change)="changePrivacy()" [checked]="user.isPublic">
+    <ion-label color="danger" stacked>البريد الالكتروني</ion-label>
+    <ion-input type="text" placeholder="البريد الالكتروني" value="{{email}}" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>رقم الهاتف</ion-label>
+    <ion-input type="text" placeholder="رقم الهاتف" value="{{phone}}" [(ngModel)]="phone"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>رقم الجوال</ion-label>
+    <ion-input type="text" placeholder="رقم الجوال" value="{{mobile}}" [(ngModel)]="mobile"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>الشركة او النشأة</ion-label>
+    <ion-input type="text" placeholder="الشركة او النشأة" value="{{company}}" [(ngModel)]="company"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>لينك تواصل اجتماعي</ion-label>
+    <ion-input type="text" placeholder="لينك تواصل اجتماعي" value="{{socialLink}}" [(ngModel)]="socialLink"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>نبذة تعريفية</ion-label>
+    <ion-input type="text" placeholder="نبذة تعريفية" value="{{desc}}" [(ngModel)]="desc"></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+  <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
+  <input class="toggle toggle__light" type="checkbox" [(ngModel)]="isPublic" [checked]="isPublic" style="float: left">
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+</div>
+
+
+
+<div [hidden]="edittable">
+<div align="center">
+  <div class="test">
+    <img [src]="userImage" class="ion-align-self-center">
+  </div>
+</div>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>الاسم</ion-label>
+    <ion-input type="text" placeholder="الاسم" value="{{name}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>البريد الالكتروني</ion-label>
+    <ion-input type="text" placeholder="البريد الالكتروني" value="{{email}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>رقم الهاتف</ion-label>
+    <ion-input type="text" placeholder="رقم الهاتف" value="{{phone}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>رقم الجوال</ion-label>
+    <ion-input type="text" placeholder="رقم الجوال" value="{{mobile}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>الشركة او النشأة</ion-label>
+    <ion-input type="text" placeholder="الشركة او النشأة" value="{{company}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>لينك تواصل اجتماعي</ion-label>
+    <ion-input type="text" placeholder="لينك تواصل اجتماعي" value="{{socialLink}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+    <ion-label color="danger" stacked>نبذة تعريفية</ion-label>
+    <ion-input type="text" placeholder="نبذة تعريفية" value="{{desc}}" disabled></ion-input>
+  </ion-item>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content>
+  <ion-item>
+  <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
+  <input class="toggle toggle__light" type="checkbox" [checked]="isPublic" disabled style="float: left">
   </ion-item>
   </ion-card-content>
 </ion-card>

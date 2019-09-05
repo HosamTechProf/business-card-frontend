@@ -13,6 +13,8 @@ page-friend-card {
 	.card{
 		border-radius: 7px;
 		box-shadow: none;
+		border: 1px solid #D3D7CF;
+		background-color: #EEEEEC;
 	}
 	a{
 		color: white
@@ -30,5 +32,12 @@ page-friend-card {
 		box-shadow: none;
 		border-radius: 100px;
 		color: white
+	}
+	.title{
+		color: red;
+		font-weight: bold
+	}
+	.socialLink{
+		color: black;
 	}
 }

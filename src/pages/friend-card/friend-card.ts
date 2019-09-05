@@ -28,6 +28,7 @@ export class FriendCardPage {
   faved;
   friends;
   favourites;
+  socialLink;
   constructor(private sms: SMS, public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.id = this.navParams.get('id');
     let info = {
@@ -39,7 +40,8 @@ export class FriendCardPage {
     	this.mobile = data['mobile']
     	this.email = data['email']
     	this.desc = data['desc']
-    	this.company = data['company']
+      this.company = data['company']
+    	this.socialLink = data['socialLink']
     })
 
     this.favouritesProvider.isFavorited('api/auth/isfavorited/' + localStorage['user_id'] + '/' + this.id).subscribe((data)=>{
