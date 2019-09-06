@@ -39,9 +39,30 @@
             </div>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="رقم الجوال" [(ngModel)]="mobile"></ion-input>
+                <ion-label color="dark" stacked>الدولة</ion-label>
+                <ion-select [(ngModel)]="country">
+                  <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
+                </ion-select>
               </ion-item>
             </div>
+            <ion-grid no-padding>
+            <ion-row>
+            <ion-col col-8>
+              <div input-field>
+                <ion-item no-padding>
+                    <ion-input type="text" placeholder="رقم الجوال" [(ngModel)]="mobile"></ion-input>
+                </ion-item>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div input-field>
+                <ion-item no-padding>
+                    <ion-input type="text" placeholder="الكود" value="{{country}}" disabled></ion-input>
+                </ion-item>
+              </div>
+            </ion-col>
+            </ion-row>
+            </ion-grid>
             <div input-field>
               <ion-item no-padding>
                   <ion-input type="text" placeholder="رقم الهاتف" [(ngModel)]="phone"></ion-input>

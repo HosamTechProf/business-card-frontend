@@ -32,7 +32,7 @@
   <ion-grid padding>
     <ion-row>
       <ion-col>
-        <ion-card class="myCard animated flipInX" color="danger">
+        <ion-card class="myCard animated flipInX" color="light">
           <ion-card-content (click)="openMyCards()">
             <ion-icon name="custom-card" style="font-size: 30px"></ion-icon>
             <ion-icon name="custom-card" style="font-size: 30px"></ion-icon><br>
@@ -59,12 +59,22 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="myCard animated flipInX" color="danger">
+          <ion-card-content (click)="openFavourites()">
+            <ion-icon name="custom-like" style="font-size: 30px"></ion-icon><br>
+            المفضلة
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  <h6 align="center" (click)="openFavourites()"><!-- <ion-icon name="custom-like" style="font-size: 30px"></ion-icon> -->
+<!--   <h6 align="center" (click)="openFavourites()"><ion-icon name="custom-like" style="font-size: 30px"></ion-icon>
   <img src="assets/icons/like.svg" width="8%">
    <br>المفضلة
-  </h6>
-  <ion-scroll (click)="openFavourites()" scrollX="true" direction="x" style="width: 100%;height: 40%" class="animated flipInX">
+  </h6> -->
+ <!--  <ion-scroll (click)="openFavourites()" scrollX="true" direction="x" style="width: 100%;height: 40%" class="animated flipInX">
 
   <ion-card class="scrollCard" *ngFor="let friend of favourites" (click)="openFriendCard(friend.id)">
     <ion-card-content color="dark">
@@ -80,7 +90,7 @@
     </ion-card-content>
   </ion-card>
 
-  </ion-scroll>
+  </ion-scroll> -->
 </div>
 </ion-content>
 <ion-footer [hidden]="!adsStatus">

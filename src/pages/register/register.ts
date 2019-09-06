@@ -30,6 +30,9 @@ export class RegisterPage {
   base64Image:string = '';
   isPublic;
   userImage = SERVER_URL + 'img/users/user.svg';
+  countries;
+  country;
+  countryCode;
   presentToast(message) {
     const toast = this.toastCtrl.create({
       message: message,
@@ -38,6 +41,10 @@ export class RegisterPage {
     toast.present();
   }
   constructor(private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+    this.authProvider.getCountries('codes').subscribe((res)=>{
+      this.countries = res['countries'];
+      console.log(this.countries)
+    })
   }
 
   uploadImage(){
@@ -86,6 +93,9 @@ this.camera.getPicture(options).then((imageData) => {
     else if(this.socialLink == ""){
       this.presentToast('من فضلك اكتب لينك تواصل اجتماعي')
     }
+    else if(this.country == ""){
+      this.presentToast('من فضلك اختار دولتك')
+    }
     else{
       let info = {
         email : this.email,
@@ -98,7 +108,8 @@ this.camera.getPicture(options).then((imageData) => {
         phone : this.phone,
         socialLink : this.socialLink,
         image : this.base64Image,
-        isPublic : this.isPublic
+        isPublic : this.isPublic,
+        countryCode : this.countryCode
       }
 
       this.authProvider.registerData(info, 'api/auth/register').subscribe((data)=>{
@@ -115,5 +126,7 @@ this.camera.getPicture(options).then((imageData) => {
     }
 
   }
-
+getCountryCode(code){
+  this.countryCode = code;
+}
 }

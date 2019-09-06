@@ -25,7 +25,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>الاسم</ion-label>
     <ion-input type="text" placeholder="الاسم" value="{{name}}" [(ngModel)]="name"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -33,7 +32,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>البريد الالكتروني</ion-label>
     <ion-input type="text" placeholder="البريد الالكتروني" value="{{email}}" [(ngModel)]="email"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -41,7 +39,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>رقم الهاتف</ion-label>
     <ion-input type="text" placeholder="رقم الهاتف" value="{{phone}}" [(ngModel)]="phone"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -49,7 +46,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>رقم الجوال</ion-label>
     <ion-input type="text" placeholder="رقم الجوال" value="{{mobile}}" [(ngModel)]="mobile"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -57,7 +53,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>الشركة او النشأة</ion-label>
     <ion-input type="text" placeholder="الشركة او النشأة" value="{{company}}" [(ngModel)]="company"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -65,7 +60,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>لينك تواصل اجتماعي</ion-label>
     <ion-input type="text" placeholder="لينك تواصل اجتماعي" value="{{socialLink}}" [(ngModel)]="socialLink"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -73,7 +67,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>نبذة تعريفية</ion-label>
     <ion-input type="text" placeholder="نبذة تعريفية" value="{{desc}}" [(ngModel)]="desc"></ion-input>
   </ion-item>
   </ion-card-content>
@@ -81,8 +74,8 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-  <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
-  <input class="toggle toggle__light" type="checkbox" [(ngModel)]="isPublic" [checked]="isPublic" style="float: left">
+<!--   <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
+ -->  <input class="toggle toggle__light" type="checkbox" [(ngModel)]="isPublic" [checked]="isPublic" style="float: left">
   </ion-item>
   </ion-card-content>
 </ion-card>
@@ -99,7 +92,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>الاسم</ion-label>
     <ion-input type="text" placeholder="الاسم" value="{{name}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -107,7 +99,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>البريد الالكتروني</ion-label>
     <ion-input type="text" placeholder="البريد الالكتروني" value="{{email}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -115,7 +106,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>رقم الهاتف</ion-label>
     <ion-input type="text" placeholder="رقم الهاتف" value="{{phone}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -123,7 +113,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>رقم الجوال</ion-label>
     <ion-input type="text" placeholder="رقم الجوال" value="{{mobile}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -131,7 +120,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>الشركة او النشأة</ion-label>
     <ion-input type="text" placeholder="الشركة او النشأة" value="{{company}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -139,7 +127,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>لينك تواصل اجتماعي</ion-label>
     <ion-input type="text" placeholder="لينك تواصل اجتماعي" value="{{socialLink}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -147,7 +134,6 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-label color="danger" stacked>نبذة تعريفية</ion-label>
     <ion-input type="text" placeholder="نبذة تعريفية" value="{{desc}}" disabled></ion-input>
   </ion-item>
   </ion-card-content>
@@ -155,8 +141,8 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-  <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
-  <input class="toggle toggle__light" type="checkbox" [checked]="isPublic" disabled style="float: left">
+<!--   <span style="color:red;float: right;font-size: 13px" stacked>حالة البطاقة</span>
+ -->  <input class="toggle toggle__light" type="checkbox" [checked]="isPublic" disabled style="float: left">
   </ion-item>
   </ion-card-content>
 </ion-card>

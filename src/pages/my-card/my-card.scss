@@ -80,14 +80,23 @@ input.toggle {
     width: 120px;
     border-radius: 100px;
   }
+
+.test {
+  position: relative;
+  display: inline-block;
+  padding: 15px
+}
 .profilebutton {
-    z-index: 2;
+    z-index: 5;
     position: absolute;
-    left: 44%;
-    top: 9%;
-    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50% );
+    padding: 3px 15px 3px 15px;
     color: white;
-    font-size: 50px
+    font-size: 30px !important;
+    background-color: rgba(23, 35, 34, 0.75);
+    border-radius: 5px 5px 5px 5px;
 }
 
 }

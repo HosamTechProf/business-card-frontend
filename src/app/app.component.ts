@@ -19,7 +19,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.cache.setDefaultTTL(60 * 60 * 12);
       this.cache.setOfflineInvalidate(false);
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
       this.deeplinks.route({
 

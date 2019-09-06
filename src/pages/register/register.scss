@@ -55,7 +55,7 @@ page-register {
         padding-bottom: 0 !important;
 
       ion-grid {
-        min-height: 100%;
+        // min-height: 100%;
 
         [header]{
           flex: 1;
@@ -110,16 +110,6 @@ page-register {
 
         ion-item {
           background-color: rgba(0, 0, 0, 0.226) !important;
-          ion-label {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            color: $settings-text-label-color !important;
-            font-size: $settings-font-size-label;
-            font-weight: $settings-font-weight-label;
-            line-height: 17px;
-            margin-right: 10px;
-          }
 
           .item-inner {
             display: block !important;
@@ -263,15 +253,25 @@ ion-loading.transparent {
     width: 120px;
     border-radius: 100px;
   }
-.profilebutton {
-    z-index: 2;
-    position: absolute;
-    left: 41%;
-    top: 5%;
-    margin: auto;
-    color: white;
-    font-size: 50px
+
+.test {
+  position: relative;
+  display: inline-block;
+  padding: 15px
 }
+.profilebutton {
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50% );
+    padding: 3px 15px 3px 15px;
+    color: white;
+    font-size: 30px !important;
+    background-color: rgba(23, 35, 34, 0.75);
+    border-radius: 5px 5px 5px 5px;
+}
+
 input.toggle {
   position: relative;
   width: 90px;
