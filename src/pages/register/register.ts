@@ -43,7 +43,6 @@ export class RegisterPage {
   constructor(private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
     this.authProvider.getCountries('codes').subscribe((res)=>{
       this.countries = res['countries'];
-      console.log(this.countries)
     })
   }
 

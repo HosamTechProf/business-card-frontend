@@ -41,7 +41,7 @@
               <ion-item no-padding>
                 <ion-label color="dark" stacked>الدولة</ion-label>
                 <ion-select [(ngModel)]="country">
-                  <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
+                  <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" [value]="{'dialCode':country.dial_code, 'regionCode':country.region_code}">{{country.name}}</ion-option>
                 </ion-select>
               </ion-item>
             </div>
@@ -57,7 +57,7 @@
             <ion-col>
               <div input-field>
                 <ion-item no-padding>
-                    <ion-input type="text" placeholder="الكود" value="{{country}}" disabled></ion-input>
+                    <ion-input type="text" placeholder="الكود" [value]="country" disabled></ion-input>
                 </ion-item>
               </div>
             </ion-col>
