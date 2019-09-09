@@ -54,7 +54,6 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     Camera,
     AdvertisementProvider,
     SMS,
-    BranchIo,
     Deeplinks
   ]
 })
