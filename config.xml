@@ -113,23 +113,12 @@
         <variable name="ADMOB_APP_ID" value="&lt;YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB&gt;" />
     </plugin>
     <plugin name="cordova-sms-plugin" spec="^1.0.0" />
-    <plugin name="ionic-plugin-deeplinks" spec="^1.0.20">
-        <variable name="URL_SCHEME" value="businesscard" />
-        <variable name="DEEPLINK_SCHEME" value="https" />
-        <variable name="DEEPLINK_HOST" value="card.rbsapps.com" />
-        <variable name="ANDROID_PATH_PREFIX" value="/" />
-        <variable name="ANDROID_2_PATH_PREFIX" value="/" />
-        <variable name="ANDROID_3_PATH_PREFIX" value="/" />
-        <variable name="ANDROID_4_PATH_PREFIX" value="/" />
-        <variable name="ANDROID_5_PATH_PREFIX" value="/" />
-        <variable name="DEEPLINK_2_SCHEME" value=" " />
-        <variable name="DEEPLINK_2_HOST" value=" " />
-        <variable name="DEEPLINK_3_SCHEME" value=" " />
-        <variable name="DEEPLINK_3_HOST" value=" " />
-        <variable name="DEEPLINK_4_SCHEME" value=" " />
-        <variable name="DEEPLINK_4_HOST" value=" " />
-        <variable name="DEEPLINK_5_SCHEME" value=" " />
-        <variable name="DEEPLINK_5_HOST" value=" " />
-    </plugin>
+    <branch-config>
+        <branch-key value="key_live_aaQtQVUoNUyHNG1uQdhpzkbbrzdYSHFE" />
+        <uri-scheme value="businesscard" />
+        <link-domain value="businesscard.app.link" />
+        <ios-team-release value="PW4Q8885U7" />
+    </branch-config>
+    <plugin name="branch-cordova-sdk" spec="^3.2.0" />
     <engine name="android" spec="7.1.4" />
 </widget>

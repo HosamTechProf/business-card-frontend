@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { CacheService } from "ionic-cache";
-import { Deeplinks } from '@ionic-native/deeplinks';
+import { BranchIo } from '@ionic-native/branch-io';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +12,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
 export class MyApp {
   rootPage:any;
 
-  constructor(private deeplinks: Deeplinks, private cache: CacheService, private storage : Storage,public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
+  constructor(private branch: BranchIo, private cache: CacheService, private storage : Storage,public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
     this.initializeApp();
   }
     initializeApp(){
@@ -21,18 +21,27 @@ export class MyApp {
       this.cache.setOfflineInvalidate(false);
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
-      this.deeplinks.route({
-
-   }).subscribe(match => {
-     // match.$route - the route we matched, which is the matched entry from the arguments to route()
-     // match.$args - the args passed in the link
-     // match.$link - the full link data
-     console.log('Successfully matched route', match);
-   }, nomatch => {
-     // nomatch.$link - the full link data
-     console.error('Got a deeplink that didn\'t match', nomatch);
-   });
+      branchInit();
     });
+    this.platform.resume.subscribe(() => {
+      branchInit();
+    });
+
+    // Branch initialization
+    const branchInit = () => {
+      // only on devices
+      if (!this.platform.is("cordova")) {
+        return;
+      }
+      const Branch = window["Branch"];
+      Branch.initSession().then(data => {
+        if (data["+clicked_branch_link"]) {
+          // read deep link data on click
+          alert("Deep Link Data: " + JSON.stringify(data));
+        }
+        console.log(data)
+      });
+    };
 
   this.storage.get('my_token').then((val)=>{
     if(val == null){

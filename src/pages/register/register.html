@@ -38,12 +38,6 @@
               </ion-item>
             </div>
             <div input-field>
-              <ion-item no-padding>
-                <ion-label color="dark" stacked>الدولة</ion-label>
-                <ion-select [(ngModel)]="country">
-                  <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" [value]="{'dialCode':country.dial_code, 'regionCode':country.region_code}">{{country.name}}</ion-option>
-                </ion-select>
-              </ion-item>
             </div>
             <ion-grid no-padding>
             <ion-row>
@@ -54,21 +48,39 @@
                 </ion-item>
               </div>
             </ion-col>
-            <ion-col>
+            <ion-col  style="max-width: 33.33%">
               <div input-field>
                 <ion-item no-padding>
-                    <ion-input type="text" placeholder="الكود" [value]="country" disabled></ion-input>
+                  <ion-label color="dark" stacked>الكود</ion-label>
+                  <ion-select [(ngModel)]="countryDialCode">
+                    <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
+                  </ion-select>
                 </ion-item>
               </div>
             </ion-col>
             </ion-row>
             </ion-grid>
-            <div input-field>
-              <ion-item no-padding>
-                  <ion-input type="text" placeholder="رقم الهاتف" [(ngModel)]="phone"></ion-input>
-               <!-- <ion-label no-margin *ngIf="phone == ''">Please Write Your Phone</ion-label> -->
-              </ion-item>
-            </div>
+            <ion-grid no-padding>
+            <ion-row>
+            <ion-col col-8>
+              <div input-field>
+                <ion-item no-padding>
+                    <ion-input type="text" placeholder="رقم الهاتف" [(ngModel)]="phone"></ion-input>
+                </ion-item>
+              </div>
+            </ion-col>
+            <ion-col style="max-width: 33.33%">
+              <div input-field>
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>الكود</ion-label>
+                  <ion-select [(ngModel)]="countryRegionCode">
+                    <ion-option *ngFor="let country of countries" value="{{country.region_code}}">{{country.name}} - {{country.region_code}}</ion-option>
+                  </ion-select>
+                </ion-item>
+              </div>
+            </ion-col>
+            </ion-row>
+            </ion-grid>
             <div input-field>
               <ion-item no-padding>
                   <ion-input type="text" placeholder="المنشأة او الشركة" [(ngModel)]="company"></ion-input>

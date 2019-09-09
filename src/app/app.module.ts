@@ -21,7 +21,7 @@ import { CacheModule } from "ionic-cache";
 import { Camera } from '@ionic-native/camera';
 import { AdvertisementProvider } from '../providers/advertisementProvider';
 import { SMS } from '@ionic-native/sms';
-import { Deeplinks } from '@ionic-native/deeplinks';
+import { BranchIo } from '@ionic-native/branch-io';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     Camera,
     AdvertisementProvider,
     SMS,
-    Deeplinks
+    BranchIo
   ]
 })
 export class AppModule {}

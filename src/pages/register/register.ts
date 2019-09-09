@@ -33,6 +33,7 @@ export class RegisterPage {
   countries;
   country;
   countryCode;
+  countryRegionCode;
   presentToast(message) {
     const toast = this.toastCtrl.create({
       message: message,
@@ -104,7 +105,7 @@ this.camera.getPicture(options).then((imageData) => {
         name : this.name,
         company : this.company,
         desc : this.desc,
-        phone : this.phone,
+        phone : this.countryRegionCode + this.phone,
         socialLink : this.socialLink,
         image : this.base64Image,
         isPublic : this.isPublic,
