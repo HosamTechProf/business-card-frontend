@@ -4,12 +4,12 @@ import { QrCodePage } from './qr-code';
 import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
-  declarations: [
-    QrCodePage,
-  ],
-  imports: [
-    IonicPageModule.forChild(QrCodePage),
-    QRCodeModule
-  ],
+    declarations: [
+        QrCodePage,
+    ],
+    imports: [
+        IonicPageModule.forChild(QrCodePage),
+        QRCodeModule
+    ],
 })
-export class QrCodePageModule {}
+export class QrCodePageModule { }

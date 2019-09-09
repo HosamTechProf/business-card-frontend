@@ -3,7 +3,7 @@
     <name>Business Card</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
         <string>You can take photos</string>
     </config-file>
@@ -113,12 +113,10 @@
         <variable name="ADMOB_APP_ID" value="&lt;YOUR_ANDROID_ADMOB_APP_ID_AS_FOUND_IN_ADMOB&gt;" />
     </plugin>
     <plugin name="cordova-sms-plugin" spec="^1.0.0" />
-    <branch-config>
-        <branch-key value="key_live_aaQtQVUoNUyHNG1uQdhpzkbbrzdYSHFE" />
-        <uri-scheme value="businesscard" />
-        <link-domain value="businesscard.app.link" />
-        <ios-team-release value="PW4Q8885U7" />
-    </branch-config>
-    <plugin name="branch-cordova-sdk" spec="^3.2.0" />
+    <plugin name="ionic-plugin-deeplinks" spec="^1.0.20">
+        <variable name="URL_SCHEME" value="businesscard" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="card.rbsapps.com" />
+    </plugin>
     <engine name="android" spec="7.1.4" />
 </widget>

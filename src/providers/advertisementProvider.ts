@@ -6,17 +6,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 
 export class AdvertisementProvider {
-
     server: string = SERVER_URL;
 
-  constructor(public http: HttpClient) {}
+    constructor(public http: HttpClient) { }
 
-    getAdvertisements(file){
+    getAdvertisements(file) {
         return this.http.get(this.server + file).map(res => res);
     }
 
-    getAdvertisementsCount(file){
+    getAdvertisementsCount(file) {
         return this.http.get(this.server + file).map(res => res);
     }
-
 }

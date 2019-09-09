@@ -6,38 +6,38 @@ import { CacheService } from "ionic-cache";
 
 @Injectable()
 
-export class FriendsProvider{
+export class FriendsProvider {
     server: string = SERVER_URL;
 
-    constructor(public http: HttpClient, private cache: CacheService){}
+    constructor(public http: HttpClient, private cache: CacheService) { }
 
-    addFriend(info, file){
+    addFriend(info, file) {
         return this.http.post(this.server + file, info)
-        .map(res =>res);
+            .map(res => res);
     }
 
-    deleteFriend(info, file){
+    deleteFriend(info, file) {
         return this.http.post(this.server + file, info)
-        .map(res =>res);
+            .map(res => res);
     }
 
-    isFriend(file){
-        return this.http.get(this.server + file).map(res =>res)
+    isFriend(file) {
+        return this.http.get(this.server + file).map(res => res)
         // return this.cache.loadFromObservable(this.server + file, isFriend)
     }
 
-    getFriends(file){
-        return this.http.get(this.server + file).map(res =>res)
+    getFriends(file) {
+        return this.http.get(this.server + file).map(res => res)
         // return this.cache.loadFromObservable(this.server + file, friends)
     }
 
-    getFriendData(info, file){
-        return this.http.post(this.server + file, info).map(res =>res)
+    getFriendData(info, file) {
+        return this.http.post(this.server + file, info).map(res => res)
         // return this.cache.loadFromObservable(this.server + file, friend)
     }
 
-    search(file){
-        return this.http.get(this.server + file).map(res =>res)
+    search(file) {
+        return this.http.get(this.server + file).map(res => res)
         // return this.cache.loadFromObservable(this.server + file, friend)
     }
 }

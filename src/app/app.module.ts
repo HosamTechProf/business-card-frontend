@@ -21,7 +21,7 @@ import { CacheModule } from "ionic-cache";
 import { Camera } from '@ionic-native/camera';
 import { AdvertisementProvider } from '../providers/advertisementProvider';
 import { SMS } from '@ionic-native/sms';
-import { BranchIo } from '@ionic-native/branch-io';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { BranchIo } from '@ionic-native/branch-io';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     BarcodeScanner,
     FriendsProvider,
@@ -54,7 +54,8 @@ import { BranchIo } from '@ionic-native/branch-io';
     Camera,
     AdvertisementProvider,
     SMS,
-    BranchIo
+    BranchIo,
+    Deeplinks
   ]
 })
-export class AppModule {}
+export class AppModule { }

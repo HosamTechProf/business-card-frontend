@@ -13,38 +13,38 @@ import { SMS } from '@ionic-native/sms';
 
 @IonicPage()
 @Component({
-  selector: 'page-my-cards',
-  templateUrl: 'my-cards.html',
+    selector: 'page-my-cards',
+    templateUrl: 'my-cards.html',
 })
 export class MyCardsPage {
-	friends:any;
-  friendImage;
-  name;
-  constructor(private sms: SMS, public modalCtrl: ModalController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
-  	this.friendsProvider.getFriends('api/auth/getFriends').subscribe((res)=>{
-  		this.friends = res;
-      this.friendImage = SERVER_URL + 'img/users/';
-  	})
-  }
-    openModal(id) {
-    let profileModal = this.modalCtrl.create('FriendCardPage', {id : id});
-    profileModal.onDidDismiss(data => {
-     this.friends = data.friends;
-   });
-    profileModal.present();
-  }
-  search(){
-    this.friendsProvider.search('api/auth/user/followings/'+localStorage['user_id'] + '/' + this.name).subscribe((res)=>{
-      this.friends = res;
-    })
-  }
-  sendSMS(mobile){
-  var options = {
-    replaceLineBreaks: false,
-    android: {
-      intent: 'INTENT'
+    friends: any;
+    friendImage;
+    name;
+    constructor(private sms: SMS, public modalCtrl: ModalController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
+        this.friendsProvider.getFriends('api/auth/getFriends').subscribe((res) => {
+            this.friends = res;
+            this.friendImage = SERVER_URL + 'img/users/';
+        })
     }
-  }
-  this.sms.send(mobile, '', options);
-  }
+    openModal(id) {
+        let profileModal = this.modalCtrl.create('FriendCardPage', { id: id });
+        profileModal.onDidDismiss(data => {
+            this.friends = data.friends;
+        });
+        profileModal.present();
+    }
+    search() {
+        this.friendsProvider.search('api/auth/user/followings/' + localStorage['user_id'] + '/' + this.name).subscribe((res) => {
+            this.friends = res;
+        })
+    }
+    sendSMS(mobile) {
+        var options = {
+            replaceLineBreaks: false,
+            android: {
+                intent: 'INTENT'
+            }
+        }
+        this.sms.send(mobile, '', options);
+    }
 }
