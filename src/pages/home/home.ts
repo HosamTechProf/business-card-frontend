@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
 import { Searchbar } from 'ionic-angular';
 import { SERVER_URL } from '../../providers/serverUrl';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage()
 @Component({
@@ -31,7 +32,7 @@ export class HomePage {
     adName;
     adsCount;
     public adsStatus;
-    constructor(public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
             this.myId = res['id'];
             localStorage['user_id'] = res['id'];
@@ -100,11 +101,11 @@ export class HomePage {
         });
     }
 
-    logout() {
-        localStorage.clear();
-        this.storage.clear();
-        this.app.getRootNav().setRoot("LoginPage");
-    }
+    // logout() {
+    //     localStorage.clear();
+    //     this.storage.clear();
+    //     this.app.getRootNav().setRoot("LoginPage");
+    // }
     openMyCards() {
         this.navCtrl.push("MyCardsPage");
     }
@@ -130,4 +131,9 @@ export class HomePage {
     openFavourites() {
         this.navCtrl.push("FavouritesPage");
     }
+
+    shareLink(message='My Business Card Link: ', subject=null, file=null){
+        this.socialSharing.share(message, subject, file, SERVER_URL + 'user/' + this.myId)
+    }
+
 }

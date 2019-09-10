@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, App } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,7 @@ export class MyCardPage {
     base64Image: string = '';
     userImage;
     edittable;
-    constructor(public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(private storage: Storage, private app: App, public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.authProvider.getUserData('api/auth/user').subscribe((res) => {
             this.name = res['name']
             this.email = res['email']
@@ -90,5 +91,11 @@ export class MyCardPage {
             this.userImage = SERVER_URL + 'img/users/' + res['image']
             this.presentToast('تم تعديل بطاقتك بنجاح')
         })
+    }
+
+    logout() {
+        localStorage.clear();
+        this.storage.clear();
+        this.app.getRootNav().setRoot("LoginPage");
     }
 }

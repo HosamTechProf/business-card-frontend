@@ -22,6 +22,7 @@ import { Camera } from '@ionic-native/camera';
 import { AdvertisementProvider } from '../providers/advertisementProvider';
 import { SMS } from '@ionic-native/sms';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { Deeplinks } from '@ionic-native/deeplinks';
     Camera,
     AdvertisementProvider,
     SMS,
-    Deeplinks
+    Deeplinks,
+    SocialSharing
   ]
 })
 export class AppModule { }

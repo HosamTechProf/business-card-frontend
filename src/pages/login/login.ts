@@ -42,7 +42,7 @@ export class LoginPage {
             </div>
           </div>`,
                 cssClass: 'transparent',
-                duration: 3000
+                duration: 2000
             });
             loading.present();
 
@@ -50,15 +50,15 @@ export class LoginPage {
                 if (data) {
                     this.storage.set('my_token', data['access_token']);
                     this.navCtrl.setRoot("TabsPage")
-                    this.presentToast('Login Successful');
+                    this.presentToast('تم تسجيل الدخول بنجاح');
                 } else {
-                    this.presentToast('Invalid Username or Password');
+                    this.presentToast('برجاء ادخال البريد الالكتروني وكلمة المرور');
                 }
             })
 
         }
         else {
-            this.presentToast('Invalid Username or Password');
+            this.presentToast('برجاء ادخال البريد الالكتروني وكلمة المرور');
         }
     }
 }

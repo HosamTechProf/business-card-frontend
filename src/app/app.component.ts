@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -14,7 +14,7 @@ import { AboutPage } from '../pages/about/about';
 export class MyApp {
     rootPage: any;
 
-    constructor(private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
         this.platform.ready().then(() => {
             this.cache.setDefaultTTL(60 * 60 * 12);
             this.cache.setOfflineInvalidate(false);
@@ -33,11 +33,12 @@ export class MyApp {
 
     protected deepLinking() {
         this.deeplinks.route({
-            '/referal/:code': 'referal',
+            '/user/:id': 'user',
         }).subscribe(match => {
-            if (match.$route === 'referal') {
-                // do whatever you want, you can navigate to profile page and send the code as a parameter
-                alert(match.$args.code);
+            if (match.$route === 'user') {
+                // do whatever you want, you can navigate to profile page and send the id as a parameter
+                let profileModal = this.modalCtrl.create('FriendCardPage', { id: match.$args.id });
+                profileModal.present();
             }
         }, nomatch => {
             console.error('Got a deeplink that didn\'t match', JSON.stringify(nomatch));
