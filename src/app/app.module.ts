@@ -23,6 +23,9 @@ import { AdvertisementProvider } from '../providers/advertisementProvider';
 import { SMS } from '@ionic-native/sms';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ShareLinkProvider } from '../providers/shareLink';
+import { Push } from '@ionic-native/push';
+import { NotificationProvider } from '../providers/notification';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     AdvertisementProvider,
     SMS,
     Deeplinks,
-    SocialSharing
+    SocialSharing,
+    ShareLinkProvider,
+    Push,
+    NotificationProvider
   ]
 })
 export class AppModule { }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "875756500516",
+    "firebase_url": "https://business-card-8431f.firebaseio.com",
+    "project_id": "business-card-8431f",
+    "storage_bucket": "business-card-8431f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875756500516:android:4965e6371a4f54c2950ab1",
+        "android_client_info": {
+          "package_name": "com.business.card"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875756500516-7q0ktniq24ifd62v96tdha6vvnc3pp28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_VLuPLoQR-2lsDVRGNAE5zQumpKzDOmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875756500516-7q0ktniq24ifd62v96tdha6vvnc3pp28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

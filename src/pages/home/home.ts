@@ -4,6 +4,7 @@ import { AuthProvider } from '../../providers/authProvider';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FriendsProvider } from '../../providers/friendsProvider';
 import { FavouritesProvider } from '../../providers/favouritesProvider';
+import { ShareLinkProvider } from '../../providers/shareLink';
 import { AdvertisementProvider } from '../../providers/advertisementProvider';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
@@ -31,8 +32,9 @@ export class HomePage {
     adLink;
     adName;
     adsCount;
+    token;
     public adsStatus;
-    constructor(private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
             this.myId = res['id'];
             localStorage['user_id'] = res['id'];
@@ -133,7 +135,29 @@ export class HomePage {
     }
 
     shareLink(message='My Business Card Link: ', subject=null, file=null){
-        this.socialSharing.share(message, subject, file, SERVER_URL + 'user/' + this.myId)
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&%$@";
+        const lengthOfCode = 15;
+        this.token = this.makeRandom(lengthOfCode, possible);
+        let info = {
+            'user_id' : this.myId,
+            'token' : this.token
+        }
+        this.shareLinkProvider.share('api/auth/share', info).subscribe((res)=>{
+            this.socialSharing.share(message, subject, file, SERVER_URL + 'user/' + this.myId + '/' + res['token'])
+        })
     }
 
+    makeRandom(lengthOfCode: number, possible: string) {
+      let text = "";
+      for (let i = 0; i < lengthOfCode; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+        return text;
+    }
+    generateToken(){
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&%$@";
+        const lengthOfCode = 15;
+        this.token = this.makeRandom(lengthOfCode, possible);
+        console.log(this.token)
+    }
 }
