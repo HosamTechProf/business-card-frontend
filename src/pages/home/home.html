@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content>
-  <div [hidden]="!name" padding>
+<!--   <div [hidden]="!name" padding>
     <ion-card *ngFor="let user of searchData">
 
       <ion-card-header color="danger" (click)="openUserCard(user.id)">
@@ -32,7 +32,14 @@
       </ion-card-content>
 
     </ion-card>
+  </div> -->
+<div [hidden]="!name" padding>
+  <div *ngFor="let user of searchData" class="userCard" (click)="openUserCard(user.id)">
+      <img src="{{userImage}}/{{user.image}}" class="userPhoto">
+      <span style="font-weight: bold">{{user.name}}</span><br>
+      {{user.mobile}}
   </div>
+</div>
 <div [hidden]="name">
   <ion-grid padding>
     <ion-row>
@@ -48,10 +55,10 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card class="myCard animated flipInX" color="secondary" (click)="addFriend()">
+        <ion-card class="myCard animated flipInX" color="danger" (click)="openFavourites()">
           <ion-card-content>
-            <ion-icon name="qr-scanner" style="font-size: 30px"></ion-icon><br>
-            الكاميرا
+            <ion-icon name="custom-like" style="font-size: 30px"></ion-icon><br>
+            المفضلة
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -60,16 +67,6 @@
           <ion-card-content>
             <ion-icon name="custom-qr-code" style="font-size: 30px"></ion-icon><br>
             My QR
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="myCard animated flipInX" color="danger">
-          <ion-card-content (click)="openFavourites()">
-            <ion-icon name="custom-like" style="font-size: 30px"></ion-icon><br>
-            المفضلة
           </ion-card-content>
         </ion-card>
       </ion-col>

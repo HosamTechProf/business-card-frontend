@@ -63,4 +63,7 @@ ion-icon {
   &[class*="custom-like"] {
     mask-image: url(../assets/icons/heart.svg);
   }
+  &[class*="custom-camera"] {
+    mask-image: url(../assets/icons/image-add-button.svg);
+  }
 }

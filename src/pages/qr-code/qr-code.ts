@@ -8,11 +8,13 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class QrCodePage {
     @ViewChild('qrcode') qrcode: ElementRef;
-    id: any;
-    constructor(public navParam: NavParams, public navCtrl: NavController, public navParams: NavParams, private view: ViewController) { }
+    id: any = '';
+    constructor(public navParam: NavParams, public navCtrl: NavController, public navParams: NavParams, private view: ViewController) {
+        this.id = this.navParam.get('id').toString();
+     }
 
     ionViewDidLoad() {
-        this.id = this.navParam.get('id').toString();
+        console.log(this.id)
     }
 
     closeModal() {

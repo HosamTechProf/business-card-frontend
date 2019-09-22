@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar color="danger">
+<ion-header no-border>
+  <ion-navbar color="light">
     <!-- <ion-title>بطاقاتي</ion-title> -->
     <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="بحث في بطاقاتي"></ion-searchbar>
   </ion-navbar>
@@ -7,34 +7,9 @@
 
 <ion-content>
 
-<ion-list>
-  <ion-item-sliding *ngFor="let friend of friends">
-    <ion-item (click)="openModal(friend.id)" no-lines>
-      <ion-avatar item-start>
-        <img src="{{friendImage}}/{{friend.image}}">
-      </ion-avatar>
-      <h2>{{friend.name}}</h2>
-    </ion-item>
-    <ion-item-options side="left">
-     <a href="tel:{{friend.mobile}}">
-      <button ion-button color="primary">
-        <ion-icon name="call"></ion-icon>
-        اتصال
-      </button>
-      </a>
-      <a (click)="sendSMS(friend.mobile)">
-      <button ion-button color="danger">
-        <ion-icon name="chatboxes"></ion-icon>
-        رسالة
-      </button>
-      </a>
-      <a href="https://api.whatsapp.com/send?phone=+2{{friend.mobile}}">
-      <button ion-button color="secondary">
-        <ion-icon name="logo-whatsapp"></ion-icon>
-        واتساب
-      </button>
-      </a>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
+<div *ngFor="let friend of friends" class="userCard" (click)="openModal(friend.id)">
+    <img src="{{friendImage}}/{{friend.image}}" class="userPhoto">
+    <span style="font-weight: bold">{{friend.name}}</span><br>
+    {{friend.mobile}}
+</div>
 </ion-content>

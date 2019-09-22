@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ModalController, App, Platform } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, App, Platform, Events } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FriendsProvider } from '../../providers/friendsProvider';
@@ -34,14 +34,15 @@ export class HomePage {
     adsCount;
     token;
     public adsStatus;
-    constructor(private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
             this.myId = res['id'];
             localStorage['user_id'] = res['id'];
         });
         this.ionViewDidEnter();
-        this.platform.registerBackButtonAction(() => {
-
+        this.platform.registerBackButtonAction(() => {});
+        this.events.subscribe('user:scan', eventData => {
+          this.addFriend();
         });
     }
     ionViewDidEnter() {

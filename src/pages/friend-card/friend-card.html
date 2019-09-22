@@ -5,38 +5,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar color="danger">
+  <ion-navbar color="light">
   	<div style="float: left" *ngIf="followed">
-		<button *ngIf="!faved" class="favButton" ion-button icon-only color="light" (click)="favourite()">
+		<button *ngIf="!faved" class="favButton" ion-button icon-only color="dark" (click)="favourite()">
 		  <ion-icon name="heart-outline"></ion-icon>
 		</button>
-		<button *ngIf="faved" class="favButton" ion-button icon-only color="light" (click)="unfavourite()">
+		<button *ngIf="faved" class="favButton" ion-button icon-only color="dark" (click)="unfavourite()">
 		  <ion-icon name="heart"></ion-icon>
 		</button>
   	</div>
 	<div style="float: right">
-		<button ion-button icon-end *ngIf="followed" ion-button round outline color="light" style="font-weight: bold" (click)="unfollow()">إلغاء المتابعة<ion-icon name="trash"></ion-icon></button>
-		<button ion-button icon-end *ngIf="!followed" ion-button round color="light" style="font-weight: bold" (click)="follow()">تابع<ion-icon name="add"></ion-icon></button>
+		<button ion-button icon-end *ngIf="followed" ion-button round outline color="dark" style="font-weight: bold" (click)="unfollow()">إلغاء المتابعة<ion-icon name="trash"></ion-icon></button>
+		<button ion-button icon-end *ngIf="!followed" ion-button round color="dark" style="font-weight: bold" (click)="follow()">تابع<ion-icon name="add"></ion-icon></button>
 	</div>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">الاسم : </span>
-	    {{name}}
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">البريد الالكتروني : </span>
-	    {{email}}
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">رقم الجوال : </span>
+
+
+
+<div class="userCard">
+	  	<span class="title">الاسم</span><br>
+	    {{name}}<br><hr>
+	  	<span class="title">البريد الالكتروني</span><br>
+	    {{email}}<br><hr>
+	  	<span class="title">رقم الجوال</span><br>
 	    {{mobile}}<br>
 		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
 		<button class="socialButton" ion-button icon-only color="danger">
@@ -52,36 +46,19 @@
 		<button class="socialButton" ion-button icon-only color="danger">
 		  <ion-icon name="call"></ion-icon>
 		</button>
-	</a>
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">رقم الهاتف : </span>
-	    {{phone}}
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">المنشأة : </span>
-	    {{company}}
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">لينك تواصل اجتماعي : </span>
-	    <a class="socialLink" target="_blank" href="{{socialLink}}">{{socialLink}}</a>
-	  </ion-card-content>
-	</ion-card>
-	<ion-card>
-	  <ion-card-content>
-	  	<span class="title">نبذة تعريفية : </span>
-	    {{desc}}
-	  </ion-card-content>
-	</ion-card>
+	</a><br><hr>
+	  	<span class="title">رقم الهاتف</span><br>
+	    {{phone}}<br><hr>
+	  	<span class="title">المنشأة</span><br>
+	    {{company}}<br><hr>
+	  	<span class="title">لينك تواصل اجتماعي</span><br>
+	    <a class="socialLink" target="_blank" href="{{socialLink}}">{{socialLink}}</a><br><hr>
+	  	<span class="title">نبذة تعريفية</span><br>
+	    {{desc}}<br><hr>
     <ion-row justify-content-center align-items-center style=" flex-direction: column">
 		<button class="arrow" ion-button icon-only color="dark" padding (click)="closeModal()">
 		  <ion-icon name="custom-arrow-down"></ion-icon>
 		</button>
     </ion-row>
+</div>
 </ion-content>

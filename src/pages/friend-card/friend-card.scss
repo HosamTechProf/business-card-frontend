@@ -2,9 +2,6 @@ page-friend-card {
 	ion-content{
 		background-color: rgba(0, 0, 0, 0.9) !important;
 	}
-	.toolbar-background{
-		background-color: rgba(228, 62, 58, 0.86) !important;
-	}
 	.socialButton{
 		// background-color: transparent;
 		// box-shadow: none;
@@ -22,7 +19,20 @@ page-friend-card {
 	.arrow{
 		background-color: transparent;
 		box-shadow: none;
-		border-radius: 100px
+		border-radius: 200px;
+		color: black
+	}
+	.arrow:active{
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 200px;
+		color: black
+	}
+	.arrow:hover{
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 200px;
+		color: black
 	}
 	.button{
 		box-shadow: none;
@@ -31,7 +41,7 @@ page-friend-card {
 		background-color: transparent;
 		box-shadow: none;
 		border-radius: 100px;
-		color: white
+		color: #222
 	}
 	.title{
 		color: red;
@@ -39,5 +49,21 @@ page-friend-card {
 	}
 	.socialLink{
 		color: black;
+	}
+
+	.userCard{
+		margin-right: 20px;
+		margin-left: 20px;
+		text-align: center;
+		padding-top: 55px;
+		border-top: 6px #444444 solid;
+		color: #444444;
+		position: relative;
+		z-index: -1 !important;
+		// height: 100%;
+		background-color: white;
+		border-radius: 15px;
+		display: block;
+		overflow: auto;
 	}
 }

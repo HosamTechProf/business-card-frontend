@@ -30,4 +30,29 @@ page-my-cards {
 		box-shadow: none !important;
 		border-radius: 30px !important;
 	}
+
+	.userPhoto{
+		width: 100px;
+		position: absolute;
+		top: -50%;
+  		left: 50%;
+ 		margin-left: -50px;
+ 		border-radius: 200px;
+ 		z-index: 1000 !important;
+	}
+
+	.userCard{
+		margin-top:65px;
+		margin-right: 20px;
+		margin-left: 20px;
+		text-align: center;
+		padding-top: 55px;
+		border-top: 6px #444444 solid;
+		color: #444444;
+		position: relative;
+		z-index: -1 !important;
+		height: 110px;
+		background-color: white;
+		border-radius: 15px;
+	}
 }

@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-navbar color="danger" text-center>
+  <ion-navbar color="light" text-center>
         <ion-buttons start [hidden]="edittable">
-            <button ion-button icon-only style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="edit()">
+            <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px" (click)="edit()">
               <ion-icon name="create"></ion-icon>
             </button>
           </ion-buttons>
         <ion-buttons start [hidden]="!edittable">
-            <button ion-button icon-only style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="update()">
+            <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px" (click)="update()">
               <ion-icon name="checkmark"></ion-icon>
             </button>
           </ion-buttons>
-    <ion-title text-center><ion-icon name="custom-card"></ion-icon> بطاقتي</ion-title>
+    <ion-title text-center><ion-icon name="custom-card" style="margin-bottom:-5px"></ion-icon> بطاقتي</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -155,5 +155,7 @@
   </ion-card-content>
 </ion-card> -->
 </div>
+<div align="center" class="ion-align-self-center" style="padding-bottom:15px">
 <button ion-button color="danger" (click)="logout()" round center>تسجيل الخروج</button>
+</div>
 </ion-content>

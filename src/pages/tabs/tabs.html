@@ -1,5 +1,8 @@
-<ion-tabs color="danger">
+<ion-tabs color="light">
   <ion-tab [root]="tab1Root" tabTitle="الرئيسية" tabIcon="custom-home"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="بطاقتي" tabIcon="custom-card"></ion-tab>
   <!-- <ion-tab [root]="tab3Root" tabTitle="الاشعارات" tabIcon="custom-notification"></ion-tab> -->
 </ion-tabs>
+ <ion-fab center bottom style="padding-bottom:7px;">
+   <button ion-fab color="danger" (click)="scan()"><ion-icon name="custom-camera"></ion-icon></button>
+ </ion-fab>
