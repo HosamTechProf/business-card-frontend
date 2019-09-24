@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, ModalController, Nav } from 'ionic-angular';
+import { Platform, ModalController, Nav, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -20,7 +20,7 @@ export class MyApp {
 @ViewChild(Nav) nav: Nav;
     rootPage: any;
 
-    constructor(private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public events: Events, private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
         this.platform.ready().then(() => {
             this.cache.setDefaultTTL(60 * 60 * 12);
             this.cache.setOfflineInvalidate(false);
@@ -29,6 +29,9 @@ export class MyApp {
             this.initRootPage();
             this.deepLinking();
             this.notification();
+            this.events.subscribe('user:notification', eventData => {
+              this.notification();
+            });
         });
 
     }

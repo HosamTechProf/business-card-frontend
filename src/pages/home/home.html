@@ -44,7 +44,7 @@
   <ion-grid padding>
     <ion-row>
       <ion-col>
-        <ion-card class="myCard animated flipInX" color="light">
+        <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #F4F4F4, #FFFFFF)">
           <ion-card-content (click)="openMyCards()">
             <ion-icon name="custom-card" style="font-size: 30px"></ion-icon>
             <ion-icon name="custom-card" style="font-size: 30px"></ion-icon><br>
@@ -55,15 +55,15 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card class="myCard animated flipInX" color="danger" (click)="openFavourites()">
+        <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60);color:white" (click)="openFavourites()">
           <ion-card-content>
-            <ion-icon name="custom-like" style="font-size: 30px"></ion-icon><br>
+            <ion-icon name="custom-like" style="font-size: 30px;"></ion-icon><br>
             المفضلة
           </ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col>
-        <ion-card class="myCard animated flipInX" color="dark" (click)="openModal()">
+        <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #212121, #5D5D5D);color:white" (click)="openModal()">
           <ion-card-content>
             <ion-icon name="custom-qr-code" style="font-size: 30px"></ion-icon><br>
             My QR

@@ -4,13 +4,18 @@ page-register {
     position: absolute;
 
     .toolbar-background {
-      background: transparent;
+      // background: transparent;
+      background-color: rgba(228, 93, 61, 0.8);
     }
     .toolbar-title {
-      color: black;
+      color: white;
     }
   }
 }
+  .back-button-md,
+  .back-button-ios {
+    color: white;
+  }
 /* #Style Login flat
 ================================================*/
 
@@ -45,7 +50,8 @@ page-register {
     /* Content
     ===============================*/
     ion-content {
-      background-image: url('../../assets/imgs/bg2.jpg');
+      // background-image: url('../../assets/imgs/bg2.jpg');
+      background-image: linear-gradient(to top right, #DA3B27, #EB8D60);
       background-size: cover;
       background-attachment: fixed; /*-- here should be fixed --*/
       font-family: 'Montserrat', sans-serif;
@@ -99,7 +105,7 @@ page-register {
 
           .item:nth-last-child(1){
             .item-inner {
-              border-bottom: none !important;
+              // border-bottom: none !important;
             }
           }
 
@@ -108,13 +114,18 @@ page-register {
           }
         }
 
+        .item-md {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+
         ion-item {
-          background-color: rgba(0, 0, 0, 0.226) !important;
+          // background-color: rgba(0, 0, 0, 0.226) !important;
 
           .item-inner {
             display: block !important;
             overflow: visible !important;
-            border-bottom: 1px solid #CCCCCC !important;
+            border-bottom: 2px solid rgba(152, 38, 24, 0.5) !important;
+            // border-bottom: 1px solid #CCCCCC !important;
             box-shadow: none !important;
           }
 
@@ -189,11 +200,11 @@ page-register {
           min-height: 57px;
           border-radius: 30px;
           margin-top: 15px;
-          color: $settings-text-color-button;
+          // color: $settings-text-color-button;
           font-size: $settings-font-size-button;
           font-weight: $settings-font-weight-button;
           letter-spacing: 2px;
-          background: #970000 !important;
+          // background: #970000 !important;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16) !important;
             }
           }
@@ -331,10 +342,10 @@ input.toggle {
     &:checked {
       border-color: #c40e0e;
       &:before {
-        background: #c40e0e;
+        background: linear-gradient(to top right, #DA3B27, #EB8D60);
       }
       &:after {
-        color: #c40e0e;
+        color: linear-gradient(to top right, #DA3B27, #EB8D60);
       }
     }
   }

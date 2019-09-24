@@ -68,10 +68,10 @@ input.toggle {
     &:checked {
       border-color: #c40e0e;
       &:before {
-        background: #c40e0e;
+        background: linear-gradient(to top right, #DA3B27, #EB8D60);
       }
       &:after {
-        color: #c40e0e;
+        color: linear-gradient(to top right, #DA3B27, #EB8D60);
       }
     }
   }

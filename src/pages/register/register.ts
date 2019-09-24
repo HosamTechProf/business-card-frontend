@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -34,7 +34,7 @@ export class RegisterPage {
         });
         toast.present();
     }
-    constructor(private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+    constructor(public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
         this.authProvider.getCountries('codes').subscribe((res) => {
             this.countries = res['countries'];
         })
@@ -80,12 +80,6 @@ export class RegisterPage {
         } else if (this.password != this.c_password) {
             this.presentToast('كلمتين المرور غير متطابقتين')
         }
-        else if (this.desc == "") {
-            this.presentToast('من فضلك اكتب نبذة تعريفية عن نفسك')
-        }
-        else if (this.socialLink == "") {
-            this.presentToast('من فضلك اكتب لينك تواصل اجتماعي')
-        }
         else if (this.country == "") {
             this.presentToast('من فضلك اختار دولتك')
         }
@@ -111,6 +105,7 @@ export class RegisterPage {
                     // localStorage['my_token'] = data['success'].token;
                     this.storage.set('my_token', data['success'].token);
                     this.presentToast(data['msg']);
+                    this.events.publish('user:notification');
                 }
             }, (err) => {
                 console.log(err['error']['error'])

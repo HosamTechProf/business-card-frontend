@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header transparent>
+<ion-header>
   <ion-navbar>
     <ion-title>التسجيل</ion-title>
   </ion-navbar>
@@ -52,8 +52,8 @@
               <div input-field>
                 <ion-item no-padding>
                   <ion-label color="dark" stacked>الكود</ion-label>
-                  <ion-select [(ngModel)]="countryDialCode">
-                    <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
+                  <ion-select interface="action-sheet" [(ngModel)]="countryDialCode">
+                    <ion-option [selected]="country.dial_code == +966" *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
                   </ion-select>
                 </ion-item>
               </div>
@@ -73,8 +73,8 @@
               <div input-field>
                 <ion-item no-padding>
                   <ion-label color="dark" stacked>الكود</ion-label>
-                  <ion-select [(ngModel)]="countryRegionCode">
-                    <ion-option *ngFor="let country of countries" value="{{country.region_code}}">{{country.name}} - {{country.region_code}}</ion-option>
+                  <ion-select interface="action-sheet" [(ngModel)]="countryRegionCode">
+                    <ion-option [selected]="country.region_code == ' 142'" *ngFor="let country of countries" value="{{country.region_code}}">{{country.name}} - {{country.region_code}}</ion-option>
                   </ion-select>
                 </ion-item>
               </div>
@@ -119,7 +119,7 @@
               </div>
             <!-- Login button -->
             <ion-col col-12 no-padding>
-              <button no-margin ion-button full text-uppercase (click)="register()">تسجيل</button>
+              <button no-margin ion-button full text-uppercase color="light" (click)="register()">تسجيل</button>
             </ion-col>
             <!-- Description -->
             <div description text-center>
