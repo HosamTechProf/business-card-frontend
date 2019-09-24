@@ -33,17 +33,17 @@
 	  	<span class="title">رقم الجوال</span><br>
 	    {{mobile}}<br>
 		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
-		<button class="socialButton" ion-button icon-only color="danger">
+		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
 		  <ion-icon name="logo-whatsapp"></ion-icon>
 		</button>
 		</a>
 		<a (click)="sendSMS()">
-		<button class="socialButton" ion-button icon-only color="danger">
+		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
 		  <ion-icon name="chatboxes"></ion-icon>
 		</button>
 		</a>
 		<a href="tel:{{mobile}}">
-		<button class="socialButton" ion-button icon-only color="danger">
+		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
 		  <ion-icon name="call"></ion-icon>
 		</button>
 	</a><br><hr>

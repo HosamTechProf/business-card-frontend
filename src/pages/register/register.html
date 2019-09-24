@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 <!-- Themes  register-flat-->
     <ion-grid no-padding>
       <!-- logo -->
@@ -29,12 +29,12 @@
             </div>
             <div input-field>
             <ion-item no-padding>
-                <ion-input type="text" placeholder="الإسم" [(ngModel)]="name"></ion-input>
+                <ion-input type="text" placeholder="الإسم*" [(ngModel)]="name"></ion-input>
             </ion-item>
           </div>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="البريد الإلكتروني" [(ngModel)]="email"></ion-input>
+                  <ion-input type="text" placeholder="البريد الإلكتروني*" [(ngModel)]="email"></ion-input>
               </ion-item>
             </div>
             <div input-field>
@@ -44,7 +44,7 @@
             <ion-col col-8>
               <div input-field>
                 <ion-item no-padding>
-                    <ion-input type="text" placeholder="رقم الجوال" [(ngModel)]="mobile"></ion-input>
+                    <ion-input type="text" placeholder="رقم الجوال*" [(ngModel)]="mobile"></ion-input>
                 </ion-item>
               </div>
             </ion-col>
@@ -83,7 +83,7 @@
             </ion-grid>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="المنشأة او الشركة" [(ngModel)]="company"></ion-input>
+                  <ion-input type="text" placeholder="المنشأة او الشركة*" [(ngModel)]="company"></ion-input>
               </ion-item>
             </div>
             <div input-field>
@@ -100,20 +100,20 @@
             <div input-field>
               <!-- Input-field-password -->
               <ion-item no-padding>
-                <ion-input type="password" placeholder="كلمة المرور" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" placeholder="كلمة المرور*" [(ngModel)]="password"></ion-input>
                 <!-- <ion-label no-margin *ngIf="password == ''">Please Write Your Password</ion-label> -->
               </ion-item>
             </div>
             <div input-field>
               <!-- Input-field-password -->
               <ion-item no-padding>
-                  <ion-input type="password" placeholder="تأكيد كلمة المرور" [(ngModel)]="c_password"></ion-input>
+                  <ion-input type="password" placeholder="تأكيد كلمة المرور*" [(ngModel)]="c_password"></ion-input>
                   <!-- <ion-label no-margin *ngIf="c_password == ''">Please Write Password Confirm</ion-label> -->
                 </ion-item>
             </div>
             <div input-field>
                 <ion-item style="padding:15px">
-                <span style="float: right;font-size: 12px">حالة البطاقة</span><br>
+                <span style="float: right;font-size: 12px">حالة البطاقة*</span><br>
                 <input class="toggle toggle__light" type="checkbox" [(ngModel)]="isPublic" style="float: left">
                 </ion-item>
               </div>

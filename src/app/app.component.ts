@@ -63,7 +63,7 @@ export class MyApp {
                     else if(res['status'] == 'false2'){
                         alert(res['msg'])
                     }
-                    else{
+                    else if (res['status'] == true){
                         let profileModal = this.modalCtrl.create('FriendCardPage', { id: match.$args.id });
                         profileModal.present();
                     }
