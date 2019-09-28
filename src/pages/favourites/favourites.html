@@ -12,7 +12,7 @@
 
 <ion-content>
 <div *ngFor="let favourite of favourites" class="userCard" (click)="openFriendCard(favourite.id)">
-    <img src="{{userImage}}/{{favourite.image}}" class="userPhoto">
+    <img src="{{userImage}}/{{favourite.image}}" class="userPhoto" imageViewer>
     <span style="font-weight: bold">{{favourite.name}}</span><br>
     {{favourite.mobile}}
 </div>

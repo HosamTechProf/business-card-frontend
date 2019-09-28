@@ -26,6 +26,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShareLinkProvider } from '../providers/shareLink';
 import { Push } from '@ionic-native/push';
 import { NotificationProvider } from '../providers/notification';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NotificationProvider } from '../providers/notification';
     HttpClientModule,
     QrCodePageModule,
     FriendCardPageModule,
-    QRCodeModule
+    QRCodeModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

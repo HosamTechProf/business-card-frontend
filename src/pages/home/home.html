@@ -20,22 +20,9 @@
 </ion-header>
 
 <ion-content>
-<!--   <div [hidden]="!name" padding>
-    <ion-card *ngFor="let user of searchData">
-
-      <ion-card-header color="danger" (click)="openUserCard(user.id)">
-        {{user.name}}
-      </ion-card-header>
-
-      <ion-card-content>
-        {{user.desc}}
-      </ion-card-content>
-
-    </ion-card>
-  </div> -->
 <div [hidden]="!name" padding>
   <div *ngFor="let user of searchData" class="userCard" (click)="openUserCard(user.id)">
-      <img src="{{userImage}}/{{user.image}}" class="userPhoto">
+      <img src="{{userImage}}/{{user.image}}" class="userPhoto" imageViewer>
       <span style="font-weight: bold">{{user.name}}</span><br>
       {{user.mobile}}
   </div>

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { SERVER_URL } from './serverUrl';
 import { CacheService } from "ionic-cache";
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 
@@ -17,12 +16,13 @@ export class AuthProvider {
     }
 
     getUserData(file) {
-        return this.http.get(this.server + file).map(res => res);
-        // return this.cache.loadFromDelayedObservable(this.server + file, user)
+        let user = this.http.get(this.server + file).map(res => res);
+        return this.cache.loadFromDelayedObservable(this.server + file, user)
     }
 
     getCountries(file) {
-        return this.http.get(this.server + file).map(res => res);
+        let countries = this.http.get(this.server + file).map(res => res);
+        return this.cache.loadFromDelayedObservable(this.server + file, countries)
     }
 
     updateUserData(info, file) {

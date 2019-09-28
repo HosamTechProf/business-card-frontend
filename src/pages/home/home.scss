@@ -95,6 +95,22 @@ page-home {
     }
 .scroll-content, ion-header{
     background-color: #E6E6E6;
+
+}
+.scroll-content::after {
+    content: "";
+    background-image: url('../assets/imgs/texture.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: -59% 105%;
+    background-size: 280px;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 // ::-webkit-input-placeholder {
 //      background-image: url('../../assets/icons/search.svg');

@@ -34,7 +34,7 @@ export class FriendCardPage {
         let info = {
             id: this.id
         }
-        this.friendsProvider.getFriendData(info, 'api/auth/getFriendData').subscribe((data) => {
+        this.friendsProvider.getFriendData('api/auth/getFriendData/' + this.id).subscribe((data) => {
             this.name = data['name']
             this.phone = data['phone']
             this.mobile = data['mobile']

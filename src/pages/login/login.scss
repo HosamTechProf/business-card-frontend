@@ -35,10 +35,7 @@ page-login {
     ion-content {
       // background-image: url('../../assets/imgs/bg2.jpg');
       background-image: linear-gradient(to top right, #DA3B27, #EB8D60);
-      background-size: cover;
-      background-attachment: fixed; /*-- here should be fixed --*/
       font-family: 'Montserrat', sans-serif;
-      position: relative;
 	    direction: rtl;
       .scroll-content {
         padding-bottom: 0 !important;
@@ -252,4 +249,19 @@ ion-loading.transparent {
     background: transparent;
     box-shadow: none;
   }
+.scroll-content::after {
+    content: "";
+    background-image: url('../assets/imgs/texture.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: -59% 97%;
+    background-size: 280px;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+}
 }

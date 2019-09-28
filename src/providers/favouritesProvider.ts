@@ -20,12 +20,12 @@ export class FavouritesProvider {
     }
 
     isFavorited(file) {
-        return this.http.get(this.server + file).map(res => res)
-        // return this.cache.loadFromDelayedObservable(this.server + file, isFavorited)
+        let isFavorited = this.http.get(this.server + file).map(res => res);
+        return this.cache.loadFromDelayedObservable(this.server + file, isFavorited)
     }
 
     getFavourites(file) {
-        return this.http.get(this.server + file).map(res => res);
-        // return this.cache.loadFromDelayedObservable(this.server + file, favourites)
+        let favourites = this.http.get(this.server + file).map(res => res);
+        return this.cache.loadFromDelayedObservable(this.server + file, favourites)
     }
 }

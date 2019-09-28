@@ -18,7 +18,7 @@
 <div [hidden]="!edittable">
 <div align="center">
   <div class="test" (click)="uploadImage()">
-    <img [src]="userImage" class="ion-align-self-center">
+    <img [src]="userImage">
     <ion-icon name="camera" class="profilebutton"></ion-icon>
   </div>
 </div>
@@ -81,12 +81,10 @@
 </ion-card>
 </div>
 
-
-
 <div [hidden]="edittable">
 <div align="center">
   <div class="test">
-    <img [src]="userImage" class="ion-align-self-center">
+    <img [src]="userImage" imageViewer>
   </div>
 </div>
 <ion-card>

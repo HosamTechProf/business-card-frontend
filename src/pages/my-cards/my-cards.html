@@ -8,7 +8,7 @@
 <ion-content>
 
 <div *ngFor="let friend of friends" class="userCard" (click)="openModal(friend.id)">
-    <img src="{{friendImage}}/{{friend.image}}" class="userPhoto">
+    <img src="{{friendImage}}/{{friend.image}}" class="userPhoto" imageViewer>
     <span style="font-weight: bold">{{friend.name}}</span><br>
     {{friend.mobile}}
 </div>
