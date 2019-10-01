@@ -82,8 +82,8 @@ page-home {
         }
 
     .myCard {
-            -webkit-box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
-            box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
+        -webkit-box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
+        box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
     }
     .card{
         border-radius: 6px;
@@ -97,21 +97,21 @@ page-home {
     background-color: #E6E6E6;
 
 }
-.scroll-content::after {
-    content: "";
-    background-image: url('../assets/imgs/texture.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: -59% 105%;
-    background-size: 280px;
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
+// .scroll-content::after {
+//     content: "";
+//     background-image: url('../assets/imgs/texture.png');
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-position: -59% 105%;
+//     background-size: 280px;
+//     opacity: 0.2;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     position: absolute;
+//     z-index: -1;
+// }
 // ::-webkit-input-placeholder {
 //      background-image: url('../../assets/icons/search.svg');
 //      background-repeat: no-repeat;
@@ -131,7 +131,7 @@ page-home {
     }
 
     ion-scroll {
-        min-height: 65px;
+        min-height: 200px;
         height: auto;
 
             .scroll-content {
@@ -156,7 +156,15 @@ page-home {
         border-radius: 200px;
         // z-index: 1000 !important;
     }
-
+    .userPhoto2{
+        width: 90px;
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        margin-left: -50px;
+        border-radius: 200px;
+        // z-index: 1000 !important;
+    }
     .userCard{
         margin-top:65px;
         margin-right: 20px;
@@ -171,6 +179,24 @@ page-home {
         background-color: white;
         border-radius: 15px;
         -webkit-box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
+        box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);;
+    }
+    .userCard2{
+        margin-top:65px;
+        margin-right: 20px;
+        // margin-left: 20px;
+        text-align: center;
+        padding-top: 55px;
+        border-top: 6px #444444 solid;
+        color: #444444;
+        position: relative;
+        // z-index: -1 !important;
+        height: 110px;
+        background-color: white;
+        border-radius: 15px;
+        -webkit-box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
         box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
+        width: 50%;
+        display: inline-block;
     }
 }

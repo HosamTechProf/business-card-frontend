@@ -6,11 +6,13 @@ import { FriendsProvider } from '../../providers/friendsProvider';
 import { FavouritesProvider } from '../../providers/favouritesProvider';
 import { ShareLinkProvider } from '../../providers/shareLink';
 import { AdvertisementProvider } from '../../providers/advertisementProvider';
+import { ContactProvider } from '../../providers/contact';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
 import { Searchbar } from 'ionic-angular';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
 @IonicPage()
 @Component({
@@ -33,8 +35,10 @@ export class HomePage {
     adName;
     adsCount;
     token;
+    myContactsUsers;
+    myContacts:any[] = [];
     public adsStatus;
-    constructor(public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
             this.myId = res['id'];
             localStorage['user_id'] = res['id'];
@@ -43,6 +47,32 @@ export class HomePage {
         this.platform.registerBackButtonAction(() => {});
         this.events.subscribe('user:scan', eventData => {
           this.addFriend();
+        });
+        this.contacts.find(['displayName', 'phoneNumbers'], {filter: "", multiple: true})
+        .then(contacts => {
+            for (var i=0 ; i < contacts.length; i++){
+                if (contacts[i].phoneNumbers != null) {
+                   var obj = {};
+                   obj["name"] = contacts[i].displayName;
+                   if (contacts[i].phoneNumbers[1]) {
+                       let numbers = [contacts[i].phoneNumbers[0].value,contacts[i].phoneNumbers[1].value]
+                       obj["number"] = numbers;
+                   }
+                   else{
+                       let numbers = [contacts[i].phoneNumbers[0].value,'null']
+                       obj["number"] = numbers;
+                   }
+                   this.myContacts.push(obj)
+                }
+            }
+               console.log(this.myContacts)
+               let info = {
+                   contacts : this.myContacts,
+                   length : this.myContacts.length,
+               }
+               this.contactProvider.getContactsFromDatabase(info, 'api/auth/getcontacts').subscribe((res)=>{
+                   this.myContactsUsers = res
+               })
         });
     }
     ionViewDidEnter() {

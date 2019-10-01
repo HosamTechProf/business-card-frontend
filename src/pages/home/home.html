@@ -59,27 +59,17 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-<!--   <h6 align="center" (click)="openFavourites()"><ion-icon name="custom-like" style="font-size: 30px"></ion-icon>
-  <img src="assets/icons/like.svg" width="8%">
-   <br>المفضلة
-  </h6> -->
- <!--  <ion-scroll (click)="openFavourites()" scrollX="true" direction="x" style="width: 100%;height: 40%" class="animated flipInX">
+<div style="text-align: center;font-weight: bold">
+  <span>جهات الاتصال المقترحة</span>
+</div>
+<ion-scroll scrollX="true">
+  <div *ngFor="let contact of myContactsUsers" class="userCard2" (click)="openUserCard(contact.id)">
+      <img src="{{userImage}}/{{contact.image}}" class="userPhoto2" imageViewer>
+      <span style="font-weight: bold">{{contact.name}}</span><br>
+      {{contact.mobile}}
+  </div>
+</ion-scroll>
 
-  <ion-card class="scrollCard" *ngFor="let friend of favourites" (click)="openFriendCard(friend.id)">
-    <ion-card-content color="dark">
-      <ion-grid>
-      <ion-row>
-      <ion-col>
-      <img src="{{userImage}}/{{friend.image}}" class="favImage">
-      <span style="text-align: right;">{{friend.name}}</span>
-      </ion-col>
-      </ion-row>
-      </ion-grid>
-
-    </ion-card-content>
-  </ion-card>
-
-  </ion-scroll> -->
 </div>
 </ion-content>
 <ion-footer [hidden]="!adsStatus">

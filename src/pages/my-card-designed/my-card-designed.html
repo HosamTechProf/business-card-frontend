@@ -1,18 +1,11 @@
 
 <ion-header no-shadow no-border>
   <ion-navbar color="light">
-  	<div style="float: left" *ngIf="followed">
-		<button *ngIf="!faved" class="favButton" ion-button icon-only color="dark" (click)="favourite()">
-		  <ion-icon name="heart-outline"></ion-icon>
-		</button>
-		<button *ngIf="faved" class="favButton" ion-button icon-only color="danger" (click)="unfavourite()">
-		  <ion-icon name="heart"></ion-icon>
+  	<div style="float: right">
+		<button class="editButton" ion-button icon-start color="dark" (click)="edit()">
+		  <ion-icon name="create"></ion-icon>تعديل بطاقتي
 		</button>
   	</div>
-	<div style="float: right">
-		<button ion-button icon-end *ngIf="followed" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">إلغاء المتابعة</button>
-		<button ion-button icon-end *ngIf="!followed" ion-button round color="light" style="font-weight: bold" (click)="follow()">تابع</button>
-	</div>
   </ion-navbar>
 </ion-header>
 
@@ -21,17 +14,17 @@
 	<div class='business-card'>
 	  <div class='bc__logo'>
 	    <h2>{{name}}</h2><br>
-	    	    <a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
+	   	<a (click)="alert()">
 		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
 		  <ion-icon name="logo-whatsapp"></ion-icon>
 		</button>
 		</a>
-		<a (click)="sendSMS()">
+		<a (click)="alert()">
 		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
 		  <ion-icon name="chatboxes"></ion-icon>
 		</button>
 		</a>
-		<a href="tel:{{mobile}}">
+		<a (click)="alert()">
 		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
 		  <ion-icon name="call"></ion-icon>
 		</button>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, App, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
     templateUrl: 'my-card.html',
 })
 export class MyCardPage {
+    id: string = '';
     name: string = '';
     email: string = '';
     password: string = '';
@@ -24,8 +25,10 @@ export class MyCardPage {
     base64Image: string = '';
     userImage;
     edittable;
-    constructor(private storage: Storage, private app: App, public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+    myCardData;
+    constructor(public modalCtrl: ModalController, private storage: Storage, private app: App, public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.authProvider.getUserData('api/auth/user').subscribe((res) => {
+            this.id = res['id']
             this.name = res['name']
             this.email = res['email']
             this.password = res['password']
@@ -97,5 +100,16 @@ export class MyCardPage {
         localStorage.clear();
         this.storage.clear();
         this.app.getRootNav().setRoot("LoginPage");
+    }
+    openMyCard() {
+        let profileModal = this.modalCtrl.create('MyCardDesignedPage', { id: this.id });
+        profileModal.onDidDismiss(data => {
+            if (data == 'edit') {
+                this.edittable = true;
+            }else{
+                this.edittable = false;
+            }
+        });
+        profileModal.present();
     }
 }

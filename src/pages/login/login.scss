@@ -50,9 +50,10 @@ page-login {
       /* Settings logo
       ===============================*/
       [logo]{
-        height: 60px;
+        height: auto;
         margin-top: 64px;
         margin-left: 20px;
+        padding-bottom: 4px
       }
 
       /* Settings title

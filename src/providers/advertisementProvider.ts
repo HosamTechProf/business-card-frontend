@@ -12,12 +12,12 @@ export class AdvertisementProvider {
     constructor(public http: HttpClient, private cache: CacheService) { }
 
     getAdvertisements(file) {
-        let advertisements = this.http.get(this.server + file).map(res => res);
-        return this.cache.loadFromDelayedObservable(this.server + file, advertisements)
+        return this.http.get(this.server + file).map(res => res);
+        // return this.cache.loadFromDelayedObservable(this.server + file, advertisements)
     }
 
     getAdvertisementsCount(file) {
-        let counts = this.http.get(this.server + file).map(res => res);
-        return this.cache.loadFromDelayedObservable(this.server + file, counts)
+        return this.http.get(this.server + file).map(res => res);
+        // return this.cache.loadFromDelayedObservable(this.server + file, counts)
     }
 }

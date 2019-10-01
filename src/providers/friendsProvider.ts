@@ -22,18 +22,18 @@ export class FriendsProvider {
     }
 
     isFriend(file) {
-        let isFriend = this.http.get(this.server + file).map(res => res)
-        return this.cache.loadFromObservable(this.server + file, isFriend)
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, isFriend)
     }
 
     getFriends(file) {
-        let friends = this.http.get(this.server + file).map(res => res)
-        return this.cache.loadFromObservable(this.server + file, friends)
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, friends)
     }
 
     getFriendData(file) {
-        let friend = this.http.get(this.server + file).map(res => res)
-        return this.cache.loadFromObservable(this.server + file, friend)
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, friend)
     }
 
     search(file) {

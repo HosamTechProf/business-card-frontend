@@ -4,15 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { CacheService } from "ionic-cache";
-import { BranchIo } from '@ionic-native/branch-io';
 import { Deeplinks } from '@ionic-native/deeplinks';
-import { AboutPage } from '../pages/about/about';
 import { ShareLinkProvider } from '../providers/shareLink';
 import { NotificationProvider } from '../providers/notification';
 import { Observable } from 'rxjs';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
-declare let window: any;
 @Component({
     templateUrl: 'app.html'
 })

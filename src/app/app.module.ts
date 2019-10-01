@@ -27,6 +27,8 @@ import { ShareLinkProvider } from '../providers/shareLink';
 import { Push } from '@ionic-native/push';
 import { NotificationProvider } from '../providers/notification';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { Contacts } from '@ionic-native/contacts';
+import { ContactProvider } from '../providers/contact';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     SocialSharing,
     ShareLinkProvider,
     Push,
-    NotificationProvider
+    NotificationProvider,
+    Contacts,
+    ContactProvider
   ]
 })
 export class AppModule { }

@@ -1,85 +1,4 @@
-// page-friend-card {
-// 	ion-content{
-// 		// background-color: rgba(0, 0, 0, 0.9) !important;
-//   margin: 0px;
-//   padding: 0px;
-//   background: -moz-linear-gradient(-45deg, #ffe0e3 32%, #a7e0e5 68%);
-//   background: -webkit-linear-gradient(-45deg, #ffe0e3 32%, #a7e0e5 68%);
-//   background: linear-gradient(135deg, #ffe0e3 32%, #a7e0e5 68%);
-//   * {
-//   letter-spacing: 1px !important;
-//   font-family: Arial;
-//   // color: white;
-//   }
-// 	}
-// 	.socialButton{
-// 		// background-color: transparent;
-// 		// box-shadow: none;
-// 		border-radius: 100px
-// 	}
-// 	.card {
-// 		border-radius: 7px;
-// 		box-shadow: none;
-// 		border: 1px solid #D3D7CF;
-// 		background-color: #EEEEEC;
-// 	}
-// 	a{
-// 		color: white
-// 	}
-// 	.arrow{
-// 		background-color: transparent;
-// 		box-shadow: none;
-// 		border-radius: 200px;
-// 		color: black
-// 	}
-// 	.arrow:active{
-// 		background-color: transparent;
-// 		box-shadow: none;
-// 		border-radius: 200px;
-// 		color: black
-// 	}
-// 	.arrow:hover{
-// 		background-color: transparent;
-// 		box-shadow: none;
-// 		border-radius: 200px;
-// 		color: black
-// 	}
-// 	.button{
-// 		box-shadow: none;
-// 	}
-// 	.favButton{
-// 		background-color: transparent;
-// 		box-shadow: none;
-// 		border-radius: 100px;
-// 		color: #222
-// 	}
-// 	.title{
-// 		// color: red;
-// 		font-weight: bold;
-// 		font-size: 17px;
-// 	}
-// 	.socialLink{
-// 		color: black;
-// 	}
-
-// 	.userCard{
-// 		margin-right: 20px;
-// 		margin-left: 20px;
-// 		text-align: center;
-// 		padding-top: 55px;
-// 		border-top: 6px #444444 solid;
-// 		color: #444444;
-// 		position: relative;
-// 		z-index: -1 !important;
-// 		// height: 100%;
-// 		background-color: white;
-// 		border-radius: 15px;
-// 		display: block;
-// 		overflow: auto;
-// 	}
-// }
-
-page-friend-card {
+page-my-card-designed {
 	$color-lightred: #f12e50;
 	$color-red: #ee0c4b;
 	$color-darkred: #c80e3d;
@@ -170,7 +89,7 @@ page-friend-card {
 	.button{
 		box-shadow: none;
 	}
-	.favButton{
+	.editButton{
 		background-color: transparent;
 		box-shadow: none;
 		border-radius: 100px;
