@@ -1,6 +1,6 @@
-<ion-tabs color="light">
+<ion-tabs color="light" (ionChange)="clearSearch()">
   <ion-tab [root]="tab1Root" tabTitle="الرئيسية" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="بطاقتي" tabIcon="card"></ion-tab>
+  <ion-tab (ionSelect)="openMyCard()" tabTitle="بطاقتي" tabIcon="card"></ion-tab>
   <!-- <ion-tab [root]="tab3Root" tabTitle="الاشعارات" tabIcon="custom-notification"></ion-tab> -->
 </ion-tabs>
  <ion-fab center bottom style="padding-bottom:7px;">

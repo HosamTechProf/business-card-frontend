@@ -2,12 +2,12 @@
 
   <div class="myDiv animated pulse">
     <ion-navbar>
-<!--         <ion-buttons start>
+        <ion-buttons style="float: right">
             <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="logout()">
               <ion-icon name="custom-logout"></ion-icon>
             </button>
-          </ion-buttons> -->
-        <ion-buttons start>
+          </ion-buttons>
+        <ion-buttons  style="float: left">
             <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="shareLink()">
               <ion-icon name="share"></ion-icon>
             </button>
@@ -21,6 +21,9 @@
 
 <ion-content>
 <div [hidden]="!name" padding>
+  <div align="center" [hidden]="!searchSpinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
   <div *ngFor="let user of searchData" class="userCard" (click)="openUserCard(user.id)">
       <img src="{{userImage}}/{{user.image}}" class="userPhoto" imageViewer>
       <span style="font-weight: bold">{{user.name}}</span><br>
@@ -62,7 +65,11 @@
 <div style="text-align: center;font-weight: bold">
   <span>جهات الاتصال المقترحة</span>
 </div>
+
 <ion-scroll scrollX="true">
+  <div align="center" [hidden]="!spinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
   <div *ngFor="let contact of myContactsUsers" class="userCard2" (click)="openUserCard(contact.id)">
       <img src="{{userImage}}/{{contact.image}}" class="userPhoto2" imageViewer>
       <span style="font-weight: bold">{{contact.name}}</span><br>

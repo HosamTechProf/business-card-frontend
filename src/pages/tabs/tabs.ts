@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, Events } from 'ionic-angular';
+import { IonicPage, Events, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -7,13 +7,24 @@ import { IonicPage, Events } from 'ionic-angular';
 })
 export class TabsPage {
     tab1Root = "HomePage";
-    tab2Root = "MyCardPage";
-    tab3Root = "ContactPage";
+    tab2Root;
 
-    constructor(public events: Events) { }
+    constructor(public modalCtrl: ModalController, public events: Events) {
+     }
 
-scan() {
-  this.events.publish('user:scan');
-}
-
+	scan() {
+		this.events.publish('user:scan');
+	}
+	openMyCard(){
+		let modal = this.modalCtrl.create('MyCardDesignedPage', {id:localStorage['user_id']});
+		modal.present();
+	}
+	clearSearch(){
+		this.events.publish('user:clearSearch');
+	}
+  ngAfterViewInit(){
+    	document.getElementById('tab-t0-0').addEventListener('click', event => {
+    		this.clearSearch();
+    	});
+	}
 }

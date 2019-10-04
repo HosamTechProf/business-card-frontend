@@ -13,8 +13,11 @@ export class FavouritesPage {
     myId;
     favourites;
     userImage;
+    spinner;
     constructor(private sms: SMS, public modalCtrl: ModalController, private favouritesProvider: FavouritesProvider, public navCtrl: NavController, public navParams: NavParams) {
+        this.spinner = true;
         this.favouritesProvider.getFavourites('api/auth/getFavourites').subscribe((data) => {
+            this.spinner = false;
             this.favourites = data;
             this.userImage = SERVER_URL + 'img/users/';
         })

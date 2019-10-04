@@ -20,8 +20,11 @@ export class MyCardsPage {
     friends: any;
     friendImage;
     name;
+    spinner;
     constructor(private sms: SMS, public modalCtrl: ModalController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
+        this.spinner = true;
         this.friendsProvider.getFriends('api/auth/getFriends').subscribe((res) => {
+            this.spinner = false;
             this.friends = res;
             this.friendImage = SERVER_URL + 'img/users/';
         })

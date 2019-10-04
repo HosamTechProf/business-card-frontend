@@ -40,7 +40,7 @@ export class MyCardPage {
             this.socialLink = res['socialLink']
             this.userImage = SERVER_URL + 'img/users/' + res['image']
         });
-        this.edittable = false;
+        this.edittable = true;
     }
     presentToast(message) {
         const toast = this.toastCtrl.create({
@@ -99,17 +99,11 @@ export class MyCardPage {
     logout() {
         localStorage.clear();
         this.storage.clear();
-        this.app.getRootNav().setRoot("LoginPage");
+        // this.app.getRootNav().setRoot("LoginPage");
+        let newRootNav = <NavController>this.app.getRootNavById('n4');
+        newRootNav.push("LoginPage")
     }
-    openMyCard() {
-        let profileModal = this.modalCtrl.create('MyCardDesignedPage', { id: this.id });
-        profileModal.onDidDismiss(data => {
-            if (data == 'edit') {
-                this.edittable = true;
-            }else{
-                this.edittable = false;
-            }
-        });
-        profileModal.present();
+    back() {
+        this.navCtrl.setRoot("TabsPage")
     }
 }

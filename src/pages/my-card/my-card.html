@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="light" text-center>
+  <ion-navbar color="light" text-center hideBackButton>
         <ion-buttons start [hidden]="edittable">
             <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px" (click)="edit()">
               <ion-icon name="create"></ion-icon>
@@ -11,8 +11,8 @@
             </button>
           </ion-buttons>
         <ion-buttons style="float: right">
-            <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px;" (click)="openMyCard()">
-              <ion-icon name="eye"></ion-icon>
+            <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px;" (click)="back()">
+              <ion-icon name="arrow-back"></ion-icon>
             </button>
           </ion-buttons>
     <ion-title text-center><ion-icon name="custom-card" style="margin-bottom:-5px"></ion-icon> بطاقتي</ion-title>
@@ -158,7 +158,7 @@
   </ion-card-content>
 </ion-card> -->
 </div>
-<div align="center" class="ion-align-self-center" style="padding-bottom:15px">
+<!-- <div align="center" class="ion-align-self-center" style="padding-bottom:15px">
 <button ion-button style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60)" (click)="logout()" round center>تسجيل الخروج</button>
-</div>
+</div> -->
 </ion-content>

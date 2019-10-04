@@ -41,8 +41,8 @@ export class MyCardDesignedPage {
         this.view.dismiss(data);
     }
     edit(){
-        let data = 'edit';
-        this.view.dismiss(data);
+        this.view.dismiss();
+        this.navCtrl.push("MyCardPage");
     }
     alert(){
         alert('هذه الخاصية غير موجودة في عرض شكل بطاقتك')

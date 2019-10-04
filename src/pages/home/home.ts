@@ -38,7 +38,11 @@ export class HomePage {
     myContactsUsers;
     myContacts:any[] = [];
     public adsStatus;
+    spinner;
+    searchSpinner;
     constructor(private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+        this.spinner = true;
+        this.searchSpinner = true;
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
             this.myId = res['id'];
             localStorage['user_id'] = res['id'];
@@ -47,6 +51,9 @@ export class HomePage {
         this.platform.registerBackButtonAction(() => {});
         this.events.subscribe('user:scan', eventData => {
           this.addFriend();
+        });
+        this.events.subscribe('user:clearSearch', eventData => {
+          this.clearSearch();
         });
         this.contacts.find(['displayName', 'phoneNumbers'], {filter: "", multiple: true})
         .then(contacts => {
@@ -65,13 +72,13 @@ export class HomePage {
                    this.myContacts.push(obj)
                 }
             }
-               console.log(this.myContacts)
                let info = {
                    contacts : this.myContacts,
                    length : this.myContacts.length,
                }
                this.contactProvider.getContactsFromDatabase(info, 'api/auth/getcontacts').subscribe((res)=>{
                    this.myContactsUsers = res
+                   this.spinner = false;
                })
         });
     }
@@ -134,11 +141,15 @@ export class HomePage {
         });
     }
 
-    // logout() {
-    //     localStorage.clear();
-    //     this.storage.clear();
-    //     this.app.getRootNav().setRoot("LoginPage");
-    // }
+    logout() {
+        localStorage.clear();
+        this.storage.clear();
+        // this.app.getRootNav().setRoot("LoginPage");
+        // this.app.getRootNavById('n4').push();
+        let newRootNav = <NavController>this.app.getRootNavById('n4');
+        newRootNav.push("LoginPage")
+
+    }
     openMyCards() {
         this.navCtrl.push("MyCardsPage");
     }
@@ -148,6 +159,7 @@ export class HomePage {
         }
 
         this.authProvider.search(info, 'api/auth/search').subscribe((data) => {
+            this.searchSpinner = false;
             this.searchData = data;
         })
     }
@@ -155,9 +167,6 @@ export class HomePage {
         let profileModal = this.modalCtrl.create('FriendCardPage', { id: id });
         profileModal.onDidDismiss(data => {
             this.favourites = data['favourites'];
-            setTimeout(() => {
-                this.searchbar.setFocus();
-            });
         });
         profileModal.present();
     }
@@ -186,9 +195,12 @@ export class HomePage {
         return text;
     }
     generateToken(){
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&%$@";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         const lengthOfCode = 15;
         this.token = this.makeRandom(lengthOfCode, possible);
         console.log(this.token)
+    }
+    clearSearch(){
+        this.name = null;
     }
 }
