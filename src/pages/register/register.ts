@@ -26,7 +26,8 @@ export class RegisterPage {
     countries;
     country;
     countryCode;
-    countryRegionCode;
+    countryRegionCode = "142";
+    countryDialCode = "+966";
     presentToast(message) {
         const toast = this.toastCtrl.create({
             message: message,

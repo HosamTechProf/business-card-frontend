@@ -140,16 +140,6 @@ export class HomePage {
             console.log('Error', err);
         });
     }
-
-    logout() {
-        localStorage.clear();
-        this.storage.clear();
-        // this.app.getRootNav().setRoot("LoginPage");
-        // this.app.getRootNavById('n4').push();
-        let newRootNav = <NavController>this.app.getRootNavById('n4');
-        newRootNav.push("LoginPage")
-
-    }
     openMyCards() {
         this.navCtrl.push("MyCardsPage");
     }

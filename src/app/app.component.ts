@@ -51,11 +51,9 @@ export class MyApp {
                     'user2_id' : localStorage['user_id']
                 }
                 this.shareLinkProvider.updateShare('api/auth/updateshare', info).subscribe((res)=>{
-                    console.log(res)
-                    console.log(res['status'])
                     if (res['status'] == 'false1') {
-                        this.nav.push("MyCardPage");
-                        // alert(res['msg'])
+                        let modal = this.modalCtrl.create('MyCardDesignedPage', {id:localStorage['user_id']});
+                        modal.present();
                     }
                     else if(res['status'] == 'false2'){
                         alert(res['msg'])
