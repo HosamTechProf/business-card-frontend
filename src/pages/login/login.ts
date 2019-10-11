@@ -3,6 +3,7 @@ import { NavController, NavParams, ToastController, IonicPage } from 'ionic-angu
 import { AuthProvider } from '../../providers/authProvider';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class LoginPage {
         });
         toast.present();
     }
-    constructor(public loadingCtrl: LoadingController, public toastCtrl: ToastController, private storage: Storage, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public translateService: TranslateService, public loadingCtrl: LoadingController, public toastCtrl: ToastController, private storage: Storage, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
     }
     openRegister() {
         this.navCtrl.push("RegisterPage");
@@ -50,15 +51,15 @@ export class LoginPage {
                 if (data) {
                     this.storage.set('my_token', data['access_token']);
                     this.navCtrl.setRoot("TabsPage")
-                    this.presentToast('تم تسجيل الدخول بنجاح');
+                    this.presentToast(this.translateService.instant("LoginSuccess"));
                 } else {
-                    this.presentToast('برجاء ادخال البريد الالكتروني وكلمة المرور');
+                    this.presentToast(this.translateService.instant("EmailPasswordError"));
                 }
             })
 
         }
         else {
-            this.presentToast('برجاء ادخال البريد الالكتروني وكلمة المرور');
+            this.presentToast(this.translateService.instant("EmailPasswordError"));
         }
     }
 }

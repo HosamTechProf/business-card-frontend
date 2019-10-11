@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ModalController, App, Platform, Events } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, App, Platform, Events, LoadingController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FriendsProvider } from '../../providers/friendsProvider';
@@ -13,6 +13,7 @@ import { Searchbar } from 'ionic-angular';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -40,7 +41,7 @@ export class HomePage {
     public adsStatus;
     spinner;
     searchSpinner;
-    constructor(private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(public loadingCtrl: LoadingController, public translateService: TranslateService, private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.spinner = true;
         this.searchSpinner = true;
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
@@ -165,7 +166,7 @@ export class HomePage {
     }
 
     shareLink(message='My Business Card Link: ', subject=null, file=null){
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&%$@";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         const lengthOfCode = 15;
         this.token = this.makeRandom(lengthOfCode, possible);
         let info = {
@@ -192,5 +193,26 @@ export class HomePage {
     }
     clearSearch(){
         this.name = null;
+    }
+    changeLanguage(){
+      let loading = this.loadingCtrl.create({
+        content: this.translateService.instant("PleaseWait")
+      });
+
+      loading.present();
+
+      setTimeout(() => {
+        loading.dismiss();
+      }, 3000);
+
+        if (this.platform.isRTL) {
+            this.platform.setDir('ltr', true)
+            this.translateService.use('en')
+            this.storage.set('language', 'en')
+        }else{
+            this.platform.setDir('rtl', true)
+            this.translateService.use('ar')
+            this.storage.set('language', 'ar')
+        }
     }
 }

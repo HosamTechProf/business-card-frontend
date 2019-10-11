@@ -4,6 +4,7 @@ import { AuthProvider } from '../../providers/authProvider';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -26,7 +27,7 @@ export class MyCardPage {
     userImage;
     edittable;
     myCardData;
-    constructor(public modalCtrl: ModalController, private storage: Storage, private app: App, public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public translateService: TranslateService, public modalCtrl: ModalController, private storage: Storage, private app: App, public toastCtrl: ToastController, private camera: Camera, public alertCtrl: AlertController, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.authProvider.getUserData('api/auth/user').subscribe((res) => {
             this.id = res['id']
             this.name = res['name']
@@ -92,7 +93,7 @@ export class MyCardPage {
         }
         this.authProvider.updateUserData(info, 'api/auth/updateUser').subscribe((res) => {
             this.userImage = SERVER_URL + 'img/users/' + res['image']
-            this.presentToast('تم تعديل بطاقتك بنجاح')
+            this.presentToast(this.translateService.instant("CardEdditedSuc"))
         })
     }
 

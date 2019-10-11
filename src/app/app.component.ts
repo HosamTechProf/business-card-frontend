@@ -9,6 +9,7 @@ import { ShareLinkProvider } from '../providers/shareLink';
 import { NotificationProvider } from '../providers/notification';
 import { Observable } from 'rxjs';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     templateUrl: 'app.html'
@@ -17,13 +18,13 @@ export class MyApp {
 @ViewChild(Nav) nav: Nav;
     rootPage: any;
 
-    constructor(public events: Events, private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public translateService: TranslateService, public events: Events, private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
         this.platform.ready().then(() => {
             this.cache.setDefaultTTL(60 * 60 * 12);
             this.cache.setOfflineInvalidate(false);
             this.statusBar.styleLightContent();
             this.splashScreen.hide();
-            this.initRootPage();
+            this.choseLanguage();
             this.deepLinking();
             this.notification();
             this.events.subscribe('user:notification', eventData => {
@@ -32,7 +33,34 @@ export class MyApp {
         });
 
     }
-
+                //  this.storage.get('language').then((val)=>{
+                //     this.translateService.use(val);
+                // })
+    protected choseLanguage(){
+        this.storage.get('language').then((val) => {
+            if(val){
+                this.initRootPage()
+                this.translateService.use(val);
+                if (val == 'en') {
+                    this.platform.setDir('ltr', true)
+                }else{
+                    this.platform.setDir('rtl', true)
+                }
+            }else{
+                let languageModal = this.modalCtrl.create('ChooseLanguagePage');
+                languageModal.onDidDismiss(data => {
+                    this.translateService.use(data);
+                if (data == 'en') {
+                    this.platform.setDir('ltr', true)
+                }else{
+                    this.platform.setDir('rtl', true)
+                }
+                    this.initRootPage()
+                });
+                languageModal.present();
+            }
+        })
+    }
     protected initRootPage() {
         this.storage.get('my_token').then((val) => {
             this.rootPage = val ? 'TabsPage' : 'LoginPage';

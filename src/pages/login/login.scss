@@ -36,7 +36,7 @@ page-login {
       // background-image: url('../../assets/imgs/bg2.jpg');
       background-image: linear-gradient(to top right, #DA3B27, #EB8D60);
       font-family: 'Montserrat', sans-serif;
-	    direction: rtl;
+	    // direction: rtl;
       .scroll-content {
         padding-bottom: 0 !important;
 
@@ -127,6 +127,9 @@ page-login {
             font-weight: $settings-font-weight-input-field;
             // width: 100% !important;
             margin: 24px 10px 24px 0px;
+            @include ltr() {
+              padding-left: 17px;
+            }
           }
 
           /* Settings input-placeholder
@@ -136,7 +139,12 @@ page-login {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
 
           ::-moz-placeholder {
@@ -144,7 +152,12 @@ page-login {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
 
           :-ms-input-placeholder {
@@ -152,7 +165,12 @@ page-login {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
 
           :-moz-placeholder {
@@ -160,7 +178,12 @@ page-login {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
         }
 

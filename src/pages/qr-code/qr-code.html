@@ -1,7 +1,7 @@
 <ion-content padding>
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
-      <h3>اجعل صديقك يمسح كودك لمتابعة بعضكم</h3>
+      <h3>{{ 'MyQr' | translate }}</h3>
       <div class="test">
         <qrcode [qrdata]="id" [size]="256" [level]="'M'"></qrcode>
      </div>

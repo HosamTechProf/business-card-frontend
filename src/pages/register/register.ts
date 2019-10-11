@@ -4,6 +4,7 @@ import { AuthProvider } from '../../providers/authProvider';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { SERVER_URL } from '../../providers/serverUrl';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -21,7 +22,7 @@ export class RegisterPage {
     desc: string = '';
     socialLink: string = '';
     base64Image: string = '';
-    isPublic;
+    isPublic = true;
     userImage = SERVER_URL + 'img/users/user.svg';
     countries;
     country;
@@ -35,7 +36,7 @@ export class RegisterPage {
         });
         toast.present();
     }
-    constructor(public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+    constructor(public translateService: TranslateService, public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
         this.authProvider.getCountries('codes').subscribe((res) => {
             this.countries = res['countries'];
         })
@@ -66,23 +67,20 @@ export class RegisterPage {
 
     register() {
         if (this.name == "") {
-            this.presentToast('من فضلك اكتب اسمك')
+            this.presentToast(this.translateService.instant("NameError"))
         }
         else if (this.email == "") {
-            this.presentToast('من فضلك اكتب بريدك الالكتروني')
+            this.presentToast(this.translateService.instant("EMAILERROR"))
         } else if (this.mobile == "") {
-            this.presentToast('من فضلك اكتب رقم الجوال')
+            this.presentToast(this.translateService.instant("MobileError"))
         } else if (this.company == "") {
-            this.presentToast('من فضلك اكتب المنشأة او الشركة')
+            this.presentToast(this.translateService.instant("CompanyError"))
         } else if (this.password == "") {
-            this.presentToast('من فضلك اكتب كلمة المرور')
+            this.presentToast(this.translateService.instant("PASSWORDERROR"))
         } else if (this.c_password == "") {
-            this.presentToast('من فضلك اعد كتابة كلمة المرور')
+            this.presentToast(this.translateService.instant("RePasswordError"))
         } else if (this.password != this.c_password) {
-            this.presentToast('كلمتين المرور غير متطابقتين')
-        }
-        else if (this.country == "") {
-            this.presentToast('من فضلك اختار دولتك')
+            this.presentToast(this.translateService.instant("RePasswordError"))
         }
         else {
             let info = {

@@ -5,6 +5,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShareLinkProvider } from '../../providers/shareLink';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class TabsPage {
     token;
     myId = localStorage['user_id'];
 
-    constructor(private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
+    constructor(public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
      }
 
 	scan() {
@@ -72,18 +73,18 @@ export class TabsPage {
 
 	logoutAlert() {
 	  let alert = this.alertCtrl.create({
-	    title: 'تسجيل الخروج',
-	    message: 'انت علي وشك تسجيل الخروج',
+	    title: this.translateService.instant("LOGOUT"),
+	    message: this.translateService.instant("LogoutMessage"),
 	    buttons: [
 	      {
-	        text: 'الغاء',
+	        text: this.translateService.instant("Cancel"),
 	        role: 'cancel',
 	        handler: () => {
 	          console.log('Cancel clicked');
 	        }
 	      },
 	      {
-	        text: 'تسجيل الخروج',
+	        text: this.translateService.instant("LOGOUT"),
 	        handler: () => {
 	          this.logout()
 	        }
@@ -95,18 +96,18 @@ export class TabsPage {
 
 	sharelinkAlert() {
 	  let alert = this.alertCtrl.create({
-	    title: 'مشاركة بطاقتي',
-	    message: '<b>انت علي وشك مشاركة بطاقتك:</b><br>هذا الرابط لا يمكن استخدامه من قبل شخص اخر غير الشخص الذى تشارك الرابط معه',
+	    title: this.translateService.instant("ShareMyCard"),
+	    message: this.translateService.instant("ShareMsg"),
 	    buttons: [
 	      {
-	        text: 'الغاء',
+	        text: this.translateService.instant("Cancel"),
 	        role: 'cancel',
 	        handler: () => {
 	          console.log('Cancel clicked');
 	        }
 	      },
 	      {
-	        text: 'مشاركة',
+	        text: this.translateService.instant("SHARE"),
 	        handler: () => {
 	          this.shareLink()
 	        }

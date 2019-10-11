@@ -10,8 +10,8 @@
 		</button>
   	</div>
 	<div style="float: right">
-		<button ion-button icon-end *ngIf="followed" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">إلغاء المتابعة</button>
-		<button ion-button icon-end *ngIf="!followed" ion-button round color="light" style="font-weight: bold" (click)="follow()">تابع</button>
+		<button ion-button icon-end *ngIf="followed" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">{{ 'UNFOLLOW' | translate }}</button>
+		<button ion-button icon-end *ngIf="!followed" ion-button round color="light" style="font-weight: bold" (click)="follow()">{{ 'FOLLOW' | translate }}</button>
 	</div>
   </ion-navbar>
 </ion-header>

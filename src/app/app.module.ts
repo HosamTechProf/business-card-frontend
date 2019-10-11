@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../providers/authProvider'
 import { FriendsProvider } from '../providers/friendsProvider'
 import { FavouritesProvider } from '../providers/favouritesProvider'
@@ -30,6 +30,14 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { Contacts } from '@ionic-native/contacts';
 import { ContactProvider } from '../providers/contact';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +51,14 @@ import { ContactProvider } from '../providers/contact';
     QrCodePageModule,
     FriendCardPageModule,
     QRCodeModule,
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

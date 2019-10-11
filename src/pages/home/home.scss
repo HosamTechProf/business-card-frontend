@@ -14,12 +14,12 @@ page-home {
  ion-searchbar{
     .searchbar-input-container{
         .searchbar-input{
-            border-radius: 30px;
+            border-radius: 30px !important;
         }
     }
  }
 .searchbar .searchbar-search-icon {
-    background-image: url("../../assets/icons/search.svg");
+    background-image: url("../../assets/icons/search.svg") !important;
 }
 .searchbar-md .searchbar-input {
     -webkit-box-shadow: 0px 7px 30px -5px rgba(0,0,0,0.6);
@@ -86,7 +86,7 @@ page-home {
         box-shadow: 0px 4px 16px -5px rgba(0,0,0,0.3);
     }
     .card{
-        border-radius: 6px;
+        border-radius: 6px !important;
         font-weight: bold;
         text-align: center
     }

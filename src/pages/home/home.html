@@ -6,15 +6,20 @@
             <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="logout()">
               <ion-icon name="custom-logout"></ion-icon>
             </button>
-          </ion-buttons>
-        <ion-buttons  style="float: left">
-            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="shareLink()">
-              <ion-icon name="share"></ion-icon>
-            </button>
           </ion-buttons> -->
+          <ion-buttons  style="float: left" *ngIf="platform.isRTL">
+            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="changeLanguage()">
+              EN
+            </button>
+          </ion-buttons>
+          <ion-buttons  style="float: left" *ngIf="!platform.isRTL">
+            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="changeLanguage()">
+              AR
+            </button>
+          </ion-buttons>
     </ion-navbar>
     <div padding>
-      <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="بحث"></ion-searchbar>
+      <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="{{ 'SEARCH' | translate }}"></ion-searchbar>
     </div>
 </div>
 </ion-header>
@@ -38,7 +43,7 @@
           <ion-card-content (click)="openMyCards()" padding>
             <ion-icon name="card" style="font-size: 35px"></ion-icon>
             <!-- <ion-icon name="card" style="font-size: 30px"></ion-icon><br> -->
-            <p>بطاقاتي</p>
+            <p>{{ 'MYCARDS' | translate }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -48,7 +53,7 @@
         <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60);color:white" (click)="openFavourites()">
           <ion-card-content>
             <ion-icon name="custom-like" style="font-size: 30px;"></ion-icon><br>
-            المفضلة
+            {{ 'FAVOURITES' | translate }}
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -63,7 +68,7 @@
     </ion-row>
   </ion-grid>
 <div style="text-align: center;font-weight: bold">
-  <span>جهات الاتصال المقترحة</span>
+  <span>{{ 'CONTACTS' | translate }}</span>
 </div>
 
 <ion-scroll scrollX="true">

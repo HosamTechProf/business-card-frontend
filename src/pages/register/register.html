@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>التسجيل</ion-title>
+    <ion-title>{{ 'REGISTRATION' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -29,12 +29,12 @@
             </div>
             <div input-field>
             <ion-item no-padding>
-                <ion-input type="text" placeholder="الإسم*" [(ngModel)]="name"></ion-input>
+                <ion-input type="text" placeholder="{{ 'Name' | translate }}*" [(ngModel)]="name"></ion-input>
             </ion-item>
           </div>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="البريد الإلكتروني*" [(ngModel)]="email"></ion-input>
+                  <ion-input type="text" placeholder="{{ 'EMAIL' | translate }}*" [(ngModel)]="email"></ion-input>
               </ion-item>
             </div>
             <div input-field>
@@ -44,14 +44,14 @@
             <ion-col col-8>
               <div input-field>
                 <ion-item no-padding>
-                    <ion-input type="text" placeholder="رقم الجوال*" [(ngModel)]="mobile"></ion-input>
+                    <ion-input type="text" placeholder="{{ 'Mobile' | translate }}*" [(ngModel)]="mobile"></ion-input>
                 </ion-item>
               </div>
             </ion-col>
             <ion-col  style="max-width: 33.33%">
               <div input-field>
                 <ion-item no-padding>
-                  <ion-label color="dark" stacked>الكود</ion-label>
+                  <ion-label color="dark" stacked>.</ion-label>
                   <ion-select [(ngModel)]="countryDialCode" [selectedText]="countryDialCode">
                     <ion-option *ngFor="let country of countries" (ionSelect)="getCountryCode(country.code)" value="{{country.dial_code}}">{{country.name}} - {{country.dial_code}}</ion-option>
                   </ion-select>
@@ -65,14 +65,14 @@
             <ion-col col-8>
               <div input-field>
                 <ion-item no-padding>
-                    <ion-input type="text" placeholder="رقم الهاتف" [(ngModel)]="phone"></ion-input>
+                    <ion-input type="text" placeholder="{{ 'Phone' | translate }}" [(ngModel)]="phone"></ion-input>
                 </ion-item>
               </div>
             </ion-col>
             <ion-col style="max-width: 33.33%">
               <div input-field>
                 <ion-item no-padding>
-                  <ion-label color="dark" stacked>الكود</ion-label>
+                  <ion-label color="dark" stacked>.</ion-label>
                   <ion-select [(ngModel)]="countryRegionCode" [selectedText]="countryRegionCode">
                     <ion-option *ngFor="let country of countries" value="{{country.region_code}}">{{country.name}} - {{country.region_code}}</ion-option>
                   </ion-select>
@@ -83,43 +83,43 @@
             </ion-grid>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="المنشأة او الشركة*" [(ngModel)]="company"></ion-input>
+                  <ion-input type="text" placeholder="{{ 'Company' | translate }}*" [(ngModel)]="company"></ion-input>
               </ion-item>
             </div>
             <div input-field>
               <ion-item no-padding>
-                  <ion-input type="text" placeholder="لينك تواصل اجتماعي" [(ngModel)]="socialLink"></ion-input>
+                  <ion-input type="text" placeholder="{{ 'SocialLink' | translate }}" [(ngModel)]="socialLink"></ion-input>
               </ion-item>
             </div>
             <div input-field>
               <ion-item no-padding>
-                  <ion-textarea type="text" rows="6" placeholder="نبذة تعريفية" [(ngModel)]="desc"></ion-textarea>
+                  <ion-textarea type="text" rows="6" placeholder="{{ 'AboutYou' | translate }}" [(ngModel)]="desc"></ion-textarea>
                <!-- <ion-label no-margin *ngIf="username == ''">Please Write Your Username</ion-label> -->
               </ion-item>
             </div>
             <div input-field>
               <!-- Input-field-password -->
               <ion-item no-padding>
-                <ion-input type="password" placeholder="كلمة المرور*" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" placeholder="{{ 'PASSWORD' | translate }}*" [(ngModel)]="password"></ion-input>
                 <!-- <ion-label no-margin *ngIf="password == ''">Please Write Your Password</ion-label> -->
               </ion-item>
             </div>
             <div input-field>
               <!-- Input-field-password -->
               <ion-item no-padding>
-                  <ion-input type="password" placeholder="تأكيد كلمة المرور*" [(ngModel)]="c_password"></ion-input>
+                  <ion-input type="password" placeholder="{{ 'RePassword' | translate }}*" [(ngModel)]="c_password"></ion-input>
                   <!-- <ion-label no-margin *ngIf="c_password == ''">Please Write Password Confirm</ion-label> -->
                 </ion-item>
             </div>
             <div input-field>
                 <ion-item style="padding:15px">
-                <span style="float: right;font-size: 12px">حالة البطاقة*</span><br>
+                <span style="font-size: 12px">{{ 'CardStatus' | translate }}*</span><br>
                 <input class="toggle toggle__light" type="checkbox" [(ngModel)]="isPublic" style="float: left">
                 </ion-item>
               </div>
             <!-- Login button -->
             <ion-col col-12 no-padding>
-              <button no-margin ion-button full text-uppercase color="light" (click)="register()">تسجيل</button>
+              <button no-margin ion-button full text-uppercase color="light" (click)="register()">{{ 'Register' | translate }}</button>
             </ion-col>
             <!-- Description -->
             <div description text-center>

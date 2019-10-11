@@ -44,7 +44,4 @@ export class MyCardDesignedPage {
         this.view.dismiss();
         this.navCtrl.push("MyCardPage");
     }
-    alert(){
-        alert('هذه الخاصية غير موجودة في عرض شكل بطاقتك')
-    }
 }

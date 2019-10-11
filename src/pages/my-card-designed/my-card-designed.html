@@ -3,32 +3,16 @@
   <ion-navbar color="light">
   	<div style="float: right">
 		<button class="editButton" ion-button icon-start color="dark" (click)="edit()">
-		  <ion-icon name="create"></ion-icon>تعديل بطاقتي
+		  <ion-icon name="create"></ion-icon>{{'EditMyCard' | translate}}
 		</button>
   	</div>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
 	<div class='business-card'>
 	  <div class='bc__logo'>
 	    <h2>{{name}}</h2><br>
-	   	<a (click)="alert()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
-		  <ion-icon name="logo-whatsapp"></ion-icon>
-		</button>
-		</a>
-		<a (click)="alert()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
-		  <ion-icon name="chatboxes"></ion-icon>
-		</button>
-		</a>
-		<a (click)="alert()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
-		  <ion-icon name="call"></ion-icon>
-		</button>
-	</a>
 	  </div>
 	  <div class='bc__tagline'>
 	    <p>{{mobile}}</p>
@@ -42,41 +26,4 @@
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">
 	  <ion-icon name="custom-arrow-down"></ion-icon>
 	</button>
-
-<!-- <div class="userCard">
-	  	<span class="title">الاسم</span><br>
-	    {{name}}<br><hr>
-	  	<span class="title">البريد الالكتروني</span><br>
-	    {{email}}<br><hr>
-	  	<span class="title">رقم الجوال</span><br>
-	    {{mobile}}<br>
-		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
-		  <ion-icon name="logo-whatsapp"></ion-icon>
-		</button>
-		</a>
-		<a (click)="sendSMS()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
-		  <ion-icon name="chatboxes"></ion-icon>
-		</button>
-		</a>
-		<a href="tel:{{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
-		  <ion-icon name="call"></ion-icon>
-		</button>
-	</a><br><hr>
-	  	<span class="title">رقم الهاتف</span><br>
-	    {{phone}}<br><hr>
-	  	<span class="title">المنشأة</span><br>
-	    {{company}}<br><hr>
-	  	<span class="title">لينك تواصل اجتماعي</span><br>
-	    <a class="socialLink" target="_blank" href="{{socialLink}}">{{socialLink}}</a><br><hr>
-	  	<span class="title">نبذة تعريفية</span><br>
-	    {{desc}}<br><hr>
-    <ion-row justify-content-center align-items-center style=" flex-direction: column">
-		<button class="arrow" ion-button icon-only color="dark" padding (click)="closeModal()">
-		  <ion-icon name="custom-arrow-down"></ion-icon>
-		</button>
-    </ion-row>
-</div> -->
 </ion-content>

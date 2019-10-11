@@ -37,12 +37,18 @@ input.toggle {
     border-radius: 50%;
   }
   &:after {
-    content: "خاصة";
+    @include ltr() {
+      font-size: 15px;
+      content: "Private";
+    }
+    @include rtl() {
+      font-size: 20px;
+      content: "خاصة";
+    }
     position: absolute;
     top: 50%;
     left: calc(0% + 24px + 16px);
     transform: translate3d(0,-50%,0);
-    font-size: 20px;
   }
   &:checked {
     border-bottom-color: #0facf3;
@@ -52,7 +58,12 @@ input.toggle {
       border-radius: 50%;
     }
     &:after {
+    @include ltr() {
+      content: "Public";
+    }
+    @include rtl() {
       content: "عامة";
+    }
       left: calc(0% + 16px);
     }
   }
@@ -106,4 +117,12 @@ input.toggle {
     background-color: rgba(23, 35, 34, 0.75);
     border-radius: 5px 5px 5px 5px;
 }
+  .backButton{
+    @include ltr() {
+      float: left;
+    }
+    @include rtl() {
+      float: right;
+    }
+  }
 }

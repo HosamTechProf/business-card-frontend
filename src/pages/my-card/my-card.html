@@ -10,12 +10,12 @@
               <ion-icon name="checkmark"></ion-icon>
             </button>
           </ion-buttons>
-        <ion-buttons style="float: right">
+        <ion-buttons class="backButton">
             <button ion-button icon-only style="font-weight: bold;color:#222;border-radius:30px;padding:7px;" (click)="back()">
               <ion-icon name="arrow-back"></ion-icon>
             </button>
           </ion-buttons>
-    <ion-title text-center><ion-icon name="custom-card" style="margin-bottom:-5px"></ion-icon> بطاقتي</ion-title>
+    <ion-title text-center><ion-icon name="custom-card" style="margin-bottom:-5px"></ion-icon> {{ 'MYCARD' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -30,49 +30,49 @@
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="الاسم" value="{{name}}" [(ngModel)]="name"></ion-input>
+    <ion-input type="text" placeholder="{{ 'Name' | translate }}" value="{{name}}" [(ngModel)]="name"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="البريد الالكتروني" value="{{email}}" [(ngModel)]="email"></ion-input>
+    <ion-input type="text" placeholder="{{ 'EMAIL' | translate }}" value="{{email}}" [(ngModel)]="email"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="رقم الهاتف" value="{{phone}}" [(ngModel)]="phone"></ion-input>
+    <ion-input type="text" placeholder="{{ 'Phone' | translate }}" value="{{phone}}" [(ngModel)]="phone"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="رقم الجوال" value="{{mobile}}" [(ngModel)]="mobile"></ion-input>
+    <ion-input type="text" placeholder="{{ 'Mobile' | translate }}" value="{{mobile}}" [(ngModel)]="mobile"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="الشركة او النشأة" value="{{company}}" [(ngModel)]="company"></ion-input>
+    <ion-input type="text" placeholder="{{ 'Company' | translate }}" value="{{company}}" [(ngModel)]="company"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="لينك تواصل اجتماعي" value="{{socialLink}}" [(ngModel)]="socialLink"></ion-input>
+    <ion-input type="text" placeholder="{{ 'SocialLink' | translate }}" value="{{socialLink}}" [(ngModel)]="socialLink"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>
 <ion-card>
   <ion-card-content>
   <ion-item>
-    <ion-input type="text" placeholder="نبذة تعريفية" value="{{desc}}" [(ngModel)]="desc"></ion-input>
+    <ion-input type="text" placeholder="{{ 'AboutYou' | translate }}" value="{{desc}}" [(ngModel)]="desc"></ion-input>
   </ion-item>
   </ion-card-content>
 </ion-card>

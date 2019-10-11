@@ -56,7 +56,7 @@ page-register {
       background-attachment: fixed; /*-- here should be fixed --*/
       font-family: 'Montserrat', sans-serif;
       position: relative;
-	    direction: rtl;
+      // direction: rtl;
       .scroll-content {
         padding-bottom: 0 !important;
 
@@ -137,6 +137,9 @@ page-register {
             font-weight: $settings-font-weight-input-field;
             // width: 100% !important;
             margin: 24px 10px 24px 0px;
+            @include ltr() {
+              padding-left: 17px;
+            }
           }
 
           /* Settings input-placeholder
@@ -146,7 +149,13 @@ page-register {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
+
           }
 
           ::-moz-placeholder {
@@ -154,7 +163,12 @@ page-register {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
 
           :-ms-input-placeholder {
@@ -162,7 +176,12 @@ page-register {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
 
           :-moz-placeholder {
@@ -170,7 +189,12 @@ page-register {
             color: $settings-text-input-placeholder !important;
             font-size: $settings-font-size-input-placeholder !important;
             font-weight: $settings-font-weight-input-placeholder !important;
-            direction: rtl;
+            @include ltr() {
+              direction: ltr;
+            }
+            @include rtl() {
+              direction: rtl;
+            }
           }
         }
 
@@ -313,12 +337,18 @@ input.toggle {
     border-radius: 50%;
   }
   &:after {
-    content: "خاصة";
+    @include ltr() {
+      font-size: 15px;
+      content: "Private";
+    }
+    @include rtl() {
+      font-size: 20px;
+      content: "خاصة";
+    }
     position: absolute;
     top: 50%;
     left: calc(0% + 24px + 16px);
     transform: translate3d(0,-50%,0);
-    font-size: 20px;
   }
   &:checked {
     border-bottom-color: #0facf3;
@@ -328,7 +358,12 @@ input.toggle {
       border-radius: 50%;
     }
     &:after {
+    @include ltr() {
+      content: "Public";
+    }
+    @include rtl() {
       content: "عامة";
+    }
       left: calc(0% + 16px);
     }
   }
