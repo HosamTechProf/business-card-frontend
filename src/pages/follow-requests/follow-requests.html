@@ -1,0 +1,18 @@
+<ion-header no-border>
+  <ion-navbar color="light">
+    <ion-title>{{ 'Follow-upRequests' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-list-header *ngFor="let friend of friends">
+    <img src="{{friendImage}}/{{friend.image}}" class="userPhoto" imageViewer>
+    <span class="test">{{friend.name}}</span>
+	<button ion-button outline item-end icon-start (click)="acceptFollow(friend.id, friend.name)">
+	  <ion-icon name="checkmark"></ion-icon>
+	  {{ 'AcceptRequest' | translate }}
+	</button>
+  </ion-list-header>
+</ion-list>
+</ion-content>

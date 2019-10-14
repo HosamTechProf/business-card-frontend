@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: 'login.html',
 })
 export class LoginPage {
-    email: string;
+    mobile: string;
     password: string;
     presentToast(message) {
         const toast = this.toastCtrl.create({
@@ -29,9 +29,9 @@ export class LoginPage {
         console.log('ionViewDidLoad LoginPage');
     }
     login() {
-        if (this.email != null && this.password != null) {
+        if (this.mobile != null && this.password != null) {
             let info = {
-                email: this.email,
+                mobile: this.mobile,
                 password: this.password,
             };
             let loading = this.loadingCtrl.create({

@@ -33,11 +33,6 @@
             </ion-item>
           </div>
             <div input-field>
-              <ion-item no-padding>
-                  <ion-input type="text" placeholder="{{ 'EMAIL' | translate }}*" [(ngModel)]="email"></ion-input>
-              </ion-item>
-            </div>
-            <div input-field>
             </div>
             <ion-grid no-padding>
             <ion-row>
@@ -60,43 +55,6 @@
             </ion-col>
             </ion-row>
             </ion-grid>
-            <ion-grid no-padding>
-            <ion-row>
-            <ion-col col-8>
-              <div input-field>
-                <ion-item no-padding>
-                    <ion-input type="text" placeholder="{{ 'Phone' | translate }}" [(ngModel)]="phone"></ion-input>
-                </ion-item>
-              </div>
-            </ion-col>
-            <ion-col style="max-width: 33.33%">
-              <div input-field>
-                <ion-item no-padding>
-                  <ion-label color="dark" stacked>.</ion-label>
-                  <ion-select [(ngModel)]="countryRegionCode" [selectedText]="countryRegionCode">
-                    <ion-option *ngFor="let country of countries" value="{{country.region_code}}">{{country.name}} - {{country.region_code}}</ion-option>
-                  </ion-select>
-                </ion-item>
-              </div>
-            </ion-col>
-            </ion-row>
-            </ion-grid>
-            <div input-field>
-              <ion-item no-padding>
-                  <ion-input type="text" placeholder="{{ 'Company' | translate }}*" [(ngModel)]="company"></ion-input>
-              </ion-item>
-            </div>
-            <div input-field>
-              <ion-item no-padding>
-                  <ion-input type="text" placeholder="{{ 'SocialLink' | translate }}" [(ngModel)]="socialLink"></ion-input>
-              </ion-item>
-            </div>
-            <div input-field>
-              <ion-item no-padding>
-                  <ion-textarea type="text" rows="6" placeholder="{{ 'AboutYou' | translate }}" [(ngModel)]="desc"></ion-textarea>
-               <!-- <ion-label no-margin *ngIf="username == ''">Please Write Your Username</ion-label> -->
-              </ion-item>
-            </div>
             <div input-field>
               <!-- Input-field-password -->
               <ion-item no-padding>

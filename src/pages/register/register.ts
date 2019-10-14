@@ -13,21 +13,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RegisterPage {
     name: string = '';
-    email: string = '';
     password: string = '';
     c_password: string = '';
-    phone: string;
     mobile: string = '';
-    company: string = '';
-    desc: string = '';
-    socialLink: string = '';
     base64Image: string = '';
     isPublic = true;
     userImage = SERVER_URL + 'img/users/user.svg';
     countries;
     country;
     countryCode;
-    countryRegionCode = "142";
     countryDialCode = "+966";
     presentToast(message) {
         const toast = this.toastCtrl.create({
@@ -69,13 +63,9 @@ export class RegisterPage {
         if (this.name == "") {
             this.presentToast(this.translateService.instant("NameError"))
         }
-        else if (this.email == "") {
-            this.presentToast(this.translateService.instant("EMAILERROR"))
-        } else if (this.mobile == "") {
+        else if (this.mobile == "") {
             this.presentToast(this.translateService.instant("MobileError"))
-        } else if (this.company == "") {
-            this.presentToast(this.translateService.instant("CompanyError"))
-        } else if (this.password == "") {
+        }else if (this.password == "") {
             this.presentToast(this.translateService.instant("PASSWORDERROR"))
         } else if (this.c_password == "") {
             this.presentToast(this.translateService.instant("RePasswordError"))
@@ -84,15 +74,10 @@ export class RegisterPage {
         }
         else {
             let info = {
-                email: this.email,
                 password: this.password,
                 c_password: this.c_password,
                 mobile: this.mobile,
                 name: this.name,
-                company: this.company,
-                desc: this.desc,
-                phone: this.countryRegionCode + this.phone,
-                socialLink: this.socialLink,
                 image: this.base64Image,
                 isPublic: this.isPublic,
                 countryCode: this.countryCode

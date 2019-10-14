@@ -53,8 +53,13 @@ export class FriendCardPage {
             }
         })
         this.friendsProvider.isFriend('api/auth/isfriend/' + localStorage['user_id'] + '/' + this.id).subscribe((data) => {
-            if (data != 0) {
-                this.followed = true;
+            console.log(data['status'])
+            if (data['status'] == 'true') {
+                this.followed = 'true';
+            }else if (data['status'] == 'false'){
+                this.followed = 'false';
+            }else{
+                this.followed = 'notFriends';
             }
         })
     }
@@ -68,10 +73,10 @@ export class FriendCardPage {
                 this.view.dismiss(data);
             })
         })
-        // let data = { 'foo': 'bar' };
     }
+
     follow() {
-        this.followed = true;
+        this.followed = 'false';
         let info = {
             user1_id: localStorage['user_id'],
             user2_id: this.id
@@ -79,7 +84,7 @@ export class FriendCardPage {
         this.friendsProvider.addFriend(info, 'api/auth/addFriend').subscribe()
     }
     unfollow() {
-        this.followed = false;
+        this.followed = 'notFriends';
         let info = {
             user1_id: localStorage['user_id'],
             user2_id: this.id

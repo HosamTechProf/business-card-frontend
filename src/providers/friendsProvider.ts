@@ -36,6 +36,21 @@ export class FriendsProvider {
         // return this.cache.loadFromObservable(this.server + file, friend)
     }
 
+    acceptFollowRequest(file) {
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, friend)
+    }
+
+    getFollowRequests(file) {
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, friend)
+    }
+
+    getFollowRequestsCount(file) {
+        return this.http.get(this.server + file).map(res => res)
+        // return this.cache.loadFromObservable(this.server + file, friend)
+    }
+
     search(file) {
         return this.http.get(this.server + file).map(res => res)
         // return this.cache.loadFromObservable(this.server + file, friend)

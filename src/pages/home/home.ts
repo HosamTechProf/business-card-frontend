@@ -41,6 +41,8 @@ export class HomePage {
     public adsStatus;
     spinner;
     searchSpinner;
+    followRequestsCount;
+    followRequestsCountVisible;
     constructor(public loadingCtrl: LoadingController, public translateService: TranslateService, private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.spinner = true;
         this.searchSpinner = true;
@@ -82,8 +84,17 @@ export class HomePage {
                    this.spinner = false;
                })
         });
+
     }
     ionViewDidEnter() {
+        this.friendsProvider.getFollowRequestsCount('api/auth/getfollowrequestscount').subscribe((res)=>{
+            this.followRequestsCount = res;
+            if (res == 0) {
+                this.followRequestsCountVisible = false;
+            }else{
+                this.followRequestsCountVisible = true;
+            }
+        })
         this.advertisementProvider.getAdvertisementsCount('api/auth/getadscount').subscribe((data) => {
             this.adsCount = data;
             if (this.adsCount > 0) {
@@ -214,5 +225,9 @@ export class HomePage {
             this.translateService.use('ar')
             this.storage.set('language', 'ar')
         }
+    }
+
+    followRequests(){
+        this.navCtrl.push("FollowRequestsPage");
     }
 }

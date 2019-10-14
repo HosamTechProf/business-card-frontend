@@ -203,4 +203,30 @@ page-home {
     ion-spinner {
         padding-top: 30%
     }
+
+    #notification-button {
+            position: relative;
+            width: 42px;
+            top:1px;
+            right: 1px;
+            overflow: visible!important;
+        }
+
+
+    #notifications-badge {
+            background-color: red;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            border-radius: 100%;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 10px;
+        }
+        .badgeNumber{
+            top: 32%;
+            right: 37%;
+            position: absolute;
+        }
+
 }

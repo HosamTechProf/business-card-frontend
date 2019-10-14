@@ -40,5 +40,10 @@
 	"LogoutMessage" : "You are about to log out",
 	"ShareMyCard" : "Share My Card",
 	"ShareMsg" : "<b>You are about to share your card:</b><br>This link cannot be used by someone other than the person you shared the link with",
-	"PleaseWait" : "Please wait..."
+	"PleaseWait" : "Please wait...",
+	"Follow-upRequests" : "Follow-up Requests",
+	"AcceptRequest" : "Accept Request",
+	"AcceptRequestMsg" : "You are about to accept a follow-up request ",
+	"Accept" : "Accept",
+	"AcceptAndFollowBack" : "Accept And Follow Back"
 }

@@ -2,11 +2,11 @@
 
   <div class="myDiv animated pulse">
     <ion-navbar>
-<!--         <ion-buttons style="float: right">
-            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="logout()">
-              <ion-icon name="custom-logout"></ion-icon>
+        <ion-buttons style="float: right">
+            <button id="notification-button" ion-button icon-only clear class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="followRequests()">
+              <ion-icon name="person-add"><ion-badge *ngIf="followRequestsCountVisible" id="notifications-badge" color="danger"><span class="badgeNumber">{{followRequestsCount}}</span></ion-badge></ion-icon>
             </button>
-          </ion-buttons> -->
+          </ion-buttons>
           <ion-buttons  style="float: left" *ngIf="platform.isRTL">
             <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="changeLanguage()">
               EN
