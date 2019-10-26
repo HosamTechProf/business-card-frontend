@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { FriendsProvider } from '../../providers/friendsProvider';
 import { FavouritesProvider } from '../../providers/favouritesProvider';
 import { SMS } from '@ionic-native/sms';
+import { SERVER_URL } from '../../providers/serverUrl';
 
 /**
  * Generated class for the FriendCardPage page.
@@ -29,6 +30,8 @@ export class FriendCardPage {
     friends;
     favourites;
     socialLink;
+    image;
+    friendImage;
     constructor(private sms: SMS, public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.id = this.navParams.get('id');
         let info = {
@@ -42,6 +45,8 @@ export class FriendCardPage {
             this.desc = data['desc']
             this.company = data['company']
             this.socialLink = data['socialLink']
+            this.image = data['image']
+            this.friendImage = SERVER_URL + 'img/users/';
         })
 
         this.favouritesProvider.isFavorited('api/auth/isfavorited/' + localStorage['user_id'] + '/' + this.id).subscribe((data) => {

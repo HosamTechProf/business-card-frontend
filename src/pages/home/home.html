@@ -26,6 +26,26 @@
 
 <ion-content>
 <div [hidden]="!name" padding>
+  <div align="center">
+    <button ion-button *ngIf="searchType==='name'" round color="dark" (click)="changeSearchType('name')">
+      {{ 'Name' | translate }}
+    </button>
+    <button ion-button *ngIf="searchType==='email' || searchType==='mobile'" outline round color="dark" (click)="changeSearchType('name')">
+      {{ 'Name' | translate }}
+    </button>
+    <button ion-button *ngIf="searchType==='mobile'" round color="dark" (click)="changeSearchType('mobile')">
+      {{ 'Mobile' | translate }}
+    </button>
+    <button ion-button *ngIf="searchType==='email' || searchType==='name'" outline round color="dark" (click)="changeSearchType('mobile')">
+      {{ 'Mobile' | translate }}
+    </button>
+    <button ion-button *ngIf="searchType==='email'" round color="dark" (click)="changeSearchType('email')">
+      {{ 'EMAIL' | translate }}
+    </button>
+    <button ion-button *ngIf="searchType==='mobile' || searchType==='name'" outline round color="dark" (click)="changeSearchType('email')">
+      {{ 'EMAIL' | translate }}
+    </button>
+  </div>
   <div align="center" [hidden]="!searchSpinner">
     <ion-spinner name="crescent"></ion-spinner>
   </div>

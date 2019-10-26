@@ -66,6 +66,15 @@ ion-icon {
   &[class*="custom-camera"] {
     mask-image: url(../assets/icons/image-add-button.svg);
   }
+  &[class*="custom-phone"] {
+    mask-image: url(../assets/icons/old-typical-phone.svg);
+  }
+  &[class*="custom-company"] {
+    mask-image: url(../assets/icons/company.svg);
+  }
+  &[class*="custom-hastag"] {
+    mask-image: url(../assets/icons/hastag.svg);
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');

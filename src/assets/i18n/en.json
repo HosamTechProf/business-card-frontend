@@ -39,11 +39,21 @@
 	"Cancel" : "Cancel",
 	"LogoutMessage" : "You are about to log out",
 	"ShareMyCard" : "Share My Card",
+	"ShareApp" : "Share The Application",
 	"ShareMsg" : "<b>You are about to share your card:</b><br>This link cannot be used by someone other than the person you shared the link with",
+	"ShareAppMsg" : "<b>You are about to share business card application",
 	"PleaseWait" : "Please wait...",
 	"Follow-upRequests" : "Follow-up Requests",
 	"AcceptRequest" : "Accept Request",
 	"AcceptRequestMsg" : "You are about to accept a follow-up request ",
 	"Accept" : "Accept",
-	"AcceptAndFollowBack" : "Accept And Follow Back"
+	"AcceptAndFollowBack" : "Accept And Follow Back",
+	"Requested" : "Requested",
+	"DownloadCode" : "Download Code",
+	"PhotoSaved" : "Image saved successfully",
+	"Ok" : "Ok",
+	"addFriendFromGalleryMsg" : "Card successfully added",
+	"ChooseScanMethod" : "Choose Scan Method",
+	"AddFromGallery" : "Add From Gallery",
+	"ScanQrCode" : "Scan QR Code"
 }

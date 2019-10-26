@@ -16,6 +16,16 @@ export class FriendsProvider {
             .map(res => res);
     }
 
+    addFriendFromGalleryBackend(info, file) {
+        return this.http.post(this.server + file, info)
+            .map(res => res);
+    }
+
+    addFriendFromGallery(file) {
+        return this.http.get(this.server + file)
+            .map(res => res);
+    }
+
     deleteFriend(info, file) {
         return this.http.post(this.server + file, info)
             .map(res => res);

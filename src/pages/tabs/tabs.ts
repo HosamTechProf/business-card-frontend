@@ -6,6 +6,10 @@ import { ShareLinkProvider } from '../../providers/shareLink';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { AlertController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { HttpClient } from '@angular/common/http';
+import { FriendsProvider } from '../../providers/friendsProvider';
 
 @IonicPage()
 @Component({
@@ -16,8 +20,10 @@ export class TabsPage {
     tab2Root;
     token;
     myId = localStorage['user_id'];
+	base64Image;
+	friendId;
 
-    constructor(public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
+    constructor(private friendsProvider: FriendsProvider, private http: HttpClient, private camera: Camera, private toastCtrl: ToastController, public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
      }
 
 	scan() {
@@ -43,32 +49,6 @@ export class TabsPage {
         this.storage.clear();
         let newRootNav = <NavController>this.app.getRootNavById('n4');
         newRootNav.push("LoginPage")
-    }
-    shareLink(message='My Business Card Link: ', subject=null, file=null){
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        const lengthOfCode = 15;
-        this.token = this.makeRandom(lengthOfCode, possible);
-        let info = {
-            'user_id' : this.myId,
-            'token' : this.token
-        }
-        this.shareLinkProvider.share('api/auth/share', info).subscribe((res)=>{
-            this.socialSharing.share(message, subject, file, SERVER_URL + 'user/' + this.myId + '/' + res['token'])
-        })
-    }
-
-    makeRandom(lengthOfCode: number, possible: string) {
-      let text = "";
-      for (let i = 0; i < lengthOfCode; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-        return text;
-    }
-    generateToken(){
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        const lengthOfCode = 15;
-        this.token = this.makeRandom(lengthOfCode, possible);
-        console.log(this.token)
     }
 
 	logoutAlert() {
@@ -96,8 +76,8 @@ export class TabsPage {
 
 	sharelinkAlert() {
 	  let alert = this.alertCtrl.create({
-	    title: this.translateService.instant("ShareMyCard"),
-	    message: this.translateService.instant("ShareMsg"),
+	    title: this.translateService.instant("ShareApp"),
+	    message: this.translateService.instant("ShareAppMsg"),
 	    buttons: [
 	      {
 	        text: this.translateService.instant("Cancel"),
@@ -109,11 +89,83 @@ export class TabsPage {
 	      {
 	        text: this.translateService.instant("SHARE"),
 	        handler: () => {
-	          this.shareLink()
+
 	        }
 	      }
 	    ]
 	  });
 	  alert.present();
 	}
+
+	scanAlert(){
+	  let alert = this.alertCtrl.create({
+	    title: this.translateService.instant("ChooseScanMethod"),
+	    buttons: [
+	      {
+	        text: this.translateService.instant("AddFromGallery"),
+	        handler: () => {
+	          this.uploadImage()
+	        }
+	      },
+	      {
+	        text: this.translateService.instant("ScanQrCode"),
+	        handler: () => {
+	        	this.scan()
+	        }
+	      }
+	    ]
+	  });
+	  alert.present();
+	}
+
+    uploadImage(){
+        const options: CameraOptions = {
+            quality: 90,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            targetHeight: 500,
+            targetWidth: 500
+        }
+
+        this.camera.getPicture(options).then((imageData) => {
+            this.base64Image = 'data:image/jpeg;base64,' + imageData;
+            this.addFriendFromGallery()
+        }, (err) => {
+            console.log(err)
+        });
+    }
+
+    presentToast(message) {
+      let toast = this.toastCtrl.create({
+        message: message,
+        duration: 2000,
+        position: 'bottom'
+      });
+      toast.present();
+    }
+
+    addFriendFromGallery(){
+        let info = {
+            image: this.base64Image
+        }
+        this.friendsProvider.addFriendFromGalleryBackend(info, 'api/auth/addFriendFromGallery').subscribe((res)=>{
+            this.http.get('http://api.qrserver.com/v1/read-qr-code/?fileurl=' + encodeURIComponent(SERVER_URL + 'img/users/' + res['photo'])).subscribe((data)=>{
+                if (data["0"].symbol["0"].data == null) {
+                    this.presentToast(data["0"].symbol["0"].error)
+                }else{
+                    this.friendId = data["0"].symbol["0"].data;
+                    let info = {
+                        user1_id: localStorage['user_id'],
+                        user2_id: this.friendId
+                    }
+                    this.friendsProvider.addFriend(info, 'api/auth/addFriend').subscribe(()=>{
+                        this.presentToast(this.translateService.instant('addFriendFromGalleryMsg'))
+                    })
+                }
+            })
+        })
+    }
 }

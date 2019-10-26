@@ -39,11 +39,21 @@
 	"Cancel" : "إلغاء",
 	"LogoutMessage" : "انت علي وشك تسجيل الخروج",
 	"ShareMyCard" : "مشاركة بطاقتي",
+	"ShareApp" : "مشاركة التطبيق",
 	"ShareMsg" : "<b>انت علي وشك مشاركة بطاقتك:</b><br>هذا الرابط لا يمكن استخدامه من قبل شخص اخر غير الشخص الذى تشارك الرابط معه",
+	"ShareAppMsg" : "انت علي وشك مشاركة التطبيق",
 	"PleaseWait" : "برجاء الانتظار...",
 	"Follow-upRequests" : "طلبات المتابعة",
 	"AcceptRequest" : "قبول الطلب",
 	"AcceptRequestMsg" : "انت علي وشك قبول طلب متابعة ",
 	"Accept" : "قبول",
-	"AcceptAndFollowBack" : "قبول ورد المتابعة"
+	"AcceptAndFollowBack" : "قبول ورد المتابعة",
+	"Requested" : "تم الطلب",
+	"DownloadCode" : "تحميل الكود",
+	"PhotoSaved" : "تم تحميل الصورة بنجاح",
+	"Ok" : "تم",
+	"addFriendFromGalleryMsg" : "تم اضافة البطاقة بنجاح",
+	"ChooseScanMethod" : "اختار طريقة الاضافة",
+	"AddFromGallery" : "اضافة من الصور",
+	"ScanQrCode" : "مسح الكود"
 }

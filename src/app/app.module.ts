@@ -33,6 +33,9 @@ import { ContactProvider } from '../providers/contact';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,7 +86,10 @@ export function createTranslateLoader(http: HttpClient) {
     Push,
     NotificationProvider,
     Contacts,
-    ContactProvider
+    ContactProvider,
+    FileTransfer,
+    File,
+    PhotoLibrary
   ]
 })
 export class AppModule { }

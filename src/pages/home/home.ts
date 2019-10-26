@@ -43,6 +43,7 @@ export class HomePage {
     searchSpinner;
     followRequestsCount;
     followRequestsCountVisible;
+    searchType = 'name';
     constructor(public loadingCtrl: LoadingController, public translateService: TranslateService, private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.spinner = true;
         this.searchSpinner = true;
@@ -157,9 +158,9 @@ export class HomePage {
     }
     search() {
         let info = {
-            name: this.name
+            name: this.name,
+            type: this.searchType
         }
-
         this.authProvider.search(info, 'api/auth/search').subscribe((data) => {
             this.searchSpinner = false;
             this.searchData = data;
@@ -214,7 +215,7 @@ export class HomePage {
 
       setTimeout(() => {
         loading.dismiss();
-      }, 3000);
+      }, 1000);
 
         if (this.platform.isRTL) {
             this.platform.setDir('ltr', true)
@@ -229,5 +230,16 @@ export class HomePage {
 
     followRequests(){
         this.navCtrl.push("FollowRequestsPage");
+    }
+
+    changeSearchType(type){
+        this.searchType = type;
+        let info = {
+            name: this.name,
+            type: type
+        }
+        this.authProvider.search(info, 'api/auth/search').subscribe((data) => {
+            this.searchData = data;
+        })
     }
 }

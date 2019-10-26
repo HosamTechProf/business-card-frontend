@@ -1,8 +1,7 @@
-
 <ion-header no-shadow no-border>
   <ion-navbar color="light">
   	<div style="float: right">
-		<button class="editButton" ion-button icon-start color="dark" (click)="edit()">
+		<button class="editButton" ion-button icon-start color="light" (click)="edit()">
 		  <ion-icon name="create"></ion-icon>{{'EditMyCard' | translate}}
 		</button>
   	</div>
@@ -12,16 +11,20 @@
 <ion-content padding>
 	<div class='business-card'>
 	  <div class='bc__logo'>
-	    <h2>{{name}}</h2><br>
+    	<img src="{{friendImage}}/{{image}}" class="userPhoto" imageViewer>
+	    <h2 style="width: 92%">{{name}}</h2><br>
 	  </div>
 	  <div class='bc__tagline'>
-	    <p>{{mobile}}</p>
-	    <p>{{phone}}</p>
-	    <p>{{email}}</p>
-	    <p>{{company}}</p>
-	    <p><a href="{{socialLink}}">{{socialLink}}</a></p>
-	    <p>{{desc}}</p>
+	    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
+	    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
+	    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
+	    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
+	    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
+	    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
 	  </div>
+		<button class="share" ion-button icon-only clear padding (click)="sharelinkAlert()">
+		  <ion-icon name="share"></ion-icon>
+		</button>
 	</div>
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">
 	  <ion-icon name="custom-arrow-down"></ion-icon>

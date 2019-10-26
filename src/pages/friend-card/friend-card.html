@@ -1,4 +1,3 @@
-
 <ion-header no-shadow no-border>
   <ion-navbar color="light">
   	<div style="float: left" *ngIf="followed">
@@ -12,7 +11,7 @@
 	<div style="float: right">
 		<button ion-button icon-end *ngIf="followed === 'true'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">{{ 'UNFOLLOW' | translate }}</button>
 		<button ion-button icon-end *ngIf="followed === 'notFriends'" ion-button round color="light" style="font-weight: bold" (click)="follow()">{{ 'FOLLOW' | translate }}</button>
-		<button ion-button icon-end *ngIf="followed === 'false'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">تم الطلب</button>
+		<button ion-button icon-end *ngIf="followed === 'false'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">{{ 'Requested' | translate }}</button>
 	</div>
   </ion-navbar>
 </ion-header>
@@ -20,9 +19,12 @@
 <ion-content padding>
 
 	<div class='business-card'>
+
 	  <div class='bc__logo'>
-	    <h2>{{name}}</h2><br>
-	    	    <a href="https://api.whatsapp.com/send?phone={{mobile}}">
+    	<img src="{{friendImage}}/{{image}}" class="userPhoto" imageViewer>
+	    <h2 style="width: 92%">{{name}}</h2><br>
+	    <div style="display: inline-block;" *ngIf="followed === 'true'">
+	    <a href="https://api.whatsapp.com/send?phone={{mobile}}">
 		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
 		  <ion-icon name="logo-whatsapp"></ion-icon>
 		</button>
@@ -37,14 +39,21 @@
 		  <ion-icon name="call"></ion-icon>
 		</button>
 	</a>
+		</div>
 	  </div>
-	  <div class='bc__tagline'>
-	    <p>{{mobile}}</p>
-	    <p>{{phone}}</p>
-	    <p>{{email}}</p>
-	    <p>{{company}}</p>
-	    <p><a href="{{socialLink}}">{{socialLink}}</a></p>
-	    <p>{{desc}}</p>
+	  <div class='bc__tagline2' *ngIf="followed === 'false'">
+	  	  <ion-icon name="lock"></ion-icon>
+	  </div>
+	  <div class='bc__tagline2' *ngIf="followed === 'notFriends'">
+	  	  <ion-icon name="lock"></ion-icon>
+	  </div>
+	  <div class='bc__tagline' *ngIf="followed === 'true'">
+	    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
+	    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
+	    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
+	    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
+	    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
+	    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
 	  </div>
 	</div>
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">

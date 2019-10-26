@@ -4,7 +4,10 @@
       <h3>{{ 'MyQr' | translate }}</h3>
       <div class="test">
         <qrcode [qrdata]="id" [size]="256" [level]="'M'"></qrcode>
-     </div>
+     </div><br><br><br><br>
+    <button style="font-weight: bold;font-size:20px" ion-button icon-left color="dark" padding (click)="download()">
+      <ion-icon name="download"></ion-icon> {{ 'DownloadCode' | translate }}
+    </button><br>
     </ion-row>
     <ion-row justify-content-center align-items-center style=" flex-direction: column">
 		<button ion-button icon-only color="dark" padding (click)="closeModal()">
