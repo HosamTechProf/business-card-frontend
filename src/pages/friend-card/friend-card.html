@@ -1,17 +1,28 @@
 <ion-header no-shadow no-border>
   <ion-navbar color="light">
-  	<div style="float: left" *ngIf="followed">
+  	<div style="float: left" *ngIf="followed === 'true'">
 		<button *ngIf="!faved" class="favButton" ion-button icon-only color="dark" (click)="favourite()">
-		  <ion-icon name="heart-outline"></ion-icon>
+		  <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+		  <ion-icon name="heart-outline" *ngIf="!loading"></ion-icon>
 		</button>
 		<button *ngIf="faved" class="favButton" ion-button icon-only color="danger" (click)="unfavourite()">
-		  <ion-icon name="heart"></ion-icon>
+		  <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+		  <ion-icon name="heart" *ngIf="!loading"></ion-icon>
 		</button>
   	</div>
 	<div style="float: right">
-		<button ion-button icon-end *ngIf="followed === 'true'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">{{ 'UNFOLLOW' | translate }}</button>
-		<button ion-button icon-end *ngIf="followed === 'notFriends'" ion-button round color="light" style="font-weight: bold" (click)="follow()">{{ 'FOLLOW' | translate }}</button>
-		<button ion-button icon-end *ngIf="followed === 'false'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">{{ 'Requested' | translate }}</button>
+		<button ion-button icon-end *ngIf="followed === 'true'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">
+		  	<ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+			<span *ngIf="!loading">{{ 'UNFOLLOW' | translate }}</span>
+		</button>
+		<button ion-button icon-end *ngIf="followed === 'notFriends'" ion-button round color="light" style="font-weight: bold" (click)="follow()">
+		  	<ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+			<span *ngIf="!loading">{{ 'FOLLOW' | translate }}</span>
+		</button>
+		<button ion-button icon-end *ngIf="followed === 'false'" ion-button round color="light" style="font-weight: bold" (click)="unfollow()">
+		  	<ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+			<span *ngIf="!loading">{{ 'Requested' | translate }}</span>
+		</button>
 	</div>
   </ion-navbar>
 </ion-header>
@@ -42,10 +53,12 @@
 		</div>
 	  </div>
 	  <div class='bc__tagline2' *ngIf="followed === 'false'">
-	  	  <ion-icon name="lock"></ion-icon>
+	  	  <ion-icon name="lock"></ion-icon><br>
+	  	  {{ 'ThisContentIsHidden' | translate }}
 	  </div>
 	  <div class='bc__tagline2' *ngIf="followed === 'notFriends'">
 	  	  <ion-icon name="lock"></ion-icon>
+	  	  {{ 'ThisContentIsHidden' | translate }}
 	  </div>
 	  <div class='bc__tagline' *ngIf="followed === 'true'">
 	    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
@@ -59,41 +72,4 @@
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">
 	  <ion-icon name="custom-arrow-down"></ion-icon>
 	</button>
-
-<!-- <div class="userCard">
-	  	<span class="title">الاسم</span><br>
-	    {{name}}<br><hr>
-	  	<span class="title">البريد الالكتروني</span><br>
-	    {{email}}<br><hr>
-	  	<span class="title">رقم الجوال</span><br>
-	    {{mobile}}<br>
-		<a href="https://api.whatsapp.com/send?phone=+2 {{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
-		  <ion-icon name="logo-whatsapp"></ion-icon>
-		</button>
-		</a>
-		<a (click)="sendSMS()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
-		  <ion-icon name="chatboxes"></ion-icon>
-		</button>
-		</a>
-		<a href="tel:{{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
-		  <ion-icon name="call"></ion-icon>
-		</button>
-	</a><br><hr>
-	  	<span class="title">رقم الهاتف</span><br>
-	    {{phone}}<br><hr>
-	  	<span class="title">المنشأة</span><br>
-	    {{company}}<br><hr>
-	  	<span class="title">لينك تواصل اجتماعي</span><br>
-	    <a class="socialLink" target="_blank" href="{{socialLink}}">{{socialLink}}</a><br><hr>
-	  	<span class="title">نبذة تعريفية</span><br>
-	    {{desc}}<br><hr>
-    <ion-row justify-content-center align-items-center style=" flex-direction: column">
-		<button class="arrow" ion-button icon-only color="dark" padding (click)="closeModal()">
-		  <ion-icon name="custom-arrow-down"></ion-icon>
-		</button>
-    </ion-row>
-</div> -->
 </ion-content>

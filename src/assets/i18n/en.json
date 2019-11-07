@@ -10,7 +10,7 @@
 	"UNFOLLOW" : "Unfollow",
 	"FOLLOW" : "Follow",
 	"EMAIL" : "Email",
-	"EMAILERROR" : "Please Write Your Email",
+	"EMAILERROR" : "Please Write Your Mobile Number",
 	"PASSWORD" : "Password",
 	"PASSWORDERROR" : "Please Write Your Password",
 	"LOGIN" : "Login",
@@ -23,6 +23,7 @@
 	"Company" : "Company",
 	"SocialLink" : "Social Link",
 	"AboutYou" : "About You",
+	"desc" : "Descreption",
 	"RePassword" : "Re-Password",
 	"CardStatus" : "Card Status",
 	"Register" : "Register",
@@ -30,7 +31,7 @@
 	"MobileError" : "Please Write Your Mobile Number",
 	"CompanyError" : "Please Write Your Company",
 	"RePasswordError" : "Error With Password Repeat",
-	"EmailPasswordError" : "Please Write Your Email And Password",
+	"EmailPasswordError" : "Please Write Your Mobile And Password",
 	"LoginSuccess" : "Signed in successfully",
 	"EditMyCard" : "Edit My Card",
 	"SearchInMyCards" : "Search In My Cards",
@@ -55,5 +56,6 @@
 	"addFriendFromGalleryMsg" : "Card successfully added",
 	"ChooseScanMethod" : "Choose Scan Method",
 	"AddFromGallery" : "Add From Gallery",
-	"ScanQrCode" : "Scan QR Code"
+	"ScanQrCode" : "Scan QR Code",
+	"ThisContentIsHidden" : "This Content Is Hidden"
 }

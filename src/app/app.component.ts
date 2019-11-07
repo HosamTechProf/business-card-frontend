@@ -118,7 +118,6 @@ export class MyApp {
                     let info = {
                         'deviceToken' : registration['registrationId']
                     }
-                    console.log(info)
                      this.notificationProvider.addDeviceToken('api/auth/adddevicetoken', info).subscribe()
                      });
     }

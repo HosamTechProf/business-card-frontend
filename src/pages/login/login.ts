@@ -13,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class LoginPage {
     mobile: string;
     password: string;
+    countries;
+    countryCode;
     presentToast(message) {
         const toast = this.toastCtrl.create({
             message: message,
@@ -21,6 +23,9 @@ export class LoginPage {
         toast.present();
     }
     constructor(public translateService: TranslateService, public loadingCtrl: LoadingController, public toastCtrl: ToastController, private storage: Storage, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+        this.authProvider.getCountries('api/auth/getcodes').subscribe((res) => {
+            this.countries = res;
+        })
     }
     openRegister() {
         this.navCtrl.push("RegisterPage");
@@ -33,6 +38,7 @@ export class LoginPage {
             let info = {
                 mobile: this.mobile,
                 password: this.password,
+                countryCode: this.countryCode
             };
             let loading = this.loadingCtrl.create({
                 spinner: 'hide',
@@ -62,4 +68,9 @@ export class LoginPage {
             this.presentToast(this.translateService.instant("EmailPasswordError"));
         }
     }
+
+    getCountryCode(code) {
+        this.countryCode = code;
+    }
+
 }

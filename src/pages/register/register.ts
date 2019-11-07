@@ -22,7 +22,7 @@ export class RegisterPage {
     countries;
     country;
     countryCode;
-    countryDialCode = "+966";
+    countryDialCode;
     presentToast(message) {
         const toast = this.toastCtrl.create({
             message: message,
@@ -31,8 +31,8 @@ export class RegisterPage {
         toast.present();
     }
     constructor(public translateService: TranslateService, public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
-        this.authProvider.getCountries('codes').subscribe((res) => {
-            this.countries = res['countries'];
+        this.authProvider.getCountries('api/auth/getcodes').subscribe((res) => {
+            this.countries = res;
         })
     }
 

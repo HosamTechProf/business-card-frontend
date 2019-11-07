@@ -75,6 +75,9 @@ ion-icon {
   &[class*="custom-hastag"] {
     mask-image: url(../assets/icons/hastag.svg);
   }
+  &[class*="custom-shuffle"] {
+    mask-image: url(../assets/icons/shuffle.svg);
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');

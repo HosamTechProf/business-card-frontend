@@ -21,6 +21,7 @@ export class FollowRequestsPage {
 	spinner;
 	friends;
 	friendImage;
+	isFriend;
   constructor(public translateService: TranslateService, private alertCtrl: AlertController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
           this.friendsProvider.getFollowRequests('api/auth/getfollowrequests').subscribe((res) => {
             this.spinner = false;
@@ -65,11 +66,20 @@ export class FollowRequestsPage {
 		            user1_id: localStorage['user_id'],
 		            user2_id: friendId
 		        }
-			  	this.friendsProvider.addFriend(info, 'api/auth/addFriend').subscribe()
+				this.friendsProvider.isFriend('api/auth/isfriend/' + localStorage['user_id'] + '/' + friendId).subscribe((res)=>{
+					if (res['status'] === 'notFriends') {
+			  			this.friendsProvider.addFriend(info, 'api/auth/addFriend').subscribe()
+					}else{
+						this.followAlert()
+					}
+				})
 	        }
 	      }
 	    ]
 	  });
 	  alert.present();
+  }
+  followAlert(){
+  	alert('انت بالفعل تتابع هذه البطاقة , ولكن تم قبول طلب متابعته')
   }
 }

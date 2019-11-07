@@ -32,6 +32,7 @@ export class FriendCardPage {
     socialLink;
     image;
     friendImage;
+    loading = true;
     constructor(private sms: SMS, public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.id = this.navParams.get('id');
         let info = {
@@ -58,7 +59,7 @@ export class FriendCardPage {
             }
         })
         this.friendsProvider.isFriend('api/auth/isfriend/' + localStorage['user_id'] + '/' + this.id).subscribe((data) => {
-            console.log(data['status'])
+            this.loading = false;
             if (data['status'] == 'true') {
                 this.followed = 'true';
             }else if (data['status'] == 'false'){

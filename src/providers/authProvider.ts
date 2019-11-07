@@ -21,8 +21,8 @@ export class AuthProvider {
     }
 
     getCountries(file) {
-        let countries = this.http.get(this.server + file).map(res => res);
-        return this.cache.loadFromDelayedObservable(this.server + file, countries)
+        return this.http.get(this.server + file).map(res => res);
+        // return this.cache.loadFromDelayedObservable(this.server + file, countries)
     }
 
     updateUserData(info, file) {

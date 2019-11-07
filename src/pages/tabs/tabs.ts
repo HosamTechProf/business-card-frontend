@@ -75,47 +75,30 @@ export class TabsPage {
 	}
 
 	sharelinkAlert() {
-	  let alert = this.alertCtrl.create({
-	    title: this.translateService.instant("ShareApp"),
-	    message: this.translateService.instant("ShareAppMsg"),
-	    buttons: [
-	      {
-	        text: this.translateService.instant("Cancel"),
-	        role: 'cancel',
-	        handler: () => {
-	          console.log('Cancel clicked');
-	        }
-	      },
-	      {
-	        text: this.translateService.instant("SHARE"),
-	        handler: () => {
-
-	        }
-	      }
-	    ]
-	  });
-	  alert.present();
+	    this.socialSharing.share('Business Card Link: ')
 	}
 
 	scanAlert(){
-	  let alert = this.alertCtrl.create({
-	    title: this.translateService.instant("ChooseScanMethod"),
-	    buttons: [
-	      {
-	        text: this.translateService.instant("AddFromGallery"),
-	        handler: () => {
-	          this.uploadImage()
-	        }
-	      },
-	      {
-	        text: this.translateService.instant("ScanQrCode"),
-	        handler: () => {
-	        	this.scan()
-	        }
-	      }
-	    ]
-	  });
-	  alert.present();
+		let modal = this.modalCtrl.create('ScanMethodPage');
+		modal.present();
+	  // let alert = this.alertCtrl.create({
+	  //   title: this.translateService.instant("ChooseScanMethod"),
+	  //   buttons: [
+	  //     {
+	  //       text: this.translateService.instant("AddFromGallery"),
+	  //       handler: () => {
+	  //         this.uploadImage()
+	  //       }
+	  //     },
+	  //     {
+	  //       text: this.translateService.instant("ScanQrCode"),
+	  //       handler: () => {
+	  //       	this.scan()
+	  //       }
+	  //     }
+	  //   ]
+	  // });
+	  // alert.present();
 	}
 
     uploadImage(){

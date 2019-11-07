@@ -41,7 +41,7 @@ page-login {
         padding-bottom: 0 !important;
 
       ion-grid {
-        min-height: 100%;
+        // min-height: 100%;
 
         [header]{
           flex: 1;
@@ -100,8 +100,7 @@ page-login {
         }
 
         ion-item {
-          // background-color: rgba(0, 0, 0, 0.226) !important;
-          ion-label {
+          .warning {
             position: absolute;
             right: 0;
             bottom: 0;
@@ -111,7 +110,6 @@ page-login {
             line-height: 17px;
             margin-right: 10px;
           }
-
           .item-inner {
             display: block !important;
             overflow: visible !important;
@@ -288,4 +286,8 @@ ion-loading.transparent {
     position: absolute;
     z-index: 2;
 }
+  ion-select{
+    text-align: center
+  }
+
 }

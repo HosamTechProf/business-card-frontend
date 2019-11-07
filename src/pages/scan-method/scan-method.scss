@@ -1,0 +1,23 @@
+page-scan-method {
+	ion-content{
+		background-color: rgba(0, 0, 0, 0.94) !important;
+	}
+	h1{
+		color: white !important;
+		font-weight: bold
+	}
+	.shuffle{
+		color: white;
+		font-size: 150px;
+		transform: rotate(90deg);
+	}
+	.button{
+		background-color: transparent;
+		box-shadow: none;
+		border-radius: 15px !important
+	}
+	.test{
+		font-weight: bold;
+		font-size: 15px
+	}
+}

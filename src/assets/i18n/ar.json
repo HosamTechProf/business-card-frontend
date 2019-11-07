@@ -10,7 +10,7 @@
 	"UNFOLLOW" : "إلغاء المتابعة",
 	"FOLLOW" : "تابع",
 	"EMAIL" : "البريد الالكتروني",
-	"EMAILERROR" : "برجاء كتابة بريدك الالكتروني",
+	"EMAILERROR" : "برجاء كتابة رقم الجوال",
 	"PASSWORD" : "كلمة المرور",
 	"PASSWORDERROR" : "برجاء كتابة كلمة مرورك",
 	"LOGIN" : "تسجيل الدخول",
@@ -23,6 +23,7 @@
 	"Company" : "المنشأة او الشركة",
 	"SocialLink" : "لينك تواصل اجتماعي",
 	"AboutYou" : "نبذة تعريفية",
+	"desc" : "نبذة تعريفية",
 	"RePassword" : "تأكيد كلمة المرور",
 	"CardStatus" : "حالة البطاقة",
 	"Register" : "تسجيل",
@@ -30,7 +31,7 @@
 	"MobileError" : "من فضلك اكتب رقم الجوال",
 	"CompanyError" : "من فضلك اكتب المنشأة او الشركة",
 	"RePasswordError" : "خطأ في اعادة كلمة المرور",
-	"EmailPasswordError" : "برجاء ادخال البريد الالكتروني وكلمة المرور",
+	"EmailPasswordError" : "برجاء ادخال رقم الجوال وكلمة المرور",
 	"LoginSuccess" : "تم تسجيل الدخول بنجاح",
 	"EditMyCard" : "تعديل بطاقتي",
 	"SearchInMyCards" : "بحث في بطاقاتي",
@@ -55,5 +56,6 @@
 	"addFriendFromGalleryMsg" : "تم اضافة البطاقة بنجاح",
 	"ChooseScanMethod" : "اختار طريقة الاضافة",
 	"AddFromGallery" : "اضافة من الصور",
-	"ScanQrCode" : "مسح الكود"
+	"ScanQrCode" : "مسح الكود",
+	"ThisContentIsHidden" : "هذا المحتوى مخفي"
 }
