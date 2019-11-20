@@ -1,0 +1,44 @@
+page-activation {
+	ion-content{
+		background-image: linear-gradient(to top right, #DA3B27, #EB8D60);
+	}
+	.button{
+		font-weight: bold;
+		font-size: 20px
+	}
+	.test{
+		padding-top: 50%
+	}
+	h4{
+		text-align: center;
+	}
+	ion-input{
+		border-radius: 7px;
+		width: 20%;
+		background-color: white;
+		color: #555753;
+		font-weight: bold;
+		font-size:20px;
+		display: inline-block;
+	}
+
+	.text-input{
+		text-align: center !important;
+
+	}
+
+	.inputs{
+		padding-top: 8%;
+		direction: ltr;
+	}
+
+	.button{
+		margin-top: 15% !important;
+		text-transform: none;
+		font-weight: normal;
+		border-radius: 10px !important;
+		padding: 25px 30px 20px 30px !important;
+		font-size: 25px;
+		box-shadow: none;
+	}
+}

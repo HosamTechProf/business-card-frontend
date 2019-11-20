@@ -4,6 +4,7 @@ import { AuthProvider } from '../../providers/authProvider';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,7 @@ export class LoginPage {
         });
         toast.present();
     }
-    constructor(public translateService: TranslateService, public loadingCtrl: LoadingController, public toastCtrl: ToastController, private storage: Storage, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public http: HttpClient, public translateService: TranslateService, public loadingCtrl: LoadingController, public toastCtrl: ToastController, private storage: Storage, private authProvider: AuthProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.authProvider.getCountries('api/auth/getcodes').subscribe((res) => {
             this.countries = res;
         })
@@ -30,9 +31,7 @@ export class LoginPage {
     openRegister() {
         this.navCtrl.push("RegisterPage");
     }
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad LoginPage');
-    }
+
     login() {
         if (this.mobile != null && this.password != null) {
             let info = {
@@ -54,12 +53,18 @@ export class LoginPage {
             loading.present();
 
             this.authProvider.registerData(info, 'api/auth/login').subscribe((data) => {
-                if (data) {
+                console.log(data)
+                if (data['message']==='Authorized') {
                     this.storage.set('my_token', data['access_token']);
                     this.navCtrl.setRoot("TabsPage")
                     this.presentToast(this.translateService.instant("LoginSuccess"));
-                } else {
+                } else if (data['message']==='Unauthorized') {
                     this.presentToast(this.translateService.instant("EmailPasswordError"));
+                }else if (data['message']==='Active Account') {
+                    this.presentToast('برجاء تفعيل هذا الحساب');
+                    this.http.get('http://www.alsaad2.net/api/sendsms.php?username=faisalaljohni&password=a1234567&message=' + 'رقم التفعيل الخاص بك هو : ' + data['code'] + '&numbers=' + data['mobile'] + '&return=json&sender=School').map((res)=>{
+                        this.navCtrl.push('ActivationPage', {mobileNumber:data['mobile'],token:data['access_token']})
+                    })
                 }
             })
 

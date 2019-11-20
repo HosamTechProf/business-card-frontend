@@ -36,6 +36,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { ActivationProvider } from '../providers/activation/activation';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -89,7 +90,8 @@ export function createTranslateLoader(http: HttpClient) {
     ContactProvider,
     FileTransfer,
     File,
-    PhotoLibrary
+    PhotoLibrary,
+    ActivationProvider
   ]
 })
 export class AppModule { }

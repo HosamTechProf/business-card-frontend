@@ -34,4 +34,9 @@ export class AuthProvider {
         return this.http.post(this.server + file, info)
             .map(res => res);
     }
+
+    verifyCode(info, file) {
+        return this.http.post(this.server + file, info)
+            .map(res => res);
+    }
 }

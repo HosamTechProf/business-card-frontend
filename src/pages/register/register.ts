@@ -5,6 +5,8 @@ import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { SERVER_URL } from '../../providers/serverUrl';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -30,7 +32,7 @@ export class RegisterPage {
         });
         toast.present();
     }
-    constructor(public translateService: TranslateService, public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+    constructor(public http: HttpClient, public translateService: TranslateService, public events: Events, private camera: Camera, public toastCtrl: ToastController, private storage: Storage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
         this.authProvider.getCountries('api/auth/getcodes').subscribe((res) => {
             this.countries = res;
         })
@@ -85,11 +87,11 @@ export class RegisterPage {
 
             this.authProvider.registerData(info, 'api/auth/register').subscribe((data) => {
                 if (data['status']) {
-                    this.navCtrl.push("TabsPage");
-                    // localStorage['my_token'] = data['success'].token;
-                    this.storage.set('my_token', data['success'].token);
-                    this.presentToast(data['msg']);
-                    this.events.publish('user:notification');
+                    this.http.get('http://www.alsaad2.net/api/sendsms.php?username=faisalaljohni&password=a1234567&message=' + 'رقم التفعيل الخاص بك هو : ' + data['code'] + '&numbers=' + data['mobile'] + '&return=json&sender=School').map((res)=>{
+                            this.navCtrl.push("ActivationPage", {mobileNumber:data['mobile'], 'token':data['success'].token});
+                            this.presentToast(data['msg']);
+                            this.events.publish('user:notification');
+                    })
                 }
             }, (err) => {
                 console.log(err['error']['error'])

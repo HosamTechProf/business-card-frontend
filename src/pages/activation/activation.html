@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ChooseLanguagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding>
+<ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+		<div style="color:white;font-weight: bold" class="test">
+			<!-- <h3>ضع هنا كود التفعيل</h3> -->
+			<h4>لقد قمنا ب ارسال كود تفعيل علي رقم جوالك {{mobileNumber}} برجاء وضعه هنا</h4>
+		</div>
+    </ion-row>
+    <ion-row>
+    	<div class="inputs" align="center">
+			<ion-input type="number" #code0 (ionFocus)="clearInput(0)" [(ngModel)]="code[0]" (ngModelChange)="focusOnFrom(code1, 0, $event)" maxlength="1"></ion-input>
+			<ion-input type="number" #code1 (ionFocus)="clearInput(1)" [(ngModel)]="code[1]" (keyup)="detectkey(0, $event)" (ngModelChange)="focusOnFrom(code2, 1)"></ion-input>
+			<ion-input type="number" #code2 (ionFocus)="clearInput(2)" [(ngModel)]="code[2]" (keyup)="detectkey(1, $event)" (ngModelChange)="focusOnFrom(code3, 2)"></ion-input>
+			<ion-input type="number" #code3 (ionFocus)="clearInput(3)" [(ngModel)]="code[3]" (keyup)="detectkey(2, $event)" (ngModelChange)="verify()"></ion-input>
+			<button ion-button color="light" (click)="verify()" [disabled]="validateCode()">
+	            <span *ngIf="!loading">تأكيد</span>
+	            <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+			</button>
+		</div>
+    </ion-row>
+</ion-grid>
+</ion-content>
