@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-navbar color="light">
+    <ion-title>{{ 'Settings' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-border>
+    <ion-list-header no-margin>
+      {{ 'Public' | translate }}
+    </ion-list-header>
+    <ion-item (click)="changeLanguage()">
+      <ion-icon name="globe" item-start></ion-icon>
+      {{ 'Language' | translate }}
+      <ion-note item-end>
+      {{lang}}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle checked="true" color="myColor" (ionChange)="notification()"></ion-toggle>
+      <ion-label>
+        {{ 'Notifications' | translate }}
+      </ion-label>
+      <ion-icon name="notifications" item-start></ion-icon>
+    </ion-item>
+
+  </ion-list>
+	<br>
+  <ion-list no-border>
+    <ion-list-header no-margin>
+      {{ 'Help' | translate }}
+    </ion-list-header>
+    <ion-item (click)="openContact()">
+      <ion-icon name="send" item-start></ion-icon>
+      {{ 'ContactUs' | translate }}
+    </ion-item>
+    <ion-item>
+      <ion-icon name="information-circle" item-start></ion-icon>
+      {{ 'AboutApp' | translate }}
+    </ion-item>
+  </ion-list>
+</ion-content>

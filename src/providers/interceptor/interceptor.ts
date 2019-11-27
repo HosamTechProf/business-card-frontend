@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
-
+import { NavController, App } from 'ionic-angular'
 @Injectable()
 export class InterceptorProvider implements HttpInterceptor {
 
-    constructor(private storage: Storage) { }
+    constructor(private app: App, private storage: Storage) { }
 
     // Intercepts all HTTP requests!
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -27,6 +27,12 @@ export class InterceptorProvider implements HttpInterceptor {
                         //     buttons: ['OK']
                         // });
                         // // alert.present();
+                        if (error.error.error && error.error.error === "Unauthenticated.") {
+                            localStorage.clear();
+                            this.storage.clear();
+                            let newRootNav = <NavController>this.app.getRootNavById('n4');
+                            newRootNav.push("LoginPage")
+                        }
                         return _throw(error);
                     })
                 );

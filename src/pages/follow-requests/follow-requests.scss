@@ -2,21 +2,25 @@ page-follow-requests {
 	.scroll-content, ion-header{
 		background-color: #E6E6E6;
 	}
+
 	.toolbar-md{
 		min-height:60px;
 	}
+
 	.test{
 		font-weight: bold;
 		font-size: 18px;
 		position: absolute;
 		top: 35%;
 	}
+
 	.userPhoto{
 		width: 40px;
 		border-radius: 100px;
 		margin-left: 5px;
 		margin-right: 5px;
 	}
+
 	.button{
 		color: #DA3B27;
 		border-color: #DA3B27;
@@ -24,4 +28,14 @@ page-follow-requests {
 		font-size: 14px !important;
 		border-radius: 30px !important
 	}
+
+    .data{
+    	width: 35%;
+    	opacity: 0.5;
+    }
+
+    .noData{
+    	opacity: 0.6;
+    	padding-top: 40px;
+    }
 }

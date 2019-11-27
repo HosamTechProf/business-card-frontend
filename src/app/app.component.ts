@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, ModalController, Nav, Events } from 'ionic-angular';
+import { Platform, ModalController, Nav, Events, AlertController, NavController, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -7,6 +7,7 @@ import { CacheService } from "ionic-cache";
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { ShareLinkProvider } from '../providers/shareLink';
 import { NotificationProvider } from '../providers/notification';
+import { AuthProvider } from '../providers/authProvider';
 import { Observable } from 'rxjs';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,7 +19,7 @@ export class MyApp {
 @ViewChild(Nav) nav: Nav;
     rootPage: any;
 
-    constructor(public translateService: TranslateService, public events: Events, private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(private app: App, private alertCtrl: AlertController, private authProvider: AuthProvider, public translateService: TranslateService, public events: Events, private notificationProvider: NotificationProvider, private push: Push, private shareLinkProvider: ShareLinkProvider, public modalCtrl: ModalController, private deeplinks: Deeplinks, private cache: CacheService, private storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
         this.platform.ready().then(() => {
             this.cache.setDefaultTTL(60 * 60 * 12);
             this.cache.setOfflineInvalidate(false);
@@ -31,11 +32,8 @@ export class MyApp {
               this.notification();
             });
         });
-
     }
-                //  this.storage.get('language').then((val)=>{
-                //     this.translateService.use(val);
-                // })
+
     protected choseLanguage(){
         this.storage.get('language').then((val) => {
             if(val){

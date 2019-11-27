@@ -31,6 +31,7 @@
     "@ionic-native/file": "^4.20.0",
     "@ionic-native/file-transfer": "^4.20.0",
     "@ionic-native/firebase": "^4.20.0",
+    "@ionic-native/http": "^4.20.0",
     "@ionic-native/photo-library": "^4.20.0",
     "@ionic-native/push": "^4.20.0",
     "@ionic-native/sms": "^4.20.0",

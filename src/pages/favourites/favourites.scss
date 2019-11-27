@@ -56,4 +56,14 @@ page-favourites {
     ion-spinner {
         padding-top: 30%
     }
+
+    .data{
+    	width: 35%;
+    	opacity: 0.5;
+    }
+
+    .noData{
+    	opacity: 0.6;
+    	padding-top: 40px;
+    }
 }

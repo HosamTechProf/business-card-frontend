@@ -6,9 +6,13 @@
 </ion-header>
 
 <ion-content>
-<div align="center" [hidden]="!spinner">
-	<ion-spinner name="crescent"></ion-spinner>
-</div>
+	<div align="center" [hidden]="!spinner">
+		<ion-spinner name="crescent"></ion-spinner>
+	</div>
+	<div class="noData" *ngIf="friends?.length == 0" align="center">
+		<img src="assets/imgs/data.svg" class="data">
+		<h3>{{ 'NoCards' | translate }}</h3>
+	</div>
 	<div *ngFor="let friend of friends" class="userCard" (click)="openModal(friend.id)">
 	    <img src="{{friendImage}}/{{friend.image}}" class="userPhoto" imageViewer>
 	    <span style="font-weight: bold">{{friend.name}}</span><br>

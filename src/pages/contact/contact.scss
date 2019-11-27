@@ -1,3 +1,46 @@
 page-contact {
+	.scroll-content, ion-header{
+		background-color: #E6E6E6;
+	}
 
+	ion-input, ion-textarea{
+		background-color: white;
+		border-radius: 10px;
+		padding-top: 10px
+	}
+
+	.text-input::-webkit-input-placeholder {
+        @include rtl() {
+	  		direction: rtl;
+        }
+        @include ltr() {
+	  		direction: ltr;
+        }
+	}
+
+	.button{
+		box-shadow: none;
+		font-size: 17px;
+		font-weight: bold;
+		padding-right: 40px !important;
+		padding-left: 40px !important;
+		padding-top: 20px !important;
+		padding-bottom: 20px !important;
+	}
+
+	h3{
+		text-align: center;
+		color: #555753;
+		font-size: 18px;
+		padding-bottom: 15px;
+	}
+
+	.card{
+		box-shadow: none;
+		border-radius: 10px !important
+	}
+
+	img{
+		width: 40%;
+	}
 }

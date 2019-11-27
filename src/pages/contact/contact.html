@@ -1,17 +1,18 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+<ion-header no-border>
+  <ion-navbar color="light">
+    <ion-title>{{ 'ContactUs' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content padding>
+    <div align="center">
+        <img src="assets/imgs/contact-us.svg">
+    </div>
+    <ion-input type="text" [(ngModel)]="name" placeholder="{{ 'YourName' | translate }}"></ion-input><br>
+    <ion-input type="text" [(ngModel)]="email" placeholder="{{ 'YourEmail' | translate }}"></ion-input><br>
+    <ion-textarea rows="6" [(ngModel)]="message" placeholder="{{ 'YourMessage' | translate }}"></ion-textarea>
+    <div align="center">
+        <button ion-button round style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60)" (click)="sendMessage()">{{ 'Submit' | translate }}</button>
+    </div>
+    <h3>{{ 'ContactAlert' | translate }}</h3>
 </ion-content>

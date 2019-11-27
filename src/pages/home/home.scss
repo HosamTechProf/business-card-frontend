@@ -229,4 +229,18 @@ page-home {
             position: absolute;
         }
 
+        .data{
+            width: 10%;
+            opacity: 0.5;
+        }
+
+        .noData{
+            opacity: 0.6;
+            padding-top: 10px;
+            h6{
+                font-size: 15px;
+                margin-top: 3px
+            }
+        }
+
 }

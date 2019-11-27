@@ -48,7 +48,10 @@
             </div>
             <!-- Login button -->
             <ion-col col-12 no-padding>
-              <button no-margin ion-button full text-uppercase color="light" (click)="login()">{{ 'LOGIN' | translate }}</button>
+              <button [disabled]="!mobile || !password || !countryDialCode || loading" no-margin ion-button full text-uppercase color="light" (click)="login()">
+              <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+              <span *ngIf="!loading">{{ 'LOGIN' | translate }}</span>
+            </button>
             </ion-col>
             <!-- Description -->
             <div description text-center>

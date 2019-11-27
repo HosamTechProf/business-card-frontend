@@ -39,4 +39,15 @@ export class AuthProvider {
         return this.http.post(this.server + file, info)
             .map(res => res);
     }
+
+    sendCode(info, file) {
+        return this.http.post(this.server + file, info)
+            .map(res => res);
+    }
+
+    tokenCheck(file) {
+        return this.http.get(this.server + file)
+            .map(res => res);
+    }
+
 }

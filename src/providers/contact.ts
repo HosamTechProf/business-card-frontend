@@ -20,4 +20,8 @@ export class ContactProvider {
     getContacts(file) {
         return this.http.get(this.server + file).map(res => res);
     }
+
+    sendMessage(info, file) {
+        return this.http.post(this.server + file, info).map(res => res);
+    }
 }

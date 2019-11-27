@@ -7,14 +7,9 @@
               <ion-icon name="person-add"><ion-badge *ngIf="followRequestsCountVisible" id="notifications-badge" color="danger"><span class="badgeNumber">{{followRequestsCount}}</span></ion-badge></ion-icon>
             </button>
           </ion-buttons>
-          <ion-buttons  style="float: left" *ngIf="platform.isRTL">
-            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="changeLanguage()">
-              EN
-            </button>
-          </ion-buttons>
-          <ion-buttons  style="float: left" *ngIf="!platform.isRTL">
-            <button ion-button icon-only class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="changeLanguage()">
-              AR
+        <ion-buttons style="float: left">
+            <button ion-button icon-only clear class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="openSettings()">
+              <ion-icon name="settings"></ion-icon>
             </button>
           </ion-buttons>
     </ion-navbar>
@@ -106,6 +101,10 @@
 <ion-scroll scrollX="true">
   <div align="center" [hidden]="!spinner">
     <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div class="noData" *ngIf="myContactsUsers?.length == 0" align="center">
+    <img src="assets/imgs/contacts.svg" class="data">
+    <h6>{{ 'NoContacts' | translate }}</h6>
   </div>
   <div *ngFor="let contact of myContactsUsers" class="userCard2" (click)="openUserCard(contact.id)">
       <img src="{{userImage}}/{{contact.image}}" class="userPhoto2" imageViewer>

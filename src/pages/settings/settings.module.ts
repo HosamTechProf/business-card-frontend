@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ContactPage } from './contact';
+import { SettingsPage } from './settings';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -10,19 +10,19 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
-    declarations: [
-        ContactPage,
-    ],
-    imports: [
-        IonicPageModule.forChild(ContactPage),
-	    HttpClientModule,
-	    TranslateModule.forChild({
-	      loader: {
-	        provide: TranslateLoader,
-	        useFactory: (createTranslateLoader),
-	        deps: [HttpClient]
-	      }
-	    }),
-    ],
+  declarations: [
+    SettingsPage,
+  ],
+  imports: [
+    IonicPageModule.forChild(SettingsPage),
+    HttpClientModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+	],
 })
-export class ContactPageModule { }
+export class SettingsPageModule {}

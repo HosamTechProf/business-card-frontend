@@ -1,7 +1,13 @@
 {
   "name": "businessApp",
+  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "proxies": [
+    {
+      "path":"/sms",
+      "proxyUrl": "http://www.alsaad2.net/api"
+    }
+  ]
 }

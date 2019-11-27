@@ -59,32 +59,37 @@ export class HomePage {
         this.events.subscribe('user:clearSearch', eventData => {
           this.clearSearch();
         });
-        this.contacts.find(['displayName', 'phoneNumbers'], {filter: "", multiple: true})
-        .then(contacts => {
-            for (var i=0 ; i < contacts.length; i++){
-                if (contacts[i].phoneNumbers != null) {
-                   var obj = {};
-                   obj["name"] = contacts[i].displayName;
-                   if (contacts[i].phoneNumbers[1]) {
-                       let numbers = [contacts[i].phoneNumbers[0].value,contacts[i].phoneNumbers[1].value]
-                       obj["number"] = numbers;
-                   }
-                   else{
-                       let numbers = [contacts[i].phoneNumbers[0].value,'null']
-                       obj["number"] = numbers;
-                   }
-                   this.myContacts.push(obj)
+        if (this.platform.is('cordova')) {
+            this.contacts.find(['displayName', 'phoneNumbers'], {filter: "", multiple: true})
+            .then(contacts => {
+                for (var i=0 ; i < contacts.length; i++){
+                    if (contacts[i].phoneNumbers != null) {
+                       var obj = {};
+                       obj["name"] = contacts[i].displayName;
+                       if (contacts[i].phoneNumbers[1]) {
+                           let numbers = [contacts[i].phoneNumbers[0].value,contacts[i].phoneNumbers[1].value]
+                           obj["number"] = numbers;
+                       }
+                       else{
+                           let numbers = [contacts[i].phoneNumbers[0].value,'null']
+                           obj["number"] = numbers;
+                       }
+                       this.myContacts.push(obj)
+                    }
                 }
-            }
-               let info = {
-                   contacts : this.myContacts,
-                   length : this.myContacts.length,
-               }
-               this.contactProvider.getContactsFromDatabase(info, 'api/auth/getcontacts').subscribe((res)=>{
-                   this.myContactsUsers = res
-                   this.spinner = false;
-               })
-        });
+                   let info = {
+                       contacts : this.myContacts,
+                       length : this.myContacts.length,
+                   }
+                   this.contactProvider.getContactsFromDatabase(info, 'api/auth/getcontacts').subscribe((res)=>{
+                       this.myContactsUsers = res
+                       this.spinner = false;
+                   })
+            });
+        }else{
+            this.myContactsUsers = [];
+            this.spinner = false
+        }
 
     }
     ionViewDidEnter() {
@@ -241,5 +246,9 @@ export class HomePage {
         this.authProvider.search(info, 'api/auth/search').subscribe((data) => {
             this.searchData = data;
         })
+    }
+
+    openSettings(){
+        this.navCtrl.push("SettingsPage");
     }
 }

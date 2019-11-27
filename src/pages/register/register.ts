@@ -25,6 +25,7 @@ export class RegisterPage {
     country;
     countryCode;
     countryDialCode;
+    loading = false;
     presentToast(message) {
         const toast = this.toastCtrl.create({
             message: message,
@@ -75,6 +76,7 @@ export class RegisterPage {
             this.presentToast(this.translateService.instant("RePasswordError"))
         }
         else {
+            this.loading = true;
             let info = {
                 password: this.password,
                 c_password: this.c_password,
@@ -87,13 +89,20 @@ export class RegisterPage {
 
             this.authProvider.registerData(info, 'api/auth/register').subscribe((data) => {
                 if (data['status']) {
-                    this.http.get('http://www.alsaad2.net/api/sendsms.php?username=faisalaljohni&password=a1234567&message=' + 'رقم التفعيل الخاص بك هو : ' + data['code'] + '&numbers=' + data['mobile'] + '&return=json&sender=School').map((res)=>{
+                    let information = {
+                        code : data['code'],
+                        mobile : data['mobile']
+                    }
+                    this.authProvider.sendCode(information, 'api/auth/sendcode').subscribe((res)=>{
+                            this.loading = false;
+                            console.log(res)
                             this.navCtrl.push("ActivationPage", {mobileNumber:data['mobile'], 'token':data['success'].token});
                             this.presentToast(data['msg']);
                             this.events.publish('user:notification');
                     })
                 }
             }, (err) => {
+                this.loading = false;
                 console.log(err['error']['error'])
                 this.presentToast(Object.keys(err['error'].error).map(key => err['error'].error[key])['0']);
             })

@@ -16,6 +16,7 @@ export class LoginPage {
     password: string;
     countries;
     countryCode;
+    loading = false;
     presentToast(message) {
         const toast = this.toastCtrl.create({
             message: message,
@@ -33,27 +34,15 @@ export class LoginPage {
     }
 
     login() {
+        this.loading = true;
         if (this.mobile != null && this.password != null) {
             let info = {
                 mobile: this.mobile,
                 password: this.password,
                 countryCode: this.countryCode
             };
-            let loading = this.loadingCtrl.create({
-                spinner: 'hide',
-                content: `
-          <div class="custom-spinner-container">
-            <div class="custom-spinner-box">
-               <img src="../../assets/imgs/loader.gif" width="80px" />
-            </div>
-          </div>`,
-                cssClass: 'transparent',
-                duration: 2000
-            });
-            loading.present();
-
             this.authProvider.registerData(info, 'api/auth/login').subscribe((data) => {
-                console.log(data)
+                this.loading = false;
                 if (data['message']==='Authorized') {
                     this.storage.set('my_token', data['access_token']);
                     this.navCtrl.setRoot("TabsPage")
@@ -62,10 +51,17 @@ export class LoginPage {
                     this.presentToast(this.translateService.instant("EmailPasswordError"));
                 }else if (data['message']==='Active Account') {
                     this.presentToast('برجاء تفعيل هذا الحساب');
-                    this.http.get('http://www.alsaad2.net/api/sendsms.php?username=faisalaljohni&password=a1234567&message=' + 'رقم التفعيل الخاص بك هو : ' + data['code'] + '&numbers=' + data['mobile'] + '&return=json&sender=School').map((res)=>{
+                    let information = {
+                        code : data['code'],
+                        mobile : data['mobile']
+                    }
+                    this.authProvider.sendCode(information, 'api/auth/sendcode').subscribe((res)=>{
                         this.navCtrl.push('ActivationPage', {mobileNumber:data['mobile'],token:data['access_token']})
                     })
                 }
+            },err=>{
+                this.loading = false;
+                this.presentToast("خطأ في رقم الجوال او كلمة المرور")
             })
 
         }
