@@ -10,21 +10,26 @@
 
 <ion-content padding>
 	<div class='business-card'>
-	  <div class='bc__logo'>
-    	<img src="{{friendImage}}/{{image}}" class="userPhoto" imageViewer>
-	    <h2 style="width: 92%">{{name}}</h2><br>
-	  </div>
-	  <div class='bc__tagline'>
-	    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
-	    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
-	    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
-	    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
-	    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
-	    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
-	  </div>
-		<button class="share" ion-button icon-only clear padding (click)="sharelinkAlert()">
-		  <ion-icon name="share"></ion-icon>
-		</button>
+		<div align="center" *ngIf="loading" class="loading">
+    		<ion-spinner name="crescent"></ion-spinner>
+		</div>
+		<div *ngIf="!loading">
+		  <div class='bc__logo'>
+	    	<img src="{{friendImage}}/{{image}}" class="userPhoto animated bounceIn" imageViewer>
+		    <h2 style="width: 92%">{{name}}</h2><br>
+		  </div>
+		  <div class='bc__tagline'>
+		    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
+		    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
+		    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
+		    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
+		    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
+		    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
+		  </div>
+			<button class="share" ion-button icon-only clear padding (click)="sharelinkAlert()">
+			  <ion-icon name="share"></ion-icon>
+			</button>
+		</div>
 	</div>
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">
 	  <ion-icon name="custom-arrow-down"></ion-icon>

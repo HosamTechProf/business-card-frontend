@@ -29,7 +29,7 @@ export class MyCardDesignedPage {
     friendImage;
     token;
     myId = localStorage['user_id'];
-
+    loading:boolean = true;
     constructor(public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public view: ViewController, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.id = this.navParams.get('id');
         let info = {
@@ -45,6 +45,7 @@ export class MyCardDesignedPage {
             this.socialLink = data['socialLink']
             this.image = data['image']
             this.friendImage = SERVER_URL + 'img/users/';
+            this.loading = false;
         })
     }
 

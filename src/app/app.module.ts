@@ -14,7 +14,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { QrCodePageModule } from '../pages/qr-code/qr-code.module';
 import { FriendCardPageModule } from '../pages/friend-card/friend-card.module';
 import { QRCodeModule } from 'angularx-qrcode';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+// import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { InterceptorProvider } from '../providers/interceptor/interceptor';
 
 import { CacheModule } from "ionic-cache";
@@ -37,6 +37,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { ActivationProvider } from '../providers/activation/activation';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,6 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
     FriendCardPageModule,
     QRCodeModule,
     IonicImageViewerModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -73,7 +76,7 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
-    BarcodeScanner,
+    // BarcodeScanner,
     FriendsProvider,
     FavouritesProvider,
     InterceptorProvider,
@@ -91,7 +94,8 @@ export function createTranslateLoader(http: HttpClient) {
     FileTransfer,
     File,
     PhotoLibrary,
-    ActivationProvider
+    ActivationProvider,
+    QRScanner
   ]
 })
 export class AppModule { }

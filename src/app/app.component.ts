@@ -31,6 +31,15 @@ export class MyApp {
             this.events.subscribe('user:notification', eventData => {
               this.notification();
             });
+            this.authProvider.getUserData('api/auth/user').subscribe((res)=>{
+            },err=>{
+                if (err.error.error === "Unauthenticated.") {
+                    localStorage.clear();
+                    this.storage.clear();
+                    let newRootNav = <NavController>this.app.getRootNavById('n4');
+                    newRootNav.push("LoginPage")
+                }
+            })
         });
     }
 

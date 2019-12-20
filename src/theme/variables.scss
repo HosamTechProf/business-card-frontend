@@ -22,8 +22,9 @@ $app-direction: multi;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
-
+ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {
+  background: transparent none !important;
+}
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.

@@ -5,6 +5,6 @@
   <ion-tab (ionSelect)="sharelinkAlert()" tabTitle="{{ 'SHARE' | translate }}" tabIcon="share"></ion-tab>
   <ion-tab (ionSelect)="logoutAlert()" tabTitle="{{ 'LOGOUT' | translate }}" tabIcon="log-out"></ion-tab>
 </ion-tabs>
- <ion-fab center bottom style="padding-bottom:7px;">
-   <button ion-fab style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60)" (click)="scanAlert()"><ion-icon name="qr-scanner"></ion-icon></button>
+ <ion-fab center bottom style="padding-bottom:7px;" class="animated shake">
+   <button ion-fab style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60)" (click)="openScanPage()"><ion-icon name="qr-scanner"></ion-icon></button>
  </ion-fab>

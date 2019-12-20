@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage, ModalController, App, Platform, Events, LoadingController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/authProvider';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FriendsProvider } from '../../providers/friendsProvider';
 import { FavouritesProvider } from '../../providers/favouritesProvider';
 import { ShareLinkProvider } from '../../providers/shareLink';
@@ -44,7 +43,7 @@ export class HomePage {
     followRequestsCount;
     followRequestsCountVisible;
     searchType = 'name';
-    constructor(public loadingCtrl: LoadingController, public translateService: TranslateService, private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private barcodeScanner: BarcodeScanner, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
+    constructor(public loadingCtrl: LoadingController, public translateService: TranslateService, private contactProvider: ContactProvider, private contacts: Contacts, public events: Events, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, public platform: Platform, private advertisementProvider: AdvertisementProvider, private storage: Storage, private app: App, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, private authProvider: AuthProvider, public navCtrl: NavController, public modalCtrl: ModalController) {
         this.spinner = true;
         this.searchSpinner = true;
         this.authProvider.getUserData('api/auth/user').subscribe((res: Observable<any>) => {
@@ -53,9 +52,6 @@ export class HomePage {
         });
         this.ionViewDidEnter();
         this.platform.registerBackButtonAction(() => {});
-        this.events.subscribe('user:scan', eventData => {
-          this.addFriend();
-        });
         this.events.subscribe('user:clearSearch', eventData => {
           this.clearSearch();
         });
@@ -127,9 +123,11 @@ export class HomePage {
         this.name = null;
     }
 
-    openModal() {
-        let profileModal = this.modalCtrl.create('QrCodePage', { id: this.myId });
-        profileModal.present();
+    openQrPage() {
+        let navCtrl: NavController = this.app.getRootNav();
+        navCtrl.push("ScanPage");
+
+        // this.navCtrl.push("ScanPage")
     }
 
     openFriendCard(id) {
@@ -140,27 +138,10 @@ export class HomePage {
         profileModal.present();
     }
 
-    addFriend() {
-        this.barcodeScanner.scan().then(barcodeData => {
-            let info = {
-                'user1_id': this.myId,
-                'user2_id': barcodeData.text
-            }
-            this.friendsProvider.addFriend(info, 'api/auth/addFriendQr').subscribe((data) => {
-                if (data['status']) {
-                    let friendCard = this.modalCtrl.create('FriendCardPage', { id: barcodeData.text });
-                    friendCard.present();
-                }
-            }, (err) => {
-                // this.presentToast(Object.keys(JSON.parse(err._body).error).map(key => JSON.parse(err._body).error[key])['0']);
-            })
-        }).catch(err => {
-            console.log('Error', err);
-        });
-    }
     openMyCards() {
         this.navCtrl.push("MyCardsPage");
     }
+
     search() {
         let info = {
             name: this.name,
@@ -210,27 +191,6 @@ export class HomePage {
     }
     clearSearch(){
         this.name = null;
-    }
-    changeLanguage(){
-      let loading = this.loadingCtrl.create({
-        content: this.translateService.instant("PleaseWait")
-      });
-
-      loading.present();
-
-      setTimeout(() => {
-        loading.dismiss();
-      }, 1000);
-
-        if (this.platform.isRTL) {
-            this.platform.setDir('ltr', true)
-            this.translateService.use('en')
-            this.storage.set('language', 'en')
-        }else{
-            this.platform.setDir('rtl', true)
-            this.translateService.use('ar')
-            this.storage.set('language', 'ar')
-        }
     }
 
     followRequests(){

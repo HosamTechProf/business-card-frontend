@@ -30,44 +30,48 @@
 <ion-content padding>
 
 	<div class='business-card'>
-
-	  <div class='bc__logo'>
-    	<img src="{{friendImage}}/{{image}}" class="userPhoto" imageViewer>
-	    <h2 style="width: 92%">{{name}}</h2><br>
-	    <div style="display: inline-block;" *ngIf="followed === 'true'">
-	    <a href="https://api.whatsapp.com/send?phone={{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
-		  <ion-icon name="logo-whatsapp"></ion-icon>
-		</button>
-		</a>
-		<a (click)="sendSMS()">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
-		  <ion-icon name="chatboxes"></ion-icon>
-		</button>
-		</a>
-		<a href="tel:{{mobile}}">
-		<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
-		  <ion-icon name="call"></ion-icon>
-		</button>
-	</a>
+		<div align="center" *ngIf="spinner" class="loading">
+    		<ion-spinner name="crescent"></ion-spinner>
 		</div>
-	  </div>
-	  <div class='bc__tagline2' *ngIf="followed === 'false'">
-	  	  <ion-icon name="lock"></ion-icon><br>
-	  	  {{ 'ThisContentIsHidden' | translate }}
-	  </div>
-	  <div class='bc__tagline2' *ngIf="followed === 'notFriends'">
-	  	  <ion-icon name="lock"></ion-icon>
-	  	  {{ 'ThisContentIsHidden' | translate }}
-	  </div>
-	  <div class='bc__tagline' *ngIf="followed === 'true'">
-	    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
-	    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
-	    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
-	    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
-	    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
-	    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
-	  </div>
+		<div *ngIf="!spinner">
+		  <div class='bc__logo'>
+	    	<img src="{{friendImage}}/{{image}}" class="userPhoto animated bounceIn" imageViewer>
+		    <h2 style="width: 92%">{{name}}</h2><br>
+		    <div style="display: inline-block;" *ngIf="followed === 'true'">
+		    <a href="https://api.whatsapp.com/send?phone={{mobile}}">
+			<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #2E794E, #43AE70)">
+			  <ion-icon name="logo-whatsapp"></ion-icon>
+			</button>
+			</a>
+			<a (click)="sendSMS()">
+			<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #215753, #43AEA6)">
+			  <ion-icon name="chatboxes"></ion-icon>
+			</button>
+			</a>
+			<a href="tel:{{mobile}}">
+			<button class="socialButton" ion-button icon-only style="background-image: linear-gradient(to top right, #141622, #292C44)">
+			  <ion-icon name="call"></ion-icon>
+			</button>
+		</a>
+			</div>
+		  </div>
+		  <div class='bc__tagline2' *ngIf="followed === 'false'">
+		  	  <ion-icon name="lock"></ion-icon><br>
+		  	  {{ 'ThisContentIsHidden' | translate }}
+		  </div>
+		  <div class='bc__tagline2' *ngIf="followed === 'notFriends'">
+		  	  <ion-icon name="lock"></ion-icon>
+		  	  {{ 'ThisContentIsHidden' | translate }}
+		  </div>
+		  <div class='bc__tagline' *ngIf="followed === 'true'">
+		    <p dir="ltr">{{mobile}} <ion-icon name="call"></ion-icon></p>
+		    <p *ngIf="phone"><ion-icon name="custom-phone"></ion-icon> {{phone}}</p>
+		    <p *ngIf="email"><ion-icon name="mail"></ion-icon> {{email}}</p>
+		    <p *ngIf="company"><ion-icon name="custom-company"></ion-icon> {{company}}</p>
+		    <p *ngIf="socialLink"><a href="{{socialLink}}"><ion-icon name="link"></ion-icon> {{socialLink}}</a></p>
+		    <p *ngIf="desc"><ion-icon name="custom-hastag"></ion-icon> {{desc}}</p>
+		  </div>
+		</div>
 	</div>
 	<button class="arrow" ion-button icon-only clear padding (click)="closeModal()">
 	  <ion-icon name="custom-arrow-down"></ion-icon>

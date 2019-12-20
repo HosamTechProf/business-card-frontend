@@ -33,6 +33,7 @@ export class FriendCardPage {
     image;
     friendImage;
     loading = true;
+    spinner:boolean = true;
     constructor(private sms: SMS, public view: ViewController, private favouritesProvider: FavouritesProvider, private friendsProvider: FriendsProvider, public navCtrl: NavController, public navParams: NavParams) {
         this.id = this.navParams.get('id');
         let info = {
@@ -48,6 +49,7 @@ export class FriendCardPage {
             this.socialLink = data['socialLink']
             this.image = data['image']
             this.friendImage = SERVER_URL + 'img/users/';
+            this.spinner = false;
         })
 
         this.favouritesProvider.isFavorited('api/auth/isfavorited/' + localStorage['user_id'] + '/' + this.id).subscribe((data) => {

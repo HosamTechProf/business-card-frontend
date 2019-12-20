@@ -78,6 +78,9 @@ ion-icon {
   &[class*="custom-shuffle"] {
     mask-image: url(../assets/icons/shuffle.svg);
   }
+  &[class*="custom-qr-scanner"] {
+    mask-image: url(../assets/icons/scan.svg);
+  }
 }
 
 @import url('https://fonts.googleapis.com/css?family=Tajawal&display=swap');

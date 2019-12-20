@@ -10,7 +10,7 @@
     <h3>{{ 'NoRequests' | translate }}</h3>
   </div>
   <ion-list>
-    <ion-list-header *ngFor="let friend of friends">
+    <ion-list-header *ngFor="let friend of friends" class="animated flipInX">
       <img src="{{friendImage}}/{{friend.image}}" class="userPhoto" imageViewer>
       <span class="test">{{friend.name}}</span>
   	<button ion-button outline item-end icon-start (click)="acceptFollow(friend.id, friend.name)">

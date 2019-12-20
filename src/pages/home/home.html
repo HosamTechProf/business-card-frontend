@@ -3,18 +3,18 @@
   <div class="myDiv animated pulse">
     <ion-navbar>
         <ion-buttons style="float: right">
-            <button id="notification-button" ion-button icon-only clear class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="followRequests()">
+            <button id="notification-button" ion-button icon-only clear class="animated zoomInRight" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="followRequests()">
               <ion-icon name="person-add"><ion-badge *ngIf="followRequestsCountVisible" id="notifications-badge" color="danger"><span class="badgeNumber">{{followRequestsCount}}</span></ion-badge></ion-icon>
             </button>
           </ion-buttons>
         <ion-buttons style="float: left">
-            <button ion-button icon-only clear class="animated zoomInDown" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="openSettings()">
+            <button ion-button icon-only clear class="animated zoomInLeft" style="font-weight: bold;color:white;border-radius:30px;padding:7px" (click)="openSettings()">
               <ion-icon name="settings"></ion-icon>
             </button>
           </ion-buttons>
     </ion-navbar>
     <div padding>
-      <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="{{ 'SEARCH' | translate }}"></ion-searchbar>
+      <ion-searchbar #searchbar (ionInput)="search()" [(ngModel)]="name" placeholder="{{ 'SEARCH' | translate }}" class="animated bounceIn"></ion-searchbar>
     </div>
 </div>
 </ion-header>
@@ -22,6 +22,7 @@
 <ion-content>
 <div [hidden]="!name" padding>
   <div align="center">
+  <ion-scroll no-padding scrollX="true" style="min-height: 60px" class="animated bounceIn">
     <button ion-button *ngIf="searchType==='name'" round color="dark" (click)="changeSearchType('name')">
       {{ 'Name' | translate }}
     </button>
@@ -52,11 +53,12 @@
     <button ion-button *ngIf="searchType==='mobile' || searchType==='name' || searchType==='desc' || searchType==='company'" outline round color="dark" (click)="changeSearchType('email')">
       {{ 'EMAIL' | translate }}
     </button>
+  </ion-scroll>
   </div>
   <div align="center" [hidden]="!searchSpinner">
     <ion-spinner name="crescent"></ion-spinner>
   </div>
-  <div *ngFor="let user of searchData" class="userCard" (click)="openUserCard(user.id)">
+  <div *ngFor="let user of searchData" class="userCard animated bounceIn" (click)="openUserCard(user.id)">
       <img src="{{userImage}}/{{user.image}}" class="userPhoto" imageViewer>
       <span style="font-weight: bold">{{user.name}}</span><br>
       {{user.mobile}}
@@ -77,7 +79,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60);color:white" (click)="openFavourites()">
+        <ion-card class="myCard animated flipInY" style="background-image: linear-gradient(to top right, #DA3B27, #EB8D60);color:white" (click)="openFavourites()">
           <ion-card-content>
             <ion-icon name="custom-like" style="font-size: 30px;"></ion-icon><br>
             {{ 'FAVOURITES' | translate }}
@@ -85,7 +87,7 @@
         </ion-card>
       </ion-col>
       <ion-col>
-        <ion-card class="myCard animated flipInX" style="background-image: linear-gradient(to top right, #212121, #5D5D5D);color:white" (click)="openModal()">
+        <ion-card class="myCard animated flipInY" style="background-image: linear-gradient(to top right, #212121, #5D5D5D);color:white" (click)="openQrPage()">
           <ion-card-content>
             <ion-icon name="custom-qr-code" style="font-size: 30px"></ion-icon><br>
             My QR

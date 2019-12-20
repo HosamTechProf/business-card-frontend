@@ -1,0 +1,33 @@
+<ion-content>
+	<ion-grid style="height: 100%" no-padding>
+		<ion-row style="background-color: rgba(0,0,0,0.7)">
+			<button color="dark" (click)="close()" style="position: absolute;left:0%" item-end ion-button icon-only>
+			  <ion-icon name="close"></ion-icon>
+			</button>
+			<button color="dark" *ngIf="button === 'Scan'" (click)="share()" ion-button icon-only>
+			  <ion-icon name="share"></ion-icon>
+			</button>
+			<button color="dark" *ngIf="button === 'QR'" (click)="uploadImage()" ion-button icon-only>
+			  <ion-icon name="images"></ion-icon>
+			</button>
+		</ion-row>
+		<ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+			<ion-slides style="direction: ltr" (ionSlideDidChange)="slideChanged()">
+			  <ion-slide style="z-index: 9999" class="animated zoomIn">
+			    <img id="myImg" qr-code [qrValue]="myId">
+			  </ion-slide>
+			  <ion-slide>
+			    <div class="center"></div>
+			  </ion-slide>
+			</ion-slides>
+		</ion-row>
+		<ion-row justify-content-center align-items-center style="padding-bottom: 40px;background-color: rgba(0,0,0,0.7)">
+			<button color="dark" [hidden]="button === 'QR'" [@myAnimation] (click)="goToScan()" ion-button icon-only>
+			  <ion-icon name="custom-qr-scanner"></ion-icon>
+			</button>
+			<button color="dark" [hidden]="button === 'Scan'" [@myAnimation] (click)="goToQR()" ion-button icon-only>
+			  <ion-icon name="custom-qr-code"></ion-icon>
+			</button>
+		</ion-row>
+	</ion-grid>
+</ion-content>

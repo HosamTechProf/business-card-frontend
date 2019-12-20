@@ -17,18 +17,16 @@ import { FriendsProvider } from '../../providers/friendsProvider';
 })
 export class TabsPage {
     tab1Root = "HomePage";
+    tab4Root = "AboutPage";
     tab2Root;
     token;
     myId = localStorage['user_id'];
 	base64Image;
 	friendId;
 
-    constructor(private friendsProvider: FriendsProvider, private http: HttpClient, private camera: Camera, private toastCtrl: ToastController, public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
+    constructor(public nav: NavController, private friendsProvider: FriendsProvider, private http: HttpClient, private camera: Camera, private toastCtrl: ToastController, public translateService: TranslateService, private alertCtrl: AlertController, private shareLinkProvider: ShareLinkProvider, private socialSharing: SocialSharing, private storage: Storage, private app: App, public modalCtrl: ModalController, public events: Events) {
      }
 
-	scan() {
-		this.events.publish('user:scan');
-	}
 	openMyCard(){
 		let modal = this.modalCtrl.create('MyCardDesignedPage', {id:localStorage['user_id']});
 		modal.present();
@@ -78,27 +76,8 @@ export class TabsPage {
 	    this.socialSharing.share('Business Card Link: ')
 	}
 
-	scanAlert(){
-		let modal = this.modalCtrl.create('ScanMethodPage');
-		modal.present();
-	  // let alert = this.alertCtrl.create({
-	  //   title: this.translateService.instant("ChooseScanMethod"),
-	  //   buttons: [
-	  //     {
-	  //       text: this.translateService.instant("AddFromGallery"),
-	  //       handler: () => {
-	  //         this.uploadImage()
-	  //       }
-	  //     },
-	  //     {
-	  //       text: this.translateService.instant("ScanQrCode"),
-	  //       handler: () => {
-	  //       	this.scan()
-	  //       }
-	  //     }
-	  //   ]
-	  // });
-	  // alert.present();
+	openScanPage(){
+		this.nav.push("ScanPage")
 	}
 
     uploadImage(){
